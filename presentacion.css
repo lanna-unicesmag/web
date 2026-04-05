@@ -69,45 +69,68 @@ body {
    SLIDE 01 — COVER
    ========================================== */
 .slide-01 {
-  background: var(--pres-dark);
-  align-items: center;
-  justify-content: center;
+  background: var(--pres-white);
+  display: flex;
   flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 4% 5% 3% 5%;
+  color: var(--pres-dark);
 }
 
-.slide-01 .cover-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
+.slide-01 .sl1-header {
+  text-align: center;
+  margin-bottom: 2vh;
+}
+
+.slide-01 .sl1-header h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 200;
+  letter-spacing: 0.8em;
+  color: var(--pres-dark);
+  margin-right: -0.4em; /* Compensate visual alignment because of letter-spacing on last char */
+}
+
+.slide-01 .sl1-hero-container {
+  flex-grow: 1;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 3vh;
+}
+
+.slide-01 .sl1-hero-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.5;
-  filter: brightness(0.5);
+  filter: grayscale(15%);
 }
 
-.slide-01 .cover-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  color: var(--pres-light);
-}
-
-.slide-01 .cover-title {
-  font-family: var(--font-heading);
-  font-size: clamp(4rem, 12vw, 10rem);
-  letter-spacing: 0.25em;
-  font-weight: 400;
-  margin-bottom: 1rem;
-}
-
-.slide-01 .cover-subtitle {
+.slide-01 .sl1-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
   font-family: var(--font-text);
-  font-size: clamp(0.8rem, 1.5vw, 1.1rem);
-  letter-spacing: 0.5em;
-  font-weight: 300;
-  text-transform: uppercase;
-  opacity: 0.85;
+  font-size: clamp(0.55rem, 0.8vw, 0.75rem);
+  font-weight: 500;
+  color: #333;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+}
+
+.slide-01 .sl1-footer .footer-left,
+.slide-01 .sl1-footer .footer-center,
+.slide-01 .sl1-footer .footer-right {
+  flex: 1;
+}
+
+.slide-01 .sl1-footer .footer-center {
+  text-align: center;
+}
+
+.slide-01 .sl1-footer .footer-right {
+  text-align: right;
 }
 
 /* ==========================================

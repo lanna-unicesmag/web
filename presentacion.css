@@ -74,13 +74,14 @@ body {
   flex-direction: column;
   height: 100vh;
   box-sizing: border-box;
-  padding: 4% 5% 3% 5%;
+  padding: 4% 0 3% 0;
   color: var(--pres-dark);
 }
 
 .slide-01 .sl1-header {
   text-align: center;
   margin-bottom: 2vh;
+  padding: 0 5vw;
 }
 
 .slide-01 .sl1-header h1 {
@@ -108,6 +109,8 @@ body {
 
 .slide-01 .sl1-footer {
   display: flex;
+  padding: 0 5vw;
+  box-sizing: border-box;
   justify-content: space-between;
   align-items: flex-end;
   width: 100%;
@@ -157,7 +160,7 @@ body {
 .slide-02 .sl2-title-container h2 {
   font-family: var(--font-text);
   font-weight: 900;
-  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  font-size: clamp(3.5rem, 6vw, 5rem);
   line-height: 1.05;
   text-transform: uppercase;
   margin-bottom: 0.3rem;
@@ -165,7 +168,7 @@ body {
 }
 
 .slide-02 .sl2-sub {
-  font-size: clamp(0.7rem, 1vw, 0.85rem);
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -1005,7 +1008,7 @@ body {
 .slide-09 .ql-mid-title h2 {
   font-family: var(--font-text);
   font-weight: 900;
-  font-size: clamp(3rem, 5vw, 5rem);
+  font-size: clamp(3.5rem, 6vw, 5rem);
   text-transform: uppercase;
   letter-spacing: -1px;
   line-height: 0.95;
@@ -1014,7 +1017,7 @@ body {
 
 .slide-09 .ql-sub {
   font-family: var(--font-text);
-  font-size: clamp(0.7rem, 1vw, 0.9rem);
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: #555;
@@ -1101,7 +1104,7 @@ body {
 .slide-10 .armor-title-box h2 {
   font-family: var(--font-text);
   font-weight: 900;
-  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-size: clamp(3.5rem, 6vw, 5rem);
   text-transform: uppercase;
   line-height: 0.95;
   color: var(--pres-dark);
@@ -1110,7 +1113,7 @@ body {
 
 .slide-10 .armor-sub {
   font-family: var(--font-text);
-  font-size: clamp(0.7rem, 1vw, 0.9rem);
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: #555;
@@ -1331,7 +1334,7 @@ body {
 .slide-12 .who-title h2 {
   font-family: var(--font-text);
   font-weight: 900;
-  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-size: clamp(3.5rem, 6vw, 5rem);
   text-transform: uppercase;
   line-height: 0.95;
   color: var(--pres-dark);
@@ -1340,7 +1343,7 @@ body {
 
 .slide-12 .who-sub {
   font-family: var(--font-text);
-  font-size: clamp(0.85rem, 1.1vw, 1rem);
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: #555;

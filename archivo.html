@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LANNA - Archivo y Herencia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header id="main-nav">
+    <div class="logo-container"><a href="index.html" style="color:inherit;text-decoration:none;">L A N N A</a></div>
+    <nav>
+      <ul>
+        <li><a href="identidad.html">Identidad</a></li>
+        <li><a href="capacidades.html">Esencia</a></li>
+        <li><a href="archivo.html">Herencia</a></li>
+      </ul>
+    </nav>
+    <a href="presentacion.html" class="pres-btn" title="Proyectar Marca">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/><path d="M10 8l5 4-5 4z" opacity="0.8"/></svg>
+    </a>
+  </header>
+
+  <main>
+    <section class="hero-internal">
+      <img src="./images/andes_culture_1775097505595.png" alt="Herencia Andina" class="hero-media" style="opacity: 0.65;">
+      <div class="hero-internal-content">
+        <span class="eyebrow" style="color: var(--color-sand);">Archivo Histórico</span>
+        <h1 style="color: var(--color-light);">Herencia Ancestral</h1>
+      </div>
+    </section>
+
+    <!-- SECTION 1: LATITUD DE MONTAÑA -->
+    <section class="split-panel bg-sand text-dark" id="territorio">
+        <!-- Izquierda: Texto Limpio -->
+        <div class="split-text reveal">
+            <span class="eyebrow" style="color: var(--color-dark);">Nuestro Territorio</span>
+            <h2 class="section-title text-left" style="margin-bottom: 0.5rem;">Latitud de Montaña</h2>
+            <div class="metadata mb-sm"><strong style="font-weight: 500;">Región:</strong> Andes | <strong style="font-weight: 500;">Subregión:</strong> Oriente</div>
+            
+            <p class="description text-left" style="color: var(--color-dark);">El Altiplano Cundiboyacense es una meseta andina entre Cundinamarca y Boyacá, suspendida a 2.600 metros sobre el nivel del mar. Frío constante, niebla densa, agua abundante. Colombia alberga el 60% de los páramos del mundo, y de ellos nace el 70% del agua del país.</p>
+            
+            <blockquote style="font-size: 1.5rem; margin: 3rem 0; border-left: 2px solid var(--color-dark);">
+              "Nacemos en el corazón de la Cordillera Oriental. Somos hijos de la niebla de la sabana y los vientos del páramo. Nuestra geografía no es un paisaje: es nuestro arquitecto."
+            </blockquote>
+        </div>
+        <!-- Derecha: Full Image -->
+        <div class="split-image reveal delay-1">
+           <img src="./images/hero_paramo_1775091513875.png" alt="Páramo sagrado">
+        </div>
+    </section>
+
+    <!-- SECTION 2: EL CARÁCTER DE LA PIEDRA -->
+    <section class="split-panel reverse bg-light text-dark" id="caracter">
+        <!-- Derecha (porque es reverse): Texto Limpio -->
+        <div class="split-text reveal">
+            <span class="eyebrow" style="color: var(--color-accent);">La Cultura que nos Moldea</span>
+            <h2 class="section-title text-left">El Carácter de la Piedra</h2>
+            <p class="description text-left">El clima extremo del Altiplano forjó una forma de vivir sobria, funcional y sin excesos. Las comunidades campesinas cultivan papa, crían ovejas y tejen en telares heredados por generaciones. Para ellos, el tejido no es un oficio menor: es un lenguaje, una forma de escribir identidad con hilos.</p>
+            
+            <div class="mt-md" style="font-family:var(--font-heading); font-size:1.8rem; font-style:italic;">
+              “Boyacá" en lengua chibcha significa "Región de Mantas”.
+            </div>
+
+            <blockquote style="font-size: 1.5rem; margin: 2rem 0; border-left-color: var(--color-accent); color: var(--color-accent);">
+              "El frío nos enseñó que vestirse no es vanidad: es resiliencia. Y de esa resiliencia nació nuestra elegancia."
+            </blockquote>
+        </div>
+        <!-- Izquierda: Full Image -->
+        <div class="split-image reveal delay-1">
+           <img src="./images/fashion_silhouette_1775091556441.png" alt="Elegancia Silenciosa" class="grayscale-reveal">
+        </div>
+    </section>
+
+    <!-- SECTION 3: EL HILO DE LOS DIOSES -->
+    <section class="content-section bg-dark text-light border-top-delicate" id="archivo">
+      <div class="container align-center">
+        <span class="eyebrow">Herencia Ancestral del Tejido</span>
+        <h2 class="section-title">El Hilo de los Dioses</h2>
+        <p class="description mx-auto text-left" style="margin-bottom: 2rem;">Los Muiscas, pobladores originarios del Altiplano, tejían magistralmente con algodón y fique. Según su tradición, fue el dios Bochica quien les enseñó a hilar.</p>
+        <p class="description mx-auto text-left" style="font-size: 1.1rem; color: var(--color-sand);">
+          <strong>Las mantas cumplían tres funciones esenciales:</strong>
+        </p>
+
+        <!-- LAS 3 TARJETAS EXCLUSIVAMENTE TEXTUALES -->
+        <div class="lore-cards reveal delay-1">
+           <!-- Card 1 -->
+           <div class="lore-card">
+              <h4>Vestimenta Cotidiana</h4>
+              <p>El uso pragmático para el abrigo contra las inclemencias del frío altiplánico.</p>
+           </div>
+           
+           <!-- Card 2 -->
+           <div class="lore-card">
+              <h4>Moneda de Intercambio</h4>
+              <p>Los altos estándares de tejeduría las convertían en tributo y divisa comercial.</p>
+           </div>
+           
+           <!-- Card 3 -->
+           <div class="lore-card">
+              <h4>Ofrenda Ceremonial</h4>
+              <p>Los diseños declaraban jerarquía y cosmovisión en pleno corazón del mito originario.</p>
+           </div>
+        </div>
+
+        <div class="container align-center mt-md reveal delay-2">
+           <p class="description mx-auto text-center" style="font-size: 0.95rem; opacity: 0.7; max-width: 700px;">
+             La Laguna de Guatavita fue un sitio sagrado y origen de la Leyenda de El Dorado; escenario de ofrendas que incluían oro y textiles.
+           </p>
+        </div>
+
+        <blockquote class="reveal delay-2" style="border-color: var(--color-light); font-size: 1.8rem; margin-top: 4rem;">
+          "Antes del oro, hubo un hilo. Antes del mercado, hubo un telar. El primer acto de lujo de esta tierra fue tejer."
+        </blockquote>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="./main.js"></script>
+</body>
+</html>

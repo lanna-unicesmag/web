@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LANNA - Esencia y Capacidades</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header id="main-nav">
+    <div class="logo-container"><a href="index.html" style="color:inherit;text-decoration:none;">L A N N A</a></div>
+    <nav>
+      <ul>
+        <li><a href="identidad.html">Identidad</a></li>
+        <li><a href="capacidades.html">Esencia</a></li>
+        <li><a href="archivo.html">Herencia</a></li>
+      </ul>
+    </nav>
+    <a href="presentacion.html" class="pres-btn" title="Proyectar Marca">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/><path d="M10 8l5 4-5 4z" opacity="0.8"/></svg>
+    </a>
+  </header>
+
+  <main>
+    <section class="hero-internal">
+      <img src="./images/ruana_detail_1775097479007.png" alt="Detalle Ruana" class="hero-media">
+      <div class="hero-internal-content">
+        <span class="eyebrow" style="color: var(--color-light);">Capacidades Base</span>
+        <h1 style="color: var(--color-light);">Nuestra Esencia</h1>
+      </div>
+    </section>
+
+    <!-- SECTION: SPLIT PANEL ESENCIA -->
+    <section class="split-panel bg-stone text-light" id="esencia">
+        <!-- Izquierda: Image -->
+        <div class="split-image reveal">
+           <img src="./images/wool_texture_1775091529531.png" alt="Lana Orgánica" class="grayscale-reveal">
+        </div>
+        <!-- Derecha: Texto Limpio -->
+        <div class="split-text reveal delay-1">
+            <span class="eyebrow" style="color: var(--color-sand);">Prendas para el Frío del Altiplano</span>
+            <h2 class="section-title text-left">El Rectángulo<br>Perfecto</h2>
+            <p class="description text-left" style="color: var(--color-sand);">
+              La ruana es la prenda insigne: rectangular, de lana, sin costuras, con abertura central para la cabeza. Funciona como una "carpa" térmica personal y sale directamente del telar como un rectángulo completo.<br><br>
+              <strong>Era la prenda <em>Zero Waste</em> original.</strong>
+            </p>
+        </div>
+    </section>
+      
+    <section class="content-section bg-light" style="padding-bottom: 2rem;">
+      <div class="container layout-symmetric">
+          <blockquote class="text-dark">"El traje campesino completo: Ruana de lana, sombrero de tapia pisada, alpargatas de fique. La mujer complementa con falda decorada en canutillos y mostacillas, y pañolón bordado."</blockquote>
+      </div>
+    </section>
+
+    <!-- SECTION: Layout Zero Waste Align Fix -->
+    <section class="content-section bg-light text-dark">
+      <div class="container layout-split align-middle">
+         <div class="col-img reveal">
+           <img src="./images/nature_dye_1775097493021.png" alt="Tintes Naturales" class="img-fluid img-med minimal-shadow">
+         </div>
+         <div class="col-text reveal delay-1 text-left">
+             <div class="mb-lg">
+               <h4>El Sello Zero Waste</h4>
+               <p class="description" style="font-size: 0.95rem;">Diseñamos piezas atemporales que desafían la obsolescencia. Una prenda <strong>LANNA</strong> está construida para durar generaciones, reduciendo el consumo masivo.</p>
+             </div>
+             <div class="mb-lg">
+               <h4>Lana Virgen</h4>
+               <p class="description" style="font-size: 0.95rem;">Materia prima tradicional y sagrada. Fibra viva, renovable y soberana de las tierras altas de Boyacá.</p>
+             </div>
+             <div>
+                <h4>El Color Orgánico</h4>
+                <p class="description" style="font-size: 0.95rem;">Nuestra paleta natural: cáscara de nogal, verde musgo, crudo, gris rústico, con nulo impacto químico de laboratorio.</p>
+             </div>
+         </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./main.js"></script>
+</body>
+</html>

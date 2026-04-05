@@ -850,22 +850,22 @@ body {
 .slide-08 .mood-left-col {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
   height: 100%;
 }
 
 .slide-08 .mood-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1.5vh;
   width: 100%;
-  margin-bottom: auto; /* Push grid to the top */
-  margin-top: 5vh;
+  height: 75%;
 }
 
 .slide-08 .mood-grid img {
   width: 100%;
-  aspect-ratio: 3/4;
+  height: 100%;
   object-fit: cover;
   filter: grayscale(15%);
 }
@@ -875,7 +875,6 @@ body {
   align-items: center;
   gap: 20px;
   color: var(--pres-dark);
-  margin-bottom: 5vh;
 }
 
 .slide-08 .mood-title {

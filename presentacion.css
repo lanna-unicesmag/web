@@ -2,7 +2,7 @@
    LANNA — PRESENTACIÓN / SLIDESHOW MODE
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
 
 :root {
   --pres-dark: #121312;
@@ -12,13 +12,18 @@
   --pres-accent: #a3875d;
   --pres-white: #ffffff;
   --pres-black: #000000;
-  --font-heading: 'Playfair Display', serif;
-  --font-text: 'Outfit', sans-serif;
+  --font-heading: "Playfair Display", serif;
+  --font-text: "Outfit", sans-serif;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -41,13 +46,16 @@ html, body {
    ========================================== */
 .slide {
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   display: flex;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+  transition:
+    opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.8s;
   overflow: hidden;
 }
 
@@ -69,8 +77,10 @@ html, body {
 
 .slide-01 .cover-bg {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   opacity: 0.5;
   filter: brightness(0.5);
@@ -160,63 +170,114 @@ html, body {
 }
 
 /* ==========================================
-   SLIDE 03 — CULTURA & MATERIA PRIMA
+   SLIDE 03 — EL CARÁCTER DE LA PIEDRA (6 Quadrants)
    ========================================== */
 .slide-03 {
   background: var(--pres-white);
-  flex-direction: row;
-}
-
-.slide-03 .culture-images {
-  flex: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  width: 100vw;
+  height: 100vh;
   gap: 0;
 }
 
-.slide-03 .culture-images img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.slide-03 .culture-text {
-  flex: 1;
+.slide-03 .quadrant {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 5% 8%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Image Quads */
+.slide-03 .quad-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0; 
+  left: 0;
+}
+
+.slide-03 .quad-tc { grid-area: 1 / 2 / 2 / 3; }
+.slide-03 .quad-bl { grid-area: 2 / 1 / 3 / 2; }
+.slide-03 .quad-br { grid-area: 2 / 3 / 3 / 4; }
+
+/* Text Quads Background */
+.slide-03 .text-bg {
+  background: var(--pres-white);
   color: var(--pres-dark);
 }
 
-.slide-03 .culture-text h2 {
+/* Top-Left Quadrant */
+.slide-03 .quad-tl {
+  grid-area: 1 / 1 / 2 / 2;
+  padding: 10% 12%;
+}
+
+.slide-03 .quad-tl h2 {
   font-family: var(--font-text);
   font-weight: 900;
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
   text-transform: uppercase;
   line-height: 1.05;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
-.slide-03 .culture-sub {
-  font-size: clamp(0.8rem, 1.2vw, 1rem);
+.slide-03 .quad-tl .quad-sub {
+  font-size: clamp(0.7rem, 1vw, 0.85rem);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 2rem;
+  letter-spacing: 0.15em;
   color: #555;
+  font-weight: 500;
 }
 
-.slide-03 .culture-text p {
-  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+/* Bottom-Center Quadrant */
+.slide-03 .quad-bc {
+  grid-area: 2 / 2 / 3 / 3;
+  padding: 10% 12%;
+  align-items: center;
+  text-align: center;
+}
+
+.slide-03 .quad-bc p {
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
   line-height: 1.7;
   color: #333;
   font-weight: 300;
-  max-width: 520px;
+  max-width: 400px;
 }
 
-.slide-03 .culture-text p strong {
+.slide-03 .quad-bc .quad-highlight {
+  font-family: var(--font-text);
   font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--pres-accent);
+}
+
+/* Top-Right Quadrant */
+.slide-03 .quad-tr {
+  grid-area: 1 / 3 / 2 / 4;
+  padding: 10% 15%;
+  justify-content: center;
+}
+
+.slide-03 .quad-tr .quote-line {
+  width: 40px;
+  height: 2px;
+  background: var(--pres-accent);
+  margin-bottom: 1.5rem;
+}
+
+.slide-03 .quad-tr .quote-text {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--pres-dark);
 }
 
 /* ==========================================
@@ -412,9 +473,21 @@ html, body {
   font-weight: 400;
 }
 
-.ref-card .ref-brand.cucinelli { font-family: 'Times New Roman', serif; font-style: italic; }
-.ref-card .ref-brand.loro { font-family: var(--font-heading); letter-spacing: 0.3em; text-transform: uppercase; }
-.ref-card .ref-brand.row { font-family: var(--font-text); font-weight: 500; letter-spacing: 0.4em; text-transform: uppercase; }
+.ref-card .ref-brand.cucinelli {
+  font-family: "Times New Roman", serif;
+  font-style: italic;
+}
+.ref-card .ref-brand.loro {
+  font-family: var(--font-heading);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+.ref-card .ref-brand.row {
+  font-family: var(--font-text);
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+}
 
 /* ==========================================
    SLIDE 07 — MOODBOARD
@@ -496,7 +569,7 @@ html, body {
   left: 3%;
   color: var(--pres-white);
   font-size: 0.75rem;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
   line-height: 1.4;
 }
 
@@ -620,7 +693,7 @@ html, body {
   font-family: var(--font-text);
   font-weight: 700;
   font-size: 0.9rem;
-  text-transform: capitalize; 
+  text-transform: capitalize;
   margin-bottom: 0.5rem;
   color: var(--pres-dark);
 }
@@ -839,7 +912,9 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s, opacity 0.2s;
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
   opacity: 0.7;
 }
 
@@ -892,7 +967,9 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.3s, transform 0.2s;
+  transition:
+    background 0.3s,
+    transform 0.2s;
   text-decoration: none;
 }
 
@@ -947,10 +1024,18 @@ html, body {
   animation: slideUp 0.8s ease-out forwards;
 }
 
-.slide.active .fade-up-d1 { animation-delay: 0.15s; }
-.slide.active .fade-up-d2 { animation-delay: 0.3s; }
-.slide.active .fade-up-d3 { animation-delay: 0.45s; }
-.slide.active .fade-up-d4 { animation-delay: 0.6s; }
+.slide.active .fade-up-d1 {
+  animation-delay: 0.15s;
+}
+.slide.active .fade-up-d2 {
+  animation-delay: 0.3s;
+}
+.slide.active .fade-up-d3 {
+  animation-delay: 0.45s;
+}
+.slide.active .fade-up-d4 {
+  animation-delay: 0.6s;
+}
 
 .fade-up {
   opacity: 0;
@@ -968,15 +1053,59 @@ html, body {
   animation: fadeIn 1s ease-out forwards;
 }
 
-.slide.active .fade-in-d1 { animation-delay: 0.2s; }
-.slide.active .fade-in-d2 { animation-delay: 0.4s; }
+.slide.active .fade-in-d1 {
+  animation-delay: 0.2s;
+}
+.slide.active .fade-in-d2 {
+  animation-delay: 0.4s;
+}
 
 .fade-in {
   opacity: 0;
 }
 
 @keyframes fadeIn {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ==========================================
+   NEW: SLIDE IN ANIMATIONS (TOP/BOTTOM)
+   ========================================== */
+.slide.active .slide-in-down {
+  animation: slideInDown 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.slide.active .slide-in-up {
+  animation: slideInUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.slide.active .slide-d1 { animation-delay: 0.15s; }
+.slide.active .slide-d2 { animation-delay: 0.3s; }
+
+.slide-in-down {
+  opacity: 0;
+  transform: translateY(-80px);
+}
+
+@keyframes slideInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in-up {
+  opacity: 0;
+  transform: translateY(80px);
+}
+
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .slide.active .scale-up {
@@ -1014,7 +1143,9 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.3s, transform 0.2s;
+  transition:
+    background 0.3s,
+    transform 0.2s;
 }
 
 .pres-fullscreen:hover {

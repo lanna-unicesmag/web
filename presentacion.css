@@ -286,56 +286,83 @@ body {
 }
 
 /* ==========================================
-   SLIDE 04 — HERENCIA VIVA
+   SLIDE 04 — EL HILO DE LOS DIOSES
    ========================================== */
 .slide-04 {
   background: var(--pres-white);
-  flex-direction: row;
-}
-
-.slide-04 .heritage-left {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 5% 8%;
-  color: var(--pres-dark);
-}
-
-.slide-04 .heritage-left h2 {
-  font-family: var(--font-text);
-  font-weight: 900;
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  text-transform: uppercase;
-  line-height: 1.05;
-  margin-bottom: 0.3rem;
-}
-
-.slide-04 .heritage-sub {
-  font-size: clamp(0.8rem, 1.2vw, 1rem);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 2rem;
-  color: #555;
-}
-
-.slide-04 .heritage-left p {
-  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
-  line-height: 1.7;
-  color: #333;
-  font-weight: 300;
-  max-width: 520px;
-}
-
-.slide-04 .heritage-right {
-  flex: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 4fr 6fr;
+  grid-template-rows: 2fr 3fr;
+  width: 100vw;
+  height: 100vh;
   gap: 0;
 }
 
-.slide-04 .heritage-right img {
+.slide-04 .sl4-text {
+  grid-area: 2 / 1 / 3 / 2;
+  padding: 0 15% 15% 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.slide-04 .sl4-text h2 {
+  font-family: var(--font-text);
+  font-weight: 900;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: 0.5rem;
+  color: var(--pres-dark);
+}
+
+.slide-04 .sl4-sub {
+  font-size: clamp(0.7rem, 1vw, 0.85rem);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: #555;
+  margin-bottom: 2.5rem;
+}
+
+.slide-04 .sl4-body p {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 1.2rem;
+  font-weight: 300;
+}
+
+.slide-04 .sl4-body strong {
+  font-weight: 600;
+  color: var(--pres-dark);
+}
+
+.slide-04 .sl4-quote-container {
+  grid-area: 1 / 2 / 2 / 3;
+  display: flex;
+  align-items: center;
+  padding: 5% 15% 0 5%;
+}
+
+.slide-04 .sl4-quote {
+  border-left: 3px solid var(--pres-dark);
+  padding-left: 2rem;
+}
+
+.slide-04 .sl4-quote p {
+  font-family: var(--font-text);
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  line-height: 1.6;
+  color: var(--pres-dark);
+  font-weight: 400;
+}
+
+.slide-04 .sl4-img {
+  grid-area: 2 / 2 / 3 / 3;
+  overflow: hidden;
+}
+
+.slide-04 .sl4-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;

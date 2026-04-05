@@ -1001,7 +1001,7 @@ html, body {
 .pres-fullscreen {
   position: fixed;
   top: 2rem;
-  right: 5rem;
+  right: 6rem;
   z-index: 200;
   background: rgba(18, 19, 18, 0.6);
   backdrop-filter: blur(10px);

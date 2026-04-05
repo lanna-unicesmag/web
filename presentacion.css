@@ -611,6 +611,90 @@ body {
   letter-spacing: 0.4em;
   text-transform: uppercase;
 }
+/* ==========================================
+   SLIDE 06 — IDENTIDAD DE MARCA
+   ========================================== */
+.slide-06 {
+  background: var(--pres-white);
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+}
+
+.slide-06 .identity-img {
+  flex: 1;
+  overflow: hidden;
+}
+
+.slide-06 .identity-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-06 .identity-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5% 8%;
+  color: var(--pres-dark);
+}
+
+.slide-06 .identity-text h2 {
+  font-family: var(--font-text);
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin-bottom: 0.3rem;
+}
+
+.slide-06 .identity-sub {
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.slide-06 .brand-name-display {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 7vw, 6rem);
+  letter-spacing: 0.25em;
+  font-weight: 400;
+  margin: 1.5rem 0;
+  color: var(--pres-dark);
+}
+
+.slide-06 .brand-values {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.slide-06 .brand-value {
+  text-align: left;
+}
+
+.slide-06 .brand-value h4 {
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.3rem;
+}
+
+.slide-06 .brand-value p {
+  font-size: 0.8rem;
+  color: #555;
+  font-weight: 300;
+  max-width: 180px;
+  line-height: 1.5;
+}
 
 /* ==========================================
    SLIDE 07 — LA ARQUITECTURA DEL NOMBRE

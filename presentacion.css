@@ -191,6 +191,10 @@ body {
 }
 
 /* Image Quads */
+.slide-03 .quad-img {
+  z-index: 10;
+}
+
 .slide-03 .quad-img img {
   width: 100%;
   height: 100%;
@@ -208,6 +212,7 @@ body {
 .slide-03 .text-bg {
   background: var(--pres-white);
   color: var(--pres-dark);
+  z-index: 5;
 }
 
 /* Top-Left Quadrant */

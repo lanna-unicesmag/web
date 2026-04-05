@@ -1373,6 +1373,47 @@ body {
 }
 
 /* ==========================================
+   SLIDE 13 — MANIFIESTO FINAL
+   ========================================== */
+.slide-13 {
+  background: var(--pres-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 0 5vw;
+}
+
+.slide-13 .end-wrapper {
+  max-width: 800px;
+  text-align: center;
+}
+
+.slide-13 .end-logo {
+  font-family: var(--font-text);
+  font-weight: 200;
+  font-size: clamp(3.5rem, 6vw, 5rem);
+  letter-spacing: 0.8em;
+  margin-right: -0.8em; /* Compensa el letter-spacing para el centrado óptico */
+  color: var(--pres-dark);
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+}
+
+.slide-13 .end-text {
+  font-family: var(--font-text);
+  font-size: clamp(0.9rem, 1.25vw, 1.15rem);
+  line-height: 1.8;
+  color: #444;
+  font-weight: 300;
+  margin: 0;
+  padding: 0 10%;
+}
+
+/* ==========================================
    NAVIGATION CONTROLS
    ========================================== */
 .pres-nav {

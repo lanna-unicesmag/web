@@ -616,14 +616,16 @@ body {
    ========================================== */
 .slide-06 {
   background: var(--pres-white);
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   width: 100vw;
   height: 100vh;
+  gap: 0;
 }
 
 .slide-06 .identity-img {
-  flex: 1;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -631,30 +633,31 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: grayscale(15%);
 }
 
 .slide-06 .identity-text {
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 5% 8%;
+  padding: 10% 12% 10% 8%;
   color: var(--pres-dark);
 }
 
 .slide-06 .identity-text h2 {
   font-family: var(--font-text);
   font-weight: 900;
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(3rem, 5vw, 4.5rem);
   text-transform: uppercase;
-  line-height: 1.05;
-  margin-bottom: 0.3rem;
+  line-height: 0.95;
+  margin-bottom: 1rem;
 }
 
 .slide-06 .identity-sub {
-  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  font-size: clamp(0.7rem, 1vw, 0.85rem);
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.15em;
   margin-bottom: 2rem;
   color: #555;
 }
@@ -666,12 +669,13 @@ body {
   font-weight: 400;
   margin: 1.5rem 0;
   color: var(--pres-dark);
+  margin-right: -0.25em;
 }
 
 .slide-06 .brand-values {
   display: flex;
   gap: 2rem;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   flex-wrap: wrap;
 }
 
@@ -685,7 +689,7 @@ body {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
 .slide-06 .brand-value p {
@@ -693,7 +697,7 @@ body {
   color: #555;
   font-weight: 300;
   max-width: 180px;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 /* ==========================================
@@ -830,24 +834,24 @@ body {
 /* ==========================================
    SLIDE 08 — QUIET LUXURY
    ========================================== */
-.slide-08 {
+.slide-10 {
   background: var(--pres-white);
   flex-direction: row;
 }
 
-.slide-08 .ql-portrait {
+.slide-10 .ql-portrait {
   flex: 0.9;
   overflow: hidden;
   position: relative;
 }
 
-.slide-08 .ql-portrait img {
+.slide-10 .ql-portrait img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.slide-08 .ql-portrait .ql-caption {
+.slide-10 .ql-portrait .ql-caption {
   position: absolute;
   bottom: 3%;
   left: 3%;
@@ -857,34 +861,34 @@ body {
   line-height: 1.4;
 }
 
-.slide-08 .ql-content {
+.slide-10 .ql-content {
   flex: 1.1;
   display: flex;
   flex-direction: column;
   padding: 3% 5%;
 }
 
-.slide-08 .ql-top-images {
+.slide-10 .ql-top-images {
   display: flex;
   gap: 1rem;
   margin-bottom: 2rem;
   height: 45%;
 }
 
-.slide-08 .ql-top-images img {
+.slide-10 .ql-top-images img {
   flex: 1;
   object-fit: cover;
   height: 100%;
 }
 
-.slide-08 .ql-text {
+.slide-10 .ql-text {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
-.slide-08 .ql-text h2 {
+.slide-10 .ql-text h2 {
   font-family: var(--font-text);
   font-weight: 900;
   font-size: clamp(2.5rem, 5vw, 4.5rem);
@@ -894,7 +898,7 @@ body {
   margin-bottom: 0.2rem;
 }
 
-.slide-08 .ql-text .ql-sub {
+.slide-10 .ql-text .ql-sub {
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -902,7 +906,7 @@ body {
   color: #555;
 }
 
-.slide-08 .ql-text p {
+.slide-10 .ql-text p {
   font-size: clamp(0.8rem, 1vw, 0.9rem);
   line-height: 1.6;
   color: #333;
@@ -910,11 +914,11 @@ body {
   margin-bottom: 1rem;
 }
 
-.slide-08 .ql-text p strong {
+.slide-10 .ql-text p strong {
   font-weight: 600;
 }
 
-.slide-08 .ql-fashion-img {
+.slide-10 .ql-fashion-img {
   position: absolute;
   bottom: 3%;
   right: 3%;
@@ -926,18 +930,18 @@ body {
 /* ==========================================
    SLIDE 09 — UNA ARMADURA SILENCIOSA
    ========================================== */
-.slide-09 {
+.slide-11 {
   background: var(--pres-white);
   flex-direction: column;
   padding: 5% 8%;
 }
 
-.slide-09 .armor-header {
+.slide-11 .armor-header {
   text-align: right;
   margin-bottom: 3rem;
 }
 
-.slide-09 .armor-header h2 {
+.slide-11 .armor-header h2 {
   font-family: var(--font-text);
   font-weight: 900;
   font-size: clamp(2.5rem, 5vw, 4.5rem);
@@ -946,34 +950,34 @@ body {
   color: var(--pres-dark);
 }
 
-.slide-09 .armor-header .armor-sub {
+.slide-11 .armor-header .armor-sub {
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #555;
 }
 
-.slide-09 .armor-cards {
+.slide-11 .armor-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   flex: 1;
 }
 
-.slide-09 .armor-card {
+.slide-11 .armor-card {
   display: flex;
   gap: 1.5rem;
   align-items: flex-start;
 }
 
-.slide-09 .armor-card img {
+.slide-11 .armor-card img {
   width: 220px;
   height: 180px;
   object-fit: cover;
   flex-shrink: 0;
 }
 
-.slide-09 .armor-card-text h4 {
+.slide-11 .armor-card-text h4 {
   font-family: var(--font-text);
   font-weight: 700;
   font-size: 0.9rem;
@@ -982,7 +986,7 @@ body {
   color: var(--pres-dark);
 }
 
-.slide-09 .armor-card-text p {
+.slide-11 .armor-card-text p {
   font-size: 0.85rem;
   line-height: 1.6;
   color: #444;
@@ -992,32 +996,32 @@ body {
 /* ==========================================
    SLIDE 10 — CÓMPLICES, NO CLIENTES
    ========================================== */
-.slide-10 {
+.slide-12 {
   background: var(--pres-white);
   flex-direction: row;
   align-items: center;
   padding: 5%;
 }
 
-.slide-10 .pub-img {
+.slide-12 .pub-img {
   flex: 1;
   height: 60vh;
   overflow: hidden;
 }
 
-.slide-10 .pub-img img {
+.slide-12 .pub-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.slide-10 .pub-text {
+.slide-12 .pub-text {
   flex: 1;
   padding: 0 5%;
   color: var(--pres-dark);
 }
 
-.slide-10 .pub-text h2 {
+.slide-12 .pub-text h2 {
   font-family: var(--font-text);
   font-weight: 900;
   font-size: clamp(2.5rem, 5vw, 4.5rem);
@@ -1026,7 +1030,7 @@ body {
   margin-bottom: 0.3rem;
 }
 
-.slide-10 .pub-text .pub-sub {
+.slide-12 .pub-text .pub-sub {
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1034,7 +1038,7 @@ body {
   margin-bottom: 2rem;
 }
 
-.slide-10 .pub-text p {
+.slide-12 .pub-text p {
   font-size: clamp(0.85rem, 1.1vw, 0.95rem);
   line-height: 1.7;
   color: #333;
@@ -1042,30 +1046,30 @@ body {
   max-width: 500px;
 }
 
-.slide-10 .pub-text p strong {
+.slide-12 .pub-text p strong {
   font-weight: 600;
 }
 
 /* ==========================================
    SLIDE 11 — QUIÉNES SOMOS
    ========================================== */
-.slide-11 {
+.slide-13 {
   background: var(--pres-white);
   flex-direction: row;
 }
 
-.slide-11 .team-img {
+.slide-13 .team-img {
   flex: 0.7;
   overflow: hidden;
 }
 
-.slide-11 .team-img img {
+.slide-13 .team-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.slide-11 .team-content {
+.slide-13 .team-content {
   flex: 1.3;
   padding: 5% 6%;
   display: flex;
@@ -1074,7 +1078,7 @@ body {
   color: var(--pres-dark);
 }
 
-.slide-11 .team-content h2 {
+.slide-13 .team-content h2 {
   font-family: var(--font-text);
   font-weight: 900;
   font-size: clamp(2.5rem, 5vw, 4.5rem);
@@ -1083,7 +1087,7 @@ body {
   margin-bottom: 0.3rem;
 }
 
-.slide-11 .team-content .team-sub {
+.slide-13 .team-content .team-sub {
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1091,18 +1095,18 @@ body {
   margin-bottom: 2rem;
 }
 
-.slide-11 .mission-vision {
+.slide-13 .mission-vision {
   margin-bottom: 2rem;
 }
 
-.slide-11 .mission-vision h4 {
+.slide-13 .mission-vision h4 {
   font-family: var(--font-text);
   font-weight: 600;
   font-size: 0.9rem;
   margin-bottom: 0.3rem;
 }
 
-.slide-11 .mission-vision p {
+.slide-13 .mission-vision p {
   font-size: 0.85rem;
   line-height: 1.6;
   color: #444;
@@ -1110,25 +1114,25 @@ body {
   margin-bottom: 1rem;
 }
 
-.slide-11 .team-roster {
+.slide-13 .team-roster {
   margin-top: 1rem;
 }
 
-.slide-11 .team-row {
+.slide-13 .team-row {
   display: flex;
   gap: 1rem;
   margin-bottom: 0.6rem;
   align-items: baseline;
 }
 
-.slide-11 .team-row .t-name {
+.slide-13 .team-row .t-name {
   font-weight: 600;
   font-size: 0.85rem;
   min-width: 180px;
   text-align: right;
 }
 
-.slide-11 .team-row .t-role {
+.slide-13 .team-row .t-role {
   font-size: 0.85rem;
   color: #555;
   font-weight: 300;
@@ -1137,14 +1141,14 @@ body {
 /* ==========================================
    SLIDE 12 — CIERRE
    ========================================== */
-.slide-12 {
+.slide-14 {
   background: var(--pres-white);
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.slide-12 .close-title {
+.slide-14 .close-title {
   font-family: var(--font-heading);
   font-size: clamp(4rem, 10vw, 8rem);
   letter-spacing: 0.25em;
@@ -1153,7 +1157,7 @@ body {
   margin-bottom: 2rem;
 }
 
-.slide-12 .close-quote {
+.slide-14 .close-quote {
   font-size: clamp(0.9rem, 1.3vw, 1.1rem);
   line-height: 1.6;
   color: #333;
@@ -1442,3 +1446,4 @@ body {
   height: 18px;
   fill: currentColor;
 }
+

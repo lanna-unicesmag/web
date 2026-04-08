@@ -2780,11 +2780,12 @@ body.edit-mode img:hover {
 .outfits-grid {
   flex: 1;
   display: grid;
-  grid-template-columns: auto 1fr 1fr;
+  grid-template-columns: auto 1fr;
   grid-template-rows: repeat(2, 1fr);
-  gap: 2vw;
+  gap: 3vh;
   height: auto;
   align-content: center;
+  max-width: 800px;
 }
 
 .outfit-label {

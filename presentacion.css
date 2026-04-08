@@ -2886,15 +2886,15 @@ body.edit-mode img:hover {
 .souvenirs-gallery {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  gap: 0.8vh;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1vh;
   width: auto;
   height: auto;
   aspect-ratio: 1 / 1;
   max-width: 90vw;
-  max-height: 55vh;
-  margin: 2vh auto;
+  max-height: 62vh;
+  margin: 1.5vh auto;
   box-sizing: border-box;
   background: var(--pres-white);
 }

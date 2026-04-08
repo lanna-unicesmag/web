@@ -1,60 +1,84 @@
 // presentacion.js — LANNA Slideshow Controller
 
+// ============================================================
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const slides = document.querySelectorAll('.slide');
   const counter = document.querySelector('.slide-counter');
   const progress = document.querySelector('.pres-progress');
-  const dots = document.querySelectorAll('.pres-dot');
+  const dotsContainer = document.querySelector('.pres-dots');
   const totalSlides = slides.length;
   let currentSlide = 0;
   let isTransitioning = false;
 
+  // --- Generate dots dynamically ---
+  let dots = [];
+  slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'pres-dot' + (i === 0 ? ' active' : '');
+    dot.dataset.slide = i;
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+    dots.push(dot);
+  });
+
   // --- Initialize ---
   function init() {
-    goToSlide(0);
+    if (counter) counter.textContent = `01 / ${String(totalSlides).padStart(2, '0')}`;
+    if (progress) progress.style.width = ((1 / totalSlides) * 100) + '%';
+    slides[0].classList.add('active');
     updateDotColors();
   }
 
   // --- Go to a specific slide ---
   function goToSlide(index) {
-    if (isTransitioning && index !== currentSlide) return;
+    if (isTransitioning || index === currentSlide) return;
     isTransitioning = true;
 
-    // Remove active from all
-    slides.forEach(s => {
-      s.classList.remove('active');
-      // Reset fade-up animations
-      s.querySelectorAll('.fade-up, .fade-in, .scale-up').forEach(el => {
-        el.style.animation = 'none';
-        el.offsetHeight; // trigger reflow
-        el.style.animation = '';
-      });
-    });
-
-    // Activate target
-    currentSlide = index;
-    slides[currentSlide].classList.add('active');
-
-    // Update counter
-    if (counter) {
-      counter.textContent = `${String(currentSlide + 1).padStart(2, '0')} / ${String(totalSlides).padStart(2, '0')}`;
-    }
-
-    // Update progress
-    if (progress) {
-      const pct = ((currentSlide + 1) / totalSlides) * 100;
-      progress.style.width = pct + '%';
-    }
-
-    // Update dots
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentSlide);
-    });
-    updateDotColors();
-
+    const oldIndex = currentSlide;
+    slides[oldIndex].classList.add('exiting');
+    
     setTimeout(() => {
-      isTransitioning = false;
-    }, 600);
+      slides[oldIndex].classList.remove('exiting');
+      slides[oldIndex].classList.remove('active');
+
+      // Remove active from all and reset animations
+      slides.forEach((s, idx) => {
+        if (idx !== index) s.classList.remove('active');
+        s.querySelectorAll('.fade-up, .fade-in, .scale-up, .slide-in-up, .slide-in-down, .slide-in-left, .slide-in-right').forEach(el => {
+          el.style.animation = 'none';
+          el.offsetHeight; // trigger reflow
+          el.style.animation = '';
+        });
+      });
+
+      // Activate target
+      currentSlide = index;
+      slides[currentSlide].classList.add('active');
+
+      // Update counter
+      if (counter) {
+        counter.textContent = `${String(currentSlide + 1).padStart(2, '0')} / ${String(totalSlides).padStart(2, '0')}`;
+      }
+
+      // Update progress
+      if (progress) {
+        const pct = ((currentSlide + 1) / totalSlides) * 100;
+        progress.style.width = pct + '%';
+      }
+
+      // Update dots
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+      });
+      updateDotColors();
+
+      setTimeout(() => {
+        isTransitioning = false;
+      }, 400); // Pequeña espera extra post-transición para evitar spam
+    }, 350); // Wait for the faster reverse cascade animations to finish (250ms + 100ms)
   }
 
   // --- Navigate ---
@@ -85,11 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnPrev) btnPrev.addEventListener('click', prevSlide);
   if (btnNext) btnNext.addEventListener('click', nextSlide);
-
-  // --- Dot click ---
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => goToSlide(i));
-  });
 
   // --- Keyboard Navigation ---
   document.addEventListener('keydown', (e) => {
@@ -159,22 +178,116 @@ document.addEventListener('DOMContentLoaded', () => {
   const fsBtn = document.querySelector('.pres-fullscreen');
   if (fsBtn) fsBtn.addEventListener('click', toggleFullscreen);
 
-  // --- Auto-hide nav after inactivity ---
-  const nav = document.querySelector('.pres-nav');
-  let hideTimer;
+  // --- Auto-hide all UI controls after inactivity ---
+  const controls = [
+    document.querySelector('.pres-close'),
+    document.querySelector('.pres-fullscreen'),
+    document.querySelector('.pres-edit'),
+    document.querySelector('.pres-dots'),
+    document.querySelector('.pres-nav'),
+    document.querySelector('.pres-prev'),
+    document.querySelector('.pres-next')
+  ].filter(el => el !== null);
 
-  function showNav() {
-    if (nav) nav.style.opacity = '1';
+  let hideTimer;
+  let isHoveringControls = false;
+
+  controls.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      isHoveringControls = true;
+      showControls();
+    });
+    el.addEventListener('mouseleave', () => {
+      isHoveringControls = false;
+      showControls();
+    });
+  });
+
+  function showControls() {
+    controls.forEach(el => {
+      el.style.opacity = '1';
+      el.style.pointerEvents = 'auto';
+    });
     clearTimeout(hideTimer);
-    hideTimer = setTimeout(() => {
-      if (nav) nav.style.opacity = '0.15';
-    }, 3000);
+    if (!isHoveringControls) {
+      hideTimer = setTimeout(() => {
+        controls.forEach(el => {
+          el.style.opacity = '0';
+          el.style.pointerEvents = 'none';
+        });
+      }, 3000);
+    }
   }
 
-  document.addEventListener('mousemove', showNav);
-  document.addEventListener('keydown', showNav);
-  showNav();
+  document.addEventListener('mousemove', showControls);
+  
+  showControls();
 
   // --- Init ---
   init();
+
+
+  // --- Edit Mode ---
+  const btnEdit = document.querySelector('.pres-edit');
+  let editModeActive = false;
+  let dirHandle = null;
+
+  if (btnEdit) {
+    btnEdit.addEventListener('click', async () => {
+      const psw = prompt('Clave de administrador para edición de imágenes:');
+      if (psw !== 'RIPTIDE') {
+        if (psw) alert('Clave incorrecta.');
+        return;
+      }
+      
+      try {
+        alert('SELECCIONA LA CARPETA: Por favor selecciona la carpeta "images" del proyecto Lanna (donde están las fotos actuales) para autorizar su modificación.');
+        dirHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
+        
+        editModeActive = true;
+        document.body.classList.add('edit-mode');
+        alert('Modo Edición Habilitado.\nAhora haz clic en cualquier foto de la presentación para elegir su reemplazo.');
+        
+        setupImageEditing();
+      } catch (err) {
+        console.error(err);
+        alert('El acceso a la carpeta local fue denegado o cancelado.');
+      }
+    });
+  }
+
+  function setupImageEditing() {
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+      if (img.dataset.editable) return;
+      img.dataset.editable = "true";
+      
+      img.addEventListener('click', async (e) => {
+        if (!editModeActive || !dirHandle) return;
+        e.preventDefault();
+        
+        try {
+          const srcParts = img.src.split('/');
+          const currentFilename = srcParts[srcParts.length - 1].split('?')[0]; // discard query params if any
+          if (!currentFilename) return;
+
+          const [fileHandle] = await window.showOpenFilePicker({
+            types: [{ description: 'Imágenes', accept: { 'image/*': ['.png', '.jpg', '.jpeg', '.webp'] } }],
+            multiple: false
+          });
+          const file = await fileHandle.getFile();
+          
+          const targetFileHandle = await dirHandle.getFileHandle(decodeURIComponent(currentFilename), { create: true });
+          const writable = await targetFileHandle.createWritable();
+          await writable.write(file);
+          await writable.close();
+          
+          img.src = './images/' + currentFilename + '?t=' + new Date().getTime();
+          console.log('Imagen reemplazada en disco con éxito:', currentFilename);
+        } catch (err) {
+          console.error(err);
+        }
+      });
+    });
+  }
 });

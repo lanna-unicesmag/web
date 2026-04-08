@@ -1,0 +1,1071 @@
+/* ============================================
+   LANNA — PRESENTACIÓN / SLIDESHOW MODE
+   ============================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
+
+:root {
+  --pres-dark: #121312;
+  --pres-light: #f5f4ef;
+  --pres-sand: #e6e3da;
+  --pres-stone: #1a1b1a;
+  --pres-accent: #a3875d;
+  --pres-white: #ffffff;
+  --pres-black: #000000;
+  --font-heading: "Playfair Display", serif;
+  --font-text: "Outfit", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================
+   PRESENTATION WRAPPER
+   ========================================== */
+.pres-wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background: var(--pres-dark);
+}
+
+/* ==========================================
+   INDIVIDUAL SLIDES
+   ========================================== */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.8s;
+  overflow: hidden;
+}
+
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
+}
+
+/* ==========================================
+   SLIDE 01 — COVER
+   ========================================== */
+.slide-01 {
+  background: var(--pres-dark);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.slide-01 .cover-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  filter: brightness(0.5);
+}
+
+.slide-01 .cover-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--pres-light);
+}
+
+.slide-01 .cover-title {
+  font-family: var(--font-heading);
+  font-size: clamp(4rem, 12vw, 10rem);
+  letter-spacing: 0.25em;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.slide-01 .cover-subtitle {
+  font-family: var(--font-text);
+  font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+  letter-spacing: 0.5em;
+  font-weight: 300;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+/* ==========================================
+   SLIDE 02 — NUESTRO TERRITORIO
+   ========================================== */
+.slide-02 {
+  background: var(--pres-white);
+  flex-direction: row;
+}
+
+.slide-02 .territory-img {
+  flex: 1;
+  overflow: hidden;
+}
+
+.slide-02 .territory-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-02 .territory-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5% 8%;
+  color: var(--pres-dark);
+}
+
+.slide-02 .territory-text h2 {
+  font-family: var(--font-text);
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.slide-02 .territory-sub {
+  font-family: var(--font-text);
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.slide-02 .territory-text p {
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  line-height: 1.7;
+  color: #333;
+  font-weight: 300;
+  max-width: 520px;
+}
+
+.slide-02 .territory-text p strong {
+  font-weight: 600;
+}
+
+/* ==========================================
+   SLIDE 03 — CULTURA & MATERIA PRIMA
+   ========================================== */
+.slide-03 {
+  background: var(--pres-white);
+  flex-direction: row;
+}
+
+.slide-03 .culture-images {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0;
+}
+
+.slide-03 .culture-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-03 .culture-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5% 8%;
+  color: var(--pres-dark);
+}
+
+.slide-03 .culture-text h2 {
+  font-family: var(--font-text);
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin-bottom: 0.3rem;
+}
+
+.slide-03 .culture-sub {
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.slide-03 .culture-text p {
+  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+  line-height: 1.7;
+  color: #333;
+  font-weight: 300;
+  max-width: 520px;
+}
+
+.slide-03 .culture-text p strong {
+  font-weight: 600;
+}
+
+/* ==========================================
+   SLIDE 04 — HERENCIA VIVA
+   ========================================== */
+.slide-04 {
+  background: var(--pres-white);
+  flex-direction: row;
+}
+
+.slide-04 .heritage-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5% 8%;
+  color: var(--pres-dark);
+}
+
+.slide-04 .heritage-left h2 {
+  font-family: var(--font-text);
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin-bottom: 0.3rem;
+}
+
+.slide-04 .heritage-sub {
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.slide-04 .heritage-left p {
+  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+  line-height: 1.7;
+  color: #333;
+  font-weight: 300;
+  max-width: 520px;
+}
+
+.slide-04 .heritage-right {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0;
+}
+
+.slide-04 .heritage-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================
+   SLIDE 05 — IDENTIDAD DE MARCA
+   ========================================== */
+.slide-05 {
+  background: var(--pres-white);
+  flex-direction: row;
+}
+
+.slide-05 .identity-img {
+  flex: 1;
+  overflow: hidden;
+}
+
+.slide-05 .identity-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-05 .identity-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5% 8%;
+  color: var(--pres-dark);
+}
+
+.slide-05 .identity-text h2 {
+  font-family: var(--font-text);
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin-bottom: 0.3rem;
+}
+
+.slide-05 .identity-sub {
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.slide-05 .brand-name-display {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 7vw, 6rem);
+  letter-spacing: 0.25em;
+  font-weight: 400;
+  margin: 1.5rem 0;
+  color: var(--pres-dark);
+}
+
+.slide-05 .brand-values {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.slide-05 .brand-value {
+  text-align: left;
+}
+
+.slide-05 .brand-value h4 {
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.3rem;
+}
+
+.slide-05 .brand-value p {
+  font-size: 0.8rem;
+  color: #555;
+  font-weight: 300;
+  max-width: 180px;
+  line-height: 1.5;
+}
+
+/* ==========================================
+   SLIDE 06 — REFERENTES
+   ========================================== */
+.slide-06 {
+  background: var(--pres-white);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5%;
+}
+
+.slide-06 h2 {
+  font-family: var(--font-text);
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  text-transform: uppercase;
+  color: var(--pres-dark);
+  margin-bottom: 0.3rem;
+}
+
+.slide-06 .ref-sub {
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #555;
+  margin-bottom: 3rem;
+}
+
+.slide-06 .ref-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.slide-06 .ref-card {
+  text-align: center;
+}
+
+.slide-06 .ref-card img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+  filter: grayscale(60%);
+}
+
+.slide-06 .ref-card .ref-brand {
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  color: var(--pres-dark);
+  font-weight: 400;
+}
+
+.ref-card .ref-brand.cucinelli {
+  font-family: "Times New Roman", serif;
+  font-style: italic;
+}
+.ref-card .ref-brand.loro {
+  font-family: var(--font-heading);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+.ref-card .ref-brand.row {
+  font-family: var(--font-text);
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+}
+
+/* ==========================================
+   SLIDE 07 — MOODBOARD
+   ========================================== */
+.slide-07 {
+  background: var(--pres-white);
+  flex-direction: row;
+}
+
+.slide-07 .mood-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3px;
+  padding: 2%;
+}
+
+.slide-07 .mood-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-07 .mood-feature {
+  flex: 0.7;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-07 .mood-feature img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-07 .mood-label {
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  color: var(--pres-dark);
+}
+
+.slide-07 .mood-label h3 {
+  font-family: var(--font-text);
+  font-weight: 900;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+}
+
+.slide-07 .mood-label p {
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+/* ==========================================
+   SLIDE 08 — QUIET LUXURY
+   ========================================== */
+.slide-08 {
+  background: var(--pres-white);
+  flex-direction: row;
+}
+
+.slide-08 .ql-portrait {
+  flex: 0.9;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide-08 .ql-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-08 .ql-portrait .ql-caption {
+  position: absolute;
+  bottom: 3%;
+  left: 3%;
+  color: var(--pres-white);
+  font-size: 0.75rem;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+  line-height: 1.4;
+}
+
+.slide-08 .ql-content {
+  flex: 1.1;
+  display: flex;
+  flex-direction: column;
+  padding: 3% 5%;
+}
+
+.slide-08 .ql-top-images {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  height: 45%;
+}
+
+.slide-08 .ql-top-images img {
+  flex: 1;
+  object-fit: cover;
+  height: 100%;
+}
+
+.slide-08 .ql-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.slide-08 .ql-text h2 {
+  font-family: var(--font-text);
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--pres-dark);
+  margin-bottom: 0.2rem;
+}
+
+.slide-08 .ql-text .ql-sub {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+.slide-08 .ql-text p {
+  font-size: clamp(0.8rem, 1vw, 0.9rem);
+  line-height: 1.6;
+  color: #333;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.slide-08 .ql-text p strong {
+  font-weight: 600;
+}
+
+.slide-08 .ql-fashion-img {
+  position: absolute;
+  bottom: 3%;
+  right: 3%;
+  width: 15%;
+  height: 40%;
+  object-fit: cover;
+}
+
+/* ==========================================
+   SLIDE 09 — UNA ARMADURA SILENCIOSA
+   ========================================== */
+.slide-09 {
+  background: var(--pres-white);
+  flex-direction: column;
+  padding: 5% 8%;
+}
+
+.slide-09 .armor-header {
+  text-align: right;
+  margin-bottom: 3rem;
+}
+
+.slide-09 .armor-header h2 {
+  font-family: var(--font-text);
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: var(--pres-dark);
+}
+
+.slide-09 .armor-header .armor-sub {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #555;
+}
+
+.slide-09 .armor-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  flex: 1;
+}
+
+.slide-09 .armor-card {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.slide-09 .armor-card img {
+  width: 220px;
+  height: 180px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.slide-09 .armor-card-text h4 {
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  margin-bottom: 0.5rem;
+  color: var(--pres-dark);
+}
+
+.slide-09 .armor-card-text p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #444;
+  font-weight: 300;
+}
+
+/* ==========================================
+   SLIDE 10 — CÓMPLICES, NO CLIENTES
+   ========================================== */
+.slide-10 {
+  background: var(--pres-white);
+  flex-direction: row;
+  align-items: center;
+  padding: 5%;
+}
+
+.slide-10 .pub-img {
+  flex: 1;
+  height: 60vh;
+  overflow: hidden;
+}
+
+.slide-10 .pub-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-10 .pub-text {
+  flex: 1;
+  padding: 0 5%;
+  color: var(--pres-dark);
+}
+
+.slide-10 .pub-text h2 {
+  font-family: var(--font-text);
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin-bottom: 0.3rem;
+}
+
+.slide-10 .pub-text .pub-sub {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.slide-10 .pub-text p {
+  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+  line-height: 1.7;
+  color: #333;
+  font-weight: 300;
+  max-width: 500px;
+}
+
+.slide-10 .pub-text p strong {
+  font-weight: 600;
+}
+
+/* ==========================================
+   SLIDE 11 — QUIÉNES SOMOS
+   ========================================== */
+.slide-11 {
+  background: var(--pres-white);
+  flex-direction: row;
+}
+
+.slide-11 .team-img {
+  flex: 0.7;
+  overflow: hidden;
+}
+
+.slide-11 .team-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-11 .team-content {
+  flex: 1.3;
+  padding: 5% 6%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--pres-dark);
+}
+
+.slide-11 .team-content h2 {
+  font-family: var(--font-text);
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin-bottom: 0.3rem;
+}
+
+.slide-11 .team-content .team-sub {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.slide-11 .mission-vision {
+  margin-bottom: 2rem;
+}
+
+.slide-11 .mission-vision h4 {
+  font-family: var(--font-text);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.slide-11 .mission-vision p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #444;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.slide-11 .team-roster {
+  margin-top: 1rem;
+}
+
+.slide-11 .team-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.6rem;
+  align-items: baseline;
+}
+
+.slide-11 .team-row .t-name {
+  font-weight: 600;
+  font-size: 0.85rem;
+  min-width: 180px;
+  text-align: right;
+}
+
+.slide-11 .team-row .t-role {
+  font-size: 0.85rem;
+  color: #555;
+  font-weight: 300;
+}
+
+/* ==========================================
+   SLIDE 12 — CIERRE
+   ========================================== */
+.slide-12 {
+  background: var(--pres-white);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-12 .close-title {
+  font-family: var(--font-heading);
+  font-size: clamp(4rem, 10vw, 8rem);
+  letter-spacing: 0.25em;
+  font-weight: 400;
+  color: var(--pres-dark);
+  margin-bottom: 2rem;
+}
+
+.slide-12 .close-quote {
+  font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+  line-height: 1.6;
+  color: #333;
+  text-align: center;
+  max-width: 640px;
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* ==========================================
+   NAVIGATION CONTROLS
+   ========================================== */
+.pres-nav {
+  position: fixed;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: rgba(18, 19, 18, 0.85);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  transition: opacity 0.4s ease;
+}
+
+.pres-nav:hover {
+  opacity: 1 !important;
+}
+
+.pres-nav button {
+  background: none;
+  border: none;
+  color: var(--pres-light);
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
+  opacity: 0.7;
+}
+
+.pres-nav button:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.pres-nav button svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.pres-nav .slide-counter {
+  font-family: var(--font-text);
+  font-size: 0.8rem;
+  color: var(--pres-light);
+  letter-spacing: 0.15em;
+  opacity: 0.7;
+  min-width: 60px;
+  text-align: center;
+}
+
+/* Progress Bar */
+.pres-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--pres-accent);
+  z-index: 200;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Close / Exit Button */
+.pres-close {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 200;
+  background: rgba(18, 19, 18, 0.6);
+  backdrop-filter: blur(10px);
+  border: none;
+  color: var(--pres-light);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.3s,
+    transform 0.2s;
+  text-decoration: none;
+}
+
+.pres-close:hover {
+  background: rgba(18, 19, 18, 0.9);
+  transform: scale(1.1);
+}
+
+.pres-close svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* Slide Number Dots */
+.pres-dots {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pres-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(18, 19, 18, 0.2);
+  border: 1px solid rgba(18, 19, 18, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pres-dot.on-dark {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.pres-dot.active {
+  background: var(--pres-accent);
+  border-color: var(--pres-accent);
+  transform: scale(1.4);
+}
+
+/* ==========================================
+   SLIDE INTERNAL ANIMATIONS
+   ========================================== */
+.slide.active .fade-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.slide.active .fade-up-d1 {
+  animation-delay: 0.15s;
+}
+.slide.active .fade-up-d2 {
+  animation-delay: 0.3s;
+}
+.slide.active .fade-up-d3 {
+  animation-delay: 0.45s;
+}
+.slide.active .fade-up-d4 {
+  animation-delay: 0.6s;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide.active .fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.slide.active .fade-in-d1 {
+  animation-delay: 0.2s;
+}
+.slide.active .fade-in-d2 {
+  animation-delay: 0.4s;
+}
+
+.fade-in {
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.slide.active .scale-up {
+  animation: scaleUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.scale-up {
+  opacity: 0;
+  transform: scale(0.92);
+}
+
+@keyframes scaleUp {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ==========================================
+   FULLSCREEN TOGGLE
+   ========================================== */
+.pres-fullscreen {
+  position: fixed;
+  top: 2rem;
+  right: 6rem;
+  z-index: 200;
+  background: rgba(18, 19, 18, 0.6);
+  backdrop-filter: blur(10px);
+  border: none;
+  color: var(--pres-light);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.3s,
+    transform 0.2s;
+}
+
+.pres-fullscreen:hover {
+  background: rgba(18, 19, 18, 0.9);
+  transform: scale(1.1);
+}
+
+.pres-fullscreen svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}

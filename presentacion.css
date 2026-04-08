@@ -2780,18 +2780,18 @@ body.edit-mode img:hover {
 .outfits-grid {
   flex: 1;
   display: grid;
-  grid-template-columns: auto 1fr 1fr 1fr;
-  grid-template-rows: repeat(3, 1fr);
-  gap: 1.5vw;
-  height: 100%;
-  max-height: 80vh;
+  grid-template-columns: auto 1fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2vw;
+  height: auto;
+  align-content: center;
 }
 
 .outfit-label {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 1vw;
+  padding-right: 1.5vw;
 }
 
 .outfit-label span {
@@ -2805,7 +2805,7 @@ body.edit-mode img:hover {
 
 .outfit-img {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: rgba(0,0,0,0.02);
   border: 1px solid rgba(0,0,0,0.04);
@@ -2814,7 +2814,7 @@ body.edit-mode img:hover {
 .outfit-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 0 !important;
 }
 

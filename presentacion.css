@@ -2942,14 +2942,18 @@ body.edit-mode img:hover {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1vw;
-  height: 100vh;
+  gap: 2vh;
+  padding: 5vh 2vw;
   box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  background: var(--pres-white);
 }
 
 .stand-img {
-  flex: 1;
   width: 100%;
+  max-width: 90%;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: rgba(0,0,0,0.02);
 }
@@ -2957,7 +2961,7 @@ body.edit-mode img:hover {
 .stand-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 0 !important;
 }
 

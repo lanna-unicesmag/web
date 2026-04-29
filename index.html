@@ -29,15 +29,20 @@
     .container {
       text-align: center;
       width: 100%;
-      max-width: 400px; /* Limits the width of the menu to keep buttons a consistent size */
+      max-width: 400px;
       padding: 2rem;
       box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .logo {
+      width: 100%;
       max-width: 220px;
       margin-bottom: 3.5rem;
       filter: brightness(0) saturate(100%) invert(79%) sepia(35%) saturate(600%) hue-rotate(5deg) brightness(105%);
+      display: block;
     }
 
     .menu {
@@ -53,7 +58,7 @@
     }
 
     .btn {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
@@ -69,15 +74,16 @@
       transition: all 0.3s ease;
       cursor: pointer;
       box-sizing: border-box;
+      text-align: center;
     }
 
-    .btn:hover {
+    .btn:hover, .btn.active {
       background-color: var(--gold);
       color: var(--dark);
     }
 
     .dropdown {
-      display: none;
+      display: none; /* Hidden by default */
       flex-direction: row;
       justify-content: space-between;
       gap: 1rem;
@@ -85,17 +91,20 @@
       width: 100%;
     }
 
-    .dropdown.active {
+    .dropdown.show {
       display: flex;
     }
 
     .btn-sub {
       flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 1rem;
       border: 1px solid var(--cream);
       color: var(--cream);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       letter-spacing: 0.1em;
       transition: all 0.3s ease;
       text-align: center;
@@ -113,6 +122,8 @@
       font-size: 0.8rem;
       letter-spacing: 0.1em;
       color: rgba(245, 240, 232, 0.5);
+      text-align: center;
+      width: 100%;
     }
   </style>
 </head>
@@ -139,11 +150,11 @@
       </div>
 
       <div class="btn-container">
-        <a href="final/v.mp4" target="_blank" class="btn">PRENDAS</a>
-      </div>
-
-      <div class="btn-container">
-        <a href="final/p.mp4" target="_blank" class="btn">PACKAGING</a>
+        <button class="btn" id="btn-productos">PRODUCTOS</button>
+        <div class="dropdown" id="dropdown-productos">
+          <a href="final/v.mp4" target="_blank" class="btn-sub">PRENDAS</a>
+          <a href="final/p.mp4" target="_blank" class="btn-sub">PACKAGING</a>
+        </div>
       </div>
     </div>
   </div>
@@ -153,10 +164,20 @@
   </footer>
 
   <script>
-    document.getElementById('btn-brief').addEventListener('click', function() {
-      const dropdown = document.getElementById('dropdown-brief');
-      dropdown.classList.toggle('active');
-    });
+    function toggleDropdown(btnId, dropId) {
+      const btn = document.getElementById(btnId);
+      const dropdown = document.getElementById(dropId);
+      
+      btn.addEventListener('click', function() {
+        // Toggle active visual state on button
+        btn.classList.toggle('active');
+        // Toggle visibility of dropdown
+        dropdown.classList.toggle('show');
+      });
+    }
+
+    toggleDropdown('btn-brief', 'dropdown-brief');
+    toggleDropdown('btn-productos', 'dropdown-productos');
   </script>
 
 </body>

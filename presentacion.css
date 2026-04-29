@@ -2970,3 +2970,386 @@ body.edit-mode img:hover {
   flex-direction: row !important;
   align-items: center !important;
 }
+
+/* ==========================================
+   SLIDE — FICHA DE MATERIALES (ROPA)
+   ========================================== */
+.slide-new-mat {
+  display: flex;
+  align-items: stretch;
+  padding: 0;
+}
+
+.mat-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: 100%;
+  gap: 0;
+}
+
+.mat-left {
+  padding: 6vh 5vw 6vh 7vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-right: 1px solid rgba(0,0,0,0.08);
+  overflow-y: auto;
+}
+
+.mat-left h2 {
+  font-family: var(--font-text);
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+  color: var(--pres-dark);
+  text-transform: uppercase;
+}
+
+.mat-right {
+  padding: 6vh 7vw 6vh 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+}
+
+/* Tabla de materiales */
+.mat-table {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.mat-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1.3fr 1.8fr;
+  gap: 0.5rem 1rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  align-items: start;
+}
+
+.mat-head {
+  border-bottom: 2px solid var(--pres-dark) !important;
+  margin-bottom: 0.2rem;
+}
+
+.mat-head span {
+  font-family: var(--font-text);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+/* Tabla dorado */
+.mat-gold-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  margin-top: 0.5rem;
+}
+
+.mat-gold-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.mat-gold-cell {
+  flex: 1;
+}
+
+.mat-gold-cell p {
+  margin: 0.2rem 0 0;
+}
+
+.mat-r-tag {
+  font-family: var(--font-text);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pres-gold-dark);
+  background: rgba(201,168,76,0.1);
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ==========================================
+   SLIDE — PROCESO DE PRODUCCIÓN (ROPA)
+   ========================================== */
+.slide-new-pro {
+  display: flex;
+  align-items: stretch;
+}
+
+.pro-wrap {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr 1.5fr;
+  grid-template-rows: auto 1fr auto;
+  width: 100%;
+  height: 100%;
+  gap: 0;
+  padding: 5vh 6vw;
+  box-sizing: border-box;
+}
+
+.pro-header {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  padding-right: 2vw;
+  padding-bottom: 2vh;
+}
+
+.pro-header h2 {
+  font-family: var(--font-text);
+  font-weight: 900;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  line-height: 1;
+  color: var(--pres-dark);
+  text-transform: uppercase;
+}
+
+.pro-steps {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 2vw;
+  padding: 0 3vw;
+  align-content: start;
+  border-left: 1px solid rgba(0,0,0,0.08);
+  border-right: 1px solid rgba(0,0,0,0.08);
+}
+
+.pro-step {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+
+.pro-step-num {
+  font-family: var(--font-text);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: rgba(0,0,0,0.08);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 2.2rem;
+}
+
+.pro-step-content strong {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.pro-step-content p {
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+.pro-rest {
+  grid-column: 3 / 4;
+  grid-row: 1 / 3;
+  padding-left: 2vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.pro-rest-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 0.5rem;
+}
+
+.pro-rest-item {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.pro-rest-item strong {
+  display: block;
+  margin-bottom: 0.15rem;
+}
+
+.pro-rest-item p {
+  margin: 0 0 0.3rem;
+  font-size: 0.8rem;
+}
+
+/* ==========================================
+   EMPAQUES — Tabla de materiales
+   ========================================== */
+.emp-mat-table {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.emp-mat-row {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr 1.3fr;
+  gap: 0.4rem 0.8rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  align-items: start;
+}
+
+.emp-mat-head {
+  border-bottom: 2px solid var(--pres-dark) !important;
+}
+
+.emp-mat-head span {
+  font-family: var(--font-text);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #999;
+}
+
+/* ==========================================
+   SOUVENIRS — Cards definitivas
+   ========================================== */
+.sou-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+
+.sou-card {
+  padding: 0.8rem;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sou-card strong {
+  display: block;
+}
+
+.sou-card p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: rgba(0,0,0,0.6);
+}
+
+.sou-r-tag {
+  font-family: var(--font-text);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pres-gold-dark);
+  background: rgba(201,168,76,0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  align-self: flex-start;
+  margin-top: 0.2rem;
+}
+
+/* ==========================================
+   SLIDE — PROCESO DE PRODUCCIÓN SOUVENIRS
+   ========================================== */
+.slide-new-prosou {
+  display: flex;
+  align-items: stretch;
+}
+
+.prosou-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: 100%;
+  gap: 0;
+}
+
+.prosou-left {
+  padding: 6vh 4vw 6vh 7vw;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(0,0,0,0.08);
+  overflow-y: auto;
+}
+
+.prosou-left h2 {
+  font-family: var(--font-text);
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+  color: var(--pres-dark);
+  text-transform: uppercase;
+}
+
+.prosou-right {
+  padding: 6vh 7vw 6vh 4vw;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.prosou-criteria {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 0.5rem;
+}
+
+.prosou-criterion {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.prosou-criterion strong {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.prosou-criterion p {
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+/* Tabla de souvenirs */
+.prosou-table {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.prosou-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1.1fr;
+  gap: 0.4rem 0.8rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  align-items: center;
+}
+
+.prosou-head {
+  border-bottom: 2px solid var(--pres-dark) !important;
+}
+
+.prosou-head span {
+  font-family: var(--font-text);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #999;
+}
+
+.pro-ok {
+  color: #2a7a2a !important;
+  font-weight: 600 !important;
+}

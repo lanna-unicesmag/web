@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=2560">
   <title>LANNA — Fichas Técnicas Interactivas</title>
   <link rel="icon" href="logo/isotipo.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -335,7 +335,9 @@
     }
 
     .main-image-display {
-      flex: 1;
+      width: 100%;
+      aspect-ratio: 1;
+      flex-shrink: 0;
       border: 1px solid var(--border-color);
       border-radius: 4px;
       background-size: cover;
@@ -591,6 +593,32 @@
       font-size: 0.9rem;
       line-height: 1.5;
       color: rgba(245, 240, 232, 0.9);
+    }
+
+    
+    /* Botón Fullscreen */
+    .fs-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--dark);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 9999;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+    .fs-button:hover {
+      background: var(--gold);
+      color: var(--dark);
+      transform: scale(1.1);
     }
 
     /* PRINT LAYOUT (TAMAÑO CARTA VERTICAL) */
@@ -1079,234 +1107,172 @@
       "s_monedero_chia": {
         nombre: "Monedero Tejido &ldquo;Chía&rdquo;",
         ref: "Souvenirs &amp; Experiencias - Kit Primeros Pasos - MC01",
-        oficio: "Tejeduría y Bordado Muisca",
-        tecnica: "Tejido manual y bordado en lana criolla",
-        materia_prima: "Lana virgen criolla teñida negro, Fique fino, Cierre metálico",
-        especificaciones: "Monedero circular tejido en lana criolla con patrón de volante de huso Muisca bordado a mano. Incorpora cierre metálico de alta gama para seguridad y cordón ajustable de fique.",
+        oficio: "Tejeduría Artesanal",
+        tecnica: "Tejido manual en lana virgen",
+        especificaciones: "Monedero circular tejido completamente en lana virgen de oveja color negro absoluto con terminaciones en amarillo. Incorpora un broche metálico a presión (tipo clip) para cierre seguro y lazo de lana.",
         tipo: "Accesorio / Souvenir de Mano",
-        color: "Negro Tierra (Nogal + Hierro)",
+        color: "Negro (Terminales Amarillos)",
         capacidad: "45 unidades / mes",
         grosor: "Lana pesada (4mm)",
         talla: "Única (12cm Ø)",
         peso: "90 gr.",
         precio_unitario: "$65.000 COP",
-        precio_mayor: "$48.000 COP (Min. 10 unid)",
-        artesano: "Taller Central LANNA / Artesanas de Nobsa",
-        telefono: "+57 300 305 3941",
-        municipio: "Nobsa",
-        taller: "Taller Central LANNA",
-        departamento: "Boyacá",
         hecho_a_mano: "SI",
-        centro_poblado: "Nobsa, Boyacá",
         fecha: "13/05/2026",
         prod_no: "S-01",
         linea: "Chía (Luna)",
         crono: [
-          "1. Preproducción: Hilado de lana criolla y teñido vegetal con nogal y hierro.",
-          "2. Producción: Tejido del cuerpo circular en telar o manual.",
-          "3. Acabados: Bordado manual del patrón del volante de huso Muisca y ensamble de cierre metálico.",
-          "4. Exhibición: Empacado en el Kit Primeros Pasos con tarjeta semilla."
+          "1. Preproducción: Hilado y tinturado natural de la lana virgen de oveja a color negro.",
+          "2. Producción: Tejido del cuerpo circular en telar o manual, integrando terminaciones amarillas.",
+          "3. Acabados: Ensamble del broche metálico a presión en la boca del monedero.",
+          "4. Exhibición: Empacado en el Kit Primeros Pasos."
         ],
         components: [
-          { no: "1.", pieza: "Cuerpo circular", mat: "Lana criolla teñida", pct: "75%" },
-          { no: "2.", pieza: "Cierre metálico", mat: "Metal latón", pct: "15%" },
-          { no: "3.", pieza: "Remates y lazo", mat: "Fique nativo", pct: "10%" },
-          { no: "4.", pieza: "Tarjeta de marca", mat: "Papel semilla nativa", pct: "--" }
+          { no: "1.", pieza: "Cuerpo circular", mat: "Lana virgen de oveja", pct: "90%" },
+          { no: "2.", pieza: "Cierre", mat: "Broche a presión", pct: "10%" }
         ],
         images: ["souvenirs/S1.png", "souvenirs/S1.png", "souvenirs/S2.png", "souvenirs/S2.png"]
       },
       "s_monedero_sue": {
         nombre: "Monedero Tejido &ldquo;Sué&rdquo;",
         ref: "Souvenirs &amp; Experiencias - Kit Primeros Pasos - MS02",
-        oficio: "Tejeduría y Bordado Muisca",
-        tecnica: "Tejido manual y bordado en lana virgen",
-        materia_prima: "Lana virgen cruda sin tintura, Fique crudo, Cierre metálico",
-        especificaciones: "Monedero circular tejido en lana cruda color crema con patrón del volante de huso Muisca bordado en contraste. Cierre metálico superior.",
+        oficio: "Tejeduría Artesanal",
+        tecnica: "Tejido manual en lana virgen",
+        especificaciones: "Monedero circular tejido completamente en lana virgen de oveja color beige con terminaciones en amarillo. Incorpora un broche metálico a presión (tipo clip) para cierre seguro y lazo de lana.",
         tipo: "Accesorio / Souvenir de Mano",
-        color: "Crema / Blanco natural",
+        color: "Beige (Terminales Amarillos)",
         capacidad: "45 unidades / mes",
         grosor: "Lana pesada (4mm)",
         talla: "Única (12cm Ø)",
         peso: "90 gr.",
         precio_unitario: "$65.000 COP",
-        precio_mayor: "$48.000 COP (Min. 10 unid)",
-        artesano: "Taller Central LANNA / Artesanas de Nobsa",
-        telefono: "+57 300 305 3941",
-        municipio: "Nobsa",
-        taller: "Taller Central LANNA",
-        departamento: "Boyacá",
         hecho_a_mano: "SI",
-        centro_poblado: "Nobsa, Boyacá",
         fecha: "13/05/2026",
         prod_no: "S-02",
         linea: "Sué (Sol)",
         crono: [
-          "1. Preproducción: Clasificación, lavado y cardado ecológico de la lana virgen cruda.",
-          "2. Producción: Tejido del cuerpo circular del monedero en telar manual.",
-          "3. Acabados: Bordado decorativo a mano en contraste y ensamble de cierre superior.",
-          "4. Exhibición: Adición de etiqueta plantable de papel semilla."
+          "1. Preproducción: Clasificación, lavado y cardado ecológico de la lana virgen cruda beige.",
+          "2. Producción: Tejido del cuerpo circular en telar o manual, integrando terminaciones amarillas.",
+          "3. Acabados: Ensamble del broche metálico a presión en la boca del monedero.",
+          "4. Exhibición: Empacado en el Kit Primeros Pasos."
         ],
         components: [
-          { no: "1.", pieza: "Cuerpo circular", mat: "Lana cruda virgen", pct: "75%" },
-          { no: "2.", pieza: "Cierre metálico", mat: "Metal latón", pct: "15%" },
-          { no: "3.", pieza: "Remates y lazo", mat: "Fique nativo", pct: "10%" },
-          { no: "4.", pieza: "Tarjeta de marca", mat: "Papel semilla nativa", pct: "--" }
+          { no: "1.", pieza: "Cuerpo circular", mat: "Lana virgen de oveja", pct: "90%" },
+          { no: "2.", pieza: "Cierre", mat: "Broche a presión", pct: "10%" }
         ],
         images: ["souvenirs/S2.png", "souvenirs/S2.png", "souvenirs/S1.png", "souvenirs/S1.png"]
       },
       "s_bolsita_chia": {
         nombre: "Bolsita Tejida &ldquo;Chía&rdquo;",
         ref: "Souvenirs &amp; Accesorios - Saquito de Mano - BC03",
-        oficio: "Cestería y Hilado Artesanal",
-        tecnica: "Tejido manual en lana criolla teñida",
-        materia_prima: "Lana criolla de Nobsa, Hilo de fique teñido, Botón de pepa de aguacate",
-        especificaciones: "Saquito o bolsita pequeña (carterita) tejida en lana criolla negra. Cierre mediante cordón de fique y botón de pepa de aguacate tallado artesanalmente.",
+        oficio: "Hilado y Tejeduría",
+        tecnica: "Tejido manual en lana virgen",
+        especificaciones: "Bolsita tejida completamente en lana virgen de oveja color negro absoluto con terminaciones y detalles en amarillo. No contiene ningún herraje ni cierre metálico, componiéndose al 100% de fibras naturales.",
         tipo: "Carterita pequeña tejida",
-        color: "Negro Tierra",
+        color: "Negro (Terminales Amarillos)",
         capacidad: "50 unidades / mes",
         grosor: "Lana media (3mm)",
         talla: "Única (15×12 cm)",
         peso: "70 gr.",
         precio_unitario: "$55.000 COP",
-        precio_mayor: "$40.000 COP (Min. 10 unid)",
-        artesano: "Taller Central LANNA",
-        telefono: "+57 300 305 3941",
-        municipio: "Nobsa",
-        taller: "Taller Central LANNA",
-        departamento: "Boyacá",
         hecho_a_mano: "SI",
-        centro_poblado: "Nobsa, Boyacá",
         fecha: "13/05/2026",
         prod_no: "S-03",
         linea: "Chía (Luna)",
         crono: [
-          "1. Preproducción: Hilado y teñido orgánico de la lana con cáscara de nogal y hierro.",
-          "2. Producción: Tejido del saquito en telar de mano vertical.",
-          "3. Acabados: Confección de cordón de fique y costura de botón de aguacate.",
+          "1. Preproducción: Hilado y teñido orgánico de la lana virgen a negro.",
+          "2. Producción: Tejido del saquito en telar de mano vertical integrando el lazo de amarre.",
+          "3. Acabados: Remates manuales y detalles en hilo amarillo.",
           "4. Exhibición: Etiquetado en papel semilla plantable."
         ],
         components: [
-          { no: "1.", pieza: "Cuerpo saquito", mat: "Lana criolla teñida", pct: "80%" },
-          { no: "2.", pieza: "Cierre", mat: "Botón pepa aguacate", pct: "10%" },
-          { no: "3.", pieza: "Cordón lazo", mat: "Cabuya de fique teñido", pct: "10%" },
-          { no: "4.", pieza: "Etiqueta", mat: "Papel semilla nativa", pct: "--" }
+          { no: "1.", pieza: "Cuerpo saquito", mat: "Lana virgen de oveja", pct: "100%" }
         ],
         images: ["souvenirs/S1.png", "souvenirs/S1.png", "souvenirs/S2.png", "souvenirs/S2.png"]
       },
       "s_bolsita_sue": {
         nombre: "Bolsita Tejida &ldquo;Sué&rdquo;",
         ref: "Souvenirs &amp; Accesorios - Saquito de Mano - BS04",
-        oficio: "Cestería y Hilado Artesanal",
-        tecnica: "Tejido manual en lana natural",
-        materia_prima: "Lana virgen cruda color crema, Hilo de fique natural, Botón vegetal",
-        especificaciones: "Saquito o bolsita pequeña (carterita) tejida en lana natural crema. Cierre mediante cordón de fique y botón circular de madera o hueso vegetal.",
+        oficio: "Hilado y Tejeduría",
+        tecnica: "Tejido manual en lana virgen",
+        especificaciones: "Bolsita tejida completamente en lana virgen de oveja color beige con terminaciones y detalles en amarillo. No contiene ningún herraje ni cierre metálico, componiéndose al 100% de fibras naturales.",
         tipo: "Carterita pequeña tejida",
-        color: "Crema Natural",
+        color: "Beige (Terminales Amarillos)",
         capacidad: "50 unidades / mes",
         grosor: "Lana media (3mm)",
         talla: "Única (15×12 cm)",
         peso: "70 gr.",
         precio_unitario: "$55.000 COP",
-        precio_mayor: "$40.000 COP (Min. 10 unid)",
-        artesano: "Taller Central LANNA",
-        telefono: "+57 300 305 3941",
-        municipio: "Nobsa",
-        taller: "Taller Central LANNA",
-        departamento: "Boyacá",
         hecho_a_mano: "SI",
-        centro_poblado: "Nobsa, Boyacá",
         fecha: "13/05/2026",
         prod_no: "S-04",
         linea: "Sué (Sol)",
         crono: [
-          "1. Preproducción: Hilado y lavado ecológico de la lana virgen cruda.",
-          "2. Producción: Tejido del saquito en telar de mano vertical.",
-          "3. Acabados: Confección de lazo y costura del botón biodegradable de madera.",
+          "1. Preproducción: Hilado y lavado ecológico de la lana virgen cruda beige.",
+          "2. Producción: Tejido del saquito en telar de mano vertical integrando el lazo de amarre.",
+          "3. Acabados: Remates manuales y detalles en hilo amarillo.",
           "4. Exhibición: Etiquetado en papel semilla plantable."
         ],
         components: [
-          { no: "1.", pieza: "Cuerpo saquito", mat: "Lana cruda virgen", pct: "80%" },
-          { no: "2.", pieza: "Cierre", mat: "Botón vegetal madera", pct: "10%" },
-          { no: "3.", pieza: "Cordón lazo", mat: "Cabuya de fique crudo", pct: "10%" },
-          { no: "4.", pieza: "Etiqueta", mat: "Papel semilla nativa", pct: "--" }
+          { no: "1.", pieza: "Cuerpo saquito", mat: "Lana virgen de oveja", pct: "100%" }
         ],
         images: ["souvenirs/S2.png", "souvenirs/S2.png", "souvenirs/S1.png", "souvenirs/S1.png"]
       },
       "s_collar_chia": {
-        nombre: "Collar Luna &ldquo;Chía&rdquo;",
-        ref: "Souvenirs &amp; Joyería Botánica - Dije Luna - CC05",
-        oficio: "Talla y Joyería Ecológica",
-        tecnica: "Tallado manual y ensamble",
-        materia_prima: "Semilla de aguacate (residuo doméstico), Argolla metálica, Hilo de fique negro",
-        especificaciones: "Collar con dije de media luna inspirado en la deidad Chía. Tallado a mano en semilla de aguacate, pulido y encerado de forma natural, suspendido en cordón ajustable negro.",
-        tipo: "Dije / Llavero / Joyería",
-        color: "Negro y Madera oscura",
+        nombre: "Llavero Tejido &ldquo;Chía&rdquo;",
+        ref: "Souvenirs &amp; Joyería Botánica - Llavero Luna - CC05",
+        oficio: "Tejeduría y Ensamble",
+        tecnica: "Tejido manual y ensamble de herrajes",
+        especificaciones: "Llavero fabricado completamente en lana virgen de oveja color negro con terminaciones y detalles en amarillo. Cuenta con agarradero (herraje) de metal robusto clásico de llavero.",
+        tipo: "Accesorio / Llavero",
+        color: "Negro (Terminales Amarillos)",
         capacidad: "100 unidades / mes",
-        grosor: "Espesor de dije: 5mm",
-        talla: "Dije ~3.5cm Ø, Cordón ajustable",
-        peso: "15 gr.",
+        grosor: "Lana media (3mm)",
+        talla: "Única, con herraje",
+        peso: "25 gr.",
         precio_unitario: "$35.000 COP",
-        precio_mayor: "$25.000 COP (Min. 10 unid)",
-        artesano: "Equipo de Joyería LANNA",
-        telefono: "+57 300 305 3941",
-        municipio: "Pasto",
-        taller: "Taller Central LANNA",
-        departamento: "Nariño",
         hecho_a_mano: "SI",
-        centro_poblado: "Pasto, Nariño",
         fecha: "13/05/2026",
         prod_no: "S-05",
         linea: "Chía (Luna)",
         crono: [
-          "1. Preproducción: Recolección, lavado y secado lento a la sombra de las semillas.",
-          "2. Producción: Tallado manual del dije de Luna con gubias finas.",
-          "3. Acabados: Pulido y sellado con cera natural de abejas. Montaje de la argolla.",
+          "1. Preproducción: Hilado y teñido orgánico de la lana virgen a negro.",
+          "2. Producción: Tejido manual de la estructura base del llavero.",
+          "3. Acabados: Ensamble del herraje metálico de llavero de alta seguridad.",
           "4. Exhibición: Montaje en tarjeta plantable con semillas."
         ],
         components: [
-          { no: "1.", pieza: "Dije tallado", mat: "Semilla de aguacate", pct: "85%" },
-          { no: "2.", pieza: "Cordón lazo", mat: "Fique nativo negro", pct: "10%" },
-          { no: "3.", pieza: "Ensamble", mat: "Argolla metálica", pct: "5%" },
-          { no: "4.", pieza: "Tarjeta", mat: "Papel semilla nativa", pct: "--" }
+          { no: "1.", pieza: "Cuerpo tejido", mat: "Lana virgen de oveja", pct: "85%" },
+          { no: "2.", pieza: "Agarradero", mat: "Herraje metálico", pct: "15%" }
         ],
         images: ["souvenirs/S1.png", "souvenirs/S1.png", "souvenirs/S2.png", "souvenirs/S2.png"]
       },
       "s_collar_sue": {
-        nombre: "Collar Sol &ldquo;Sué&rdquo;",
-        ref: "Souvenirs &amp; Joyería Botánica - Dije Sol - CS06",
-        oficio: "Talla y Joyería Ecológica",
-        tecnica: "Tallado manual y ensamble",
-        materia_prima: "Semilla de aguacate, Argolla metálica, Cordón de fique crudo",
-        especificaciones: "Collar con dije en forma de sol inspirado en la deidad Sué. Tallado artesanalmente en semilla de aguacate y montado en fique crudo ajustable.",
-        tipo: "Dije / Llavero / Joyería",
-        color: "Dorado Madera / Crema",
+        nombre: "Llavero Tejido &ldquo;Sué&rdquo;",
+        ref: "Souvenirs &amp; Joyería Botánica - Llavero Sol - CS06",
+        oficio: "Tejeduría y Ensamble",
+        tecnica: "Tejido manual y ensamble de herrajes",
+        especificaciones: "Llavero fabricado completamente en lana virgen de oveja color beige con terminaciones y detalles en amarillo. Cuenta con agarradero (herraje) de metal robusto clásico de llavero.",
+        tipo: "Accesorio / Llavero",
+        color: "Beige (Terminales Amarillos)",
         capacidad: "100 unidades / mes",
-        grosor: "Espesor de dije: 5mm",
-        talla: "Dije ~3.5cm Ø, Cordón ajustable",
-        peso: "15 gr.",
+        grosor: "Lana media (3mm)",
+        talla: "Única, con herraje",
+        peso: "25 gr.",
         precio_unitario: "$35.000 COP",
-        precio_mayor: "$25.000 COP (Min. 10 unid)",
-        artesano: "Equipo de Joyería LANNA",
-        telefono: "+57 300 305 3941",
-        municipio: "Pasto",
-        taller: "Taller Central LANNA",
-        departamento: "Nariño",
         hecho_a_mano: "SI",
-        centro_poblado: "Pasto, Nariño",
         fecha: "13/05/2026",
         prod_no: "S-06",
         linea: "Sué (Sol)",
         crono: [
-          "1. Preproducción: Recolección y acondicionamiento de semillas residenciales.",
-          "2. Producción: Tallado manual del diseño solar Muisca.",
-          "3. Acabados: Pulido y sellado con aceites vegetales. Montaje de la argolla.",
-          "4. Exhibición: Montaje en tarjeta plantable de papel semilla."
+          "1. Preproducción: Lavado y preparación de lana virgen cruda color beige.",
+          "2. Producción: Tejido manual de la estructura base del llavero.",
+          "3. Acabados: Ensamble del herraje metálico de llavero de alta seguridad.",
+          "4. Exhibición: Montaje en tarjeta plantable con semillas."
         ],
         components: [
-          { no: "1.", pieza: "Dije tallado", mat: "Semilla de aguacate", pct: "85%" },
-          { no: "2.", pieza: "Cordón lazo", mat: "Fique nativo crudo", pct: "10%" },
-          { no: "3.", pieza: "Ensamble", mat: "Argolla metálica", pct: "5%" },
-          { no: "4.", pieza: "Tarjeta", mat: "Papel semilla nativa", pct: "--" }
+          { no: "1.", pieza: "Cuerpo tejido", mat: "Lana virgen de oveja", pct: "85%" },
+          { no: "2.", pieza: "Agarradero", mat: "Herraje metálico", pct: "15%" }
         ],
         images: ["souvenirs/S2.png", "souvenirs/S2.png", "souvenirs/S1.png", "souvenirs/S1.png"]
       },
@@ -1780,7 +1746,42 @@
       mainDisplayBox.style.backgroundImage = `url('${imgUrl}')`;
     };
 
+
+    // LÓGICA DE PANTALLA COMPLETA
+    document.addEventListener("DOMContentLoaded", () => {
+      const fsBtn = document.getElementById("fullscreen-btn");
+      const fsEnter = document.getElementById("fs-icon-enter");
+      const fsExit = document.getElementById("fs-icon-exit");
+
+      if (fsBtn) {
+        fsBtn.addEventListener("click", () => {
+          if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(err => {
+              console.log(`Error: ${err.message}`);
+            });
+          } else {
+            document.exitFullscreen();
+          }
+        });
+
+        document.addEventListener("fullscreenchange", () => {
+          if (document.fullscreenElement) {
+            fsEnter.style.display = "none";
+            fsExit.style.display = "block";
+          } else {
+            fsEnter.style.display = "block";
+            fsExit.style.display = "none";
+          }
+        });
+      }
+    });
   </script>
 
+
+
+  <button id="fullscreen-btn" class="fs-button" title="Pantalla Completa">
+    <svg id="fs-icon-enter" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+    <svg id="fs-icon-exit" style="display:none;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"></path></svg>
+  </button>
 </body>
 </html>

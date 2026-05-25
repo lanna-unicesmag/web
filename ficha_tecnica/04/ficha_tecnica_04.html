@@ -1,0 +1,557 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plantilla Ficha Técnica — LANNA</title>
+  <link rel="icon" href="../../logo/isotipo.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark: #121312;
+      --cream: #F5F0E8;
+      --gold: #E5C272;
+      --border-color: rgba(18, 19, 18, 0.6);
+    }
+    
+    body {
+      margin: 0;
+      padding: 2rem;
+      background-color: var(--dark);
+      font-family: 'Outfit', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .no-print {
+      display: flex;
+      gap: 1rem;
+      color: var(--cream);
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .no-print p {
+      margin: 0;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      text-align: center;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      background-color: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: var(--gold);
+      color: var(--dark);
+    }
+
+    /* Page container setup for Letter */
+    .page {
+      width: 215.9mm;
+      height: 279.4mm;
+      background-color: white;
+      color: var(--dark);
+      padding: 10mm;
+      box-sizing: border-box;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Table-like grid structure */
+    .ft-table {
+      width: 100%;
+      height: 100%;
+      border: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      font-size: 8.5pt;
+      line-height: 1.4;
+      box-sizing: border-box;
+    }
+
+    .ft-row {
+      display: flex;
+      border-bottom: 1px solid var(--border-color);
+      box-sizing: border-box;
+      width: 100%;
+    }
+    .ft-row:last-child {
+      border-bottom: none;
+    }
+
+    /* Strict alignment widths */
+    .w-20 { width: 20%; flex: none; box-sizing: border-box; }
+    .w-25 { width: 25%; flex: none; box-sizing: border-box; }
+    .w-30 { width: 30%; flex: none; box-sizing: border-box; }
+    .w-45 { width: 45%; flex: none; box-sizing: border-box; }
+    .w-70 { width: 70%; flex: none; box-sizing: border-box; }
+    .w-37-5 { width: 37.5%; flex: none; box-sizing: border-box; }
+    .w-50 { width: 50%; flex: none; box-sizing: border-box; }
+    .w-75 { width: 75%; flex: none; box-sizing: border-box; }
+    .w-100 { width: 100%; flex: none; box-sizing: border-box; }
+
+    .ft-cell {
+      padding: 6px 10px;
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-weight: 300;
+    }
+    .ft-cell:last-child {
+      border-right: none;
+    }
+    
+    .ft-label {
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 6.5pt;
+      letter-spacing: 0.1em;
+      margin-bottom: 2px;
+      color: var(--dark);
+    }
+
+    /* SPECIFIC ROWS */
+    .header-row {
+      height: 12mm;
+      align-items: stretch;
+    }
+    .header-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11pt;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+    }
+    .header-empresa {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10pt;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .images-row {
+      height: 100mm;
+      display: flex;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .img-col {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border-color);
+      box-sizing: border-box;
+    }
+    .img-col:last-child {
+      border-right: none;
+    }
+
+    .img-box {
+      flex: 1;
+      border-bottom: 1px solid var(--border-color);
+      box-sizing: border-box;
+      position: relative;
+    }
+    .img-box:last-child {
+      border-bottom: none;
+    }
+
+    .info-box {
+      padding: 6px 10px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 9mm;
+      box-sizing: border-box;
+    }
+    .info-box span {
+      font-size: 10pt;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+    .info-box-tall {
+      flex: 1;
+      box-sizing: border-box;
+    }
+
+    /* Image Placeholders */
+    .placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(18, 19, 18, 0.02);
+      color: rgba(18, 19, 18, 0.3);
+      font-size: 7.5pt;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 400;
+      text-align: center;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .tables-row {
+      display: flex;
+      height: 38mm;
+    }
+    .crono-col {
+      padding: 8px 10px;
+      font-weight: 300;
+    }
+    .comp-col {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .inner-table {
+      width: 100%;
+      height: 100%;
+      border-collapse: collapse;
+      text-align: center;
+    }
+    .inner-table th, .inner-table td {
+      border: 1px solid var(--border-color);
+      padding: 4px;
+      font-size: 7.5pt;
+      font-weight: 300;
+    }
+    .inner-table th {
+      border-top: none;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 6.5pt;
+    }
+    .inner-table tr td:first-child, .inner-table tr th:first-child { border-left: none; }
+    .inner-table tr td:last-child, .inner-table tr th:last-child { border-right: none; }
+    .inner-table tr:last-child td { border-bottom: none; }
+
+    .crono-list {
+      list-style: none;
+      padding: 0;
+      margin: 6px 0;
+      font-size: 8pt;
+    }
+    .crono-list li {
+      margin-bottom: 4px;
+    }
+
+    .auto-height {
+      flex-grow: 1;
+    }
+
+
+
+    /* Print styles */
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      @page {
+        size: letter portrait;
+        margin: 0;
+      }
+      body {
+        background-color: white;
+        padding: 0;
+        margin: 0;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .page {
+        box-shadow: none;
+        width: 215.9mm;
+        height: 279.4mm;
+        padding: 10mm;
+        margin: 0;
+        page-break-after: always;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print">
+    <p>Plantilla de Ficha Técnica — Estilo LANNA.<br>El diseño ahora utiliza una cuadrícula matemática para una alineación vertical perfecta.</p>
+    <div class="btn-group">
+      <a href="../../index.html" class="btn">Volver</a>
+      <button class="btn" onclick="window.print()">Descargar PDF</button>
+    </div>
+  </div>
+
+  <!-- Ficha 1: Plantilla Base -->
+  <div class="page" id="ficha1">
+    <div class="ft-table">
+      
+      <!-- Header -->
+      <div class="ft-row header-row">
+        <div class="ft-cell w-70 header-title">
+          FORMATO FICHA TÉCNICA
+        </div>
+        <div class="ft-cell w-30 header-empresa">
+          EMPRESA
+        </div>
+      </div>
+
+      <!-- Images & Top Info -->
+      <div class="images-row">
+        <!-- Left column (2 images stacked) -->
+        <div class="img-col w-25">
+          <div class="img-box" style="background-image: url('B.jpeg'); background-size: cover; background-position: center;">
+          </div>
+          <div class="img-box" style="background-image: url('C.jpeg'); background-size: cover; background-position: center;">
+          </div>
+        </div>
+
+        <!-- Mid column (1 large image) -->
+        <div class="img-col w-45">
+          <div class="img-box" style="background-image: url('A.jpeg'); background-size: cover; background-position: center;">
+          </div>
+        </div>
+
+        <!-- Right column (Logo, Info, Detail Image) -->
+        <div class="img-col w-30">
+          <div class="info-box" style="height: 18mm; justify-content: center;">
+            <!-- Lanna Logo -->
+            <img src="../../logo/logotipo.svg" alt="Lanna" style="max-height: 10mm; filter: brightness(0);">
+          </div>
+          <div class="info-box">
+            <b class="ft-label" style="margin:0;">No DE PRODUCTO:</b> <span>004</span>
+          </div>
+          <div class="info-box">
+            <b class="ft-label" style="margin:0;">FECHA:</b> <span>13/05/2026</span>
+          </div>
+          <div class="info-box-tall" style="background-image: url('D.jpeg'); background-size: cover; background-position: center; border-bottom: none;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Cronograma & Componentes -->
+      <div class="ft-row tables-row">
+        <div class="ft-cell w-50 crono-col">
+          <div class="ft-label">Cronograma de Producción:</div>
+          <ul class="crono-list">
+            <li>1. Preproducción: Toma de medidas y patronaje a medida.</li>
+            <li>2. Producción: Corte y confección del cuerpo en lino americano.</li>
+            <li>3. Acabados: Grabado (bordado) a mano en lana con inspiración en el sol (deidad Sué).</li>
+            <li>4. Exhibición: Empaque ecológico y distribución para la venta.</li>
+          </ul>
+          <div>
+            <span class="ft-label">Días de Trabajo:</span> 15 días hábiles
+          </div>
+        </div>
+        <div class="ft-cell w-50 comp-col">
+          <table class="inner-table">
+            <tr>
+              <th colspan="4" style="border-bottom: 1px solid var(--border-color);">Tabla de Componentes</th>
+            </tr>
+            <tr>
+              <th>No</th>
+              <th>Pieza</th>
+              <th>Material</th>
+              <th>Porcentaje</th>
+            </tr>
+            <tr>
+              <td>1.</td>
+              <td>Cuerpo</td>
+              <td>Lino americano</td>
+              <td>85%</td>
+            </tr>
+            <tr>
+              <td>2.</td>
+              <td>Grabados</td>
+              <td>Lana</td>
+              <td>15%</td>
+            </tr>
+            <tr>
+              <td>3.</td>
+              <td>Etiqueta</td>
+              <td>Papel semilla</td>
+              <td>--</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- General Info Rows (Strict 4-column Grid) -->
+      <div class="ft-row auto-height">
+        <div class="ft-cell w-50">
+          <div class="ft-label">Nombre de la pieza:</div>
+          Suéter "Sué"
+        </div>
+        <div class="ft-cell w-50">
+          <div class="ft-label">Referencia:</div>
+          Colección Mitológica - Sué (El Sol) - 04
+        </div>
+      </div>
+
+      <div class="ft-row auto-height">
+        <div class="ft-cell w-25">
+          <div class="ft-label">Oficio:</div>
+          Sastrería y Bordado
+        </div>
+        <div class="ft-cell w-25">
+          <div class="ft-label">Técnica:</div>
+          Confección y bordado a mano
+        </div>
+        <div class="ft-cell w-50">
+          <div class="ft-label">Materia Prima:</div>
+          Lino americano, Lana
+        </div>
+      </div>
+
+      <div class="ft-row" style="min-height: 12mm;">
+        <div class="ft-cell w-50">
+          <div class="ft-label">Especificaciones Técnicas:</div>
+          Suéter construido a medida en lino americano color beige. Incorpora gran cantidad de grabados artesanales bordados en lana, inspirados en motivos de la deidad Sué (el sol).
+        </div>
+        <div class="ft-cell w-50">
+          <div class="ft-label">Tipo de Producto:</div>
+          Indumentaria Exterior
+        </div>
+      </div>
+
+      <!-- Dimensions & Details -->
+      <div class="ft-row auto-height">
+        <div class="ft-cell w-25">
+          <div class="ft-label">Color:</div>
+          Beige
+        </div>
+        <div class="ft-cell w-25">
+          <div class="ft-label">Capacidad Prod/mes:</div>
+          5 piezas
+        </div>
+        <div class="ft-cell w-50" style="padding: 0;">
+          <div style="text-align: center; font-weight: 600; font-size: 6.5pt; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid var(--border-color); padding: 3px; color: var(--dark);">Dimensiones Generales</div>
+          <div style="display: flex; flex: 1;">
+            <div class="ft-cell w-50">
+              <div class="ft-label">Grosor Material:</div>
+              Lino pesado: aprox. 3mm
+            </div>
+            <div class="ft-cell w-50" style="border-right: none; padding: 0; display: flex; flex-direction: column;">
+              <div style="text-align: center; font-weight: 600; font-size: 6.5pt; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid var(--border-color); padding: 3px; color: var(--dark);">Tallas Unisex</div>
+              <div style="display: flex; flex: 1;">
+                <div class="ft-cell" style="flex: 1; text-align: center; align-items: center; justify-content: center; padding: 2px;">M</div>
+                <div class="ft-cell" style="flex: 1; text-align: center; align-items: center; justify-content: center; padding: 2px;">L</div>
+                <div class="ft-cell" style="flex: 1; text-align: center; align-items: center; justify-content: center; padding: 2px; font-weight: 700; border-right: none;">XL</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ft-row auto-height">
+        <div class="ft-cell w-25">
+          <div class="ft-label">Peso (gr):</div>
+          800 - 1100 gr.
+        </div>
+        <div class="ft-cell w-25">
+          <div class="ft-label">Precio Unitario:</div>
+          $1.800.000 COP
+        </div>
+        <div class="ft-cell w-50">
+          <div class="ft-label">Precio Mayor:</div>
+          $1.400.000 COP (Min. 5 unid)
+        </div>
+      </div>
+
+      <!-- Artisan Info -->
+      <div class="ft-row auto-height">
+        <div class="ft-cell w-50">
+          <div class="ft-label">Artesano / Diseñador:</div>
+          Equipo de Diseño LANNA
+        </div>
+        <div class="ft-cell w-25">
+          <div class="ft-label">Telefono:</div>
+          +57 300 305 3941
+        </div>
+        <div class="ft-cell w-25">
+          <div class="ft-label">Municipio:</div>
+          Pasto
+        </div>
+      </div>
+
+      <div class="ft-row auto-height">
+        <div class="ft-cell w-50">
+          <div class="ft-label">Grupo o taller:</div>
+          Taller Central LANNA
+        </div>
+        <div class="ft-cell w-50">
+          <div class="ft-label">Departamento:</div>
+          Nariño
+        </div>
+      </div>
+
+      <div class="ft-row auto-height">
+        <div class="ft-cell w-50">
+          <div class="ft-label">Certificado Hecho a mano:</div>
+          <span style="letter-spacing: 0.1em; font-weight: 400;"><b>SI</b> [ X ] &nbsp;&nbsp;&nbsp; <b>NO</b> [ &nbsp; ]</span>
+        </div>
+        <div class="ft-cell w-50">
+          <div class="ft-label">Centro Poblado:</div>
+          Pasto, Nariño
+        </div>
+      </div>
+
+      <div class="ft-row" style="min-height: 12mm;">
+        <div class="ft-cell w-100">
+          <div class="ft-label">Observaciones:</div>
+          Prenda exclusiva diseñada a medida para la colección. Inspiración en la deidad Sué (el sol). Lavado en seco o manual con agua fría y secado en plano para proteger el bordado.
+        </div>
+      </div>
+
+      <!-- Footer Row -->
+      <div class="ft-row" style="background-color: rgba(18, 19, 18, 0.02); min-height: 8mm; align-items: stretch;">
+        <div class="ft-cell w-25" style="text-align: center; justify-content: center; flex-direction: row; align-items: center;">
+          <span class="ft-label" style="margin: 0 4px 0 0;">Producto:</span> Indumentaria
+        </div>
+        <div class="ft-cell w-25" style="text-align: center; justify-content: center; flex-direction: row; align-items: center;">
+          <span class="ft-label" style="margin: 0 4px 0 0;">Línea:</span> Sué (Sol)
+        </div>
+        <div class="ft-cell w-25" style="text-align: center; justify-content: center; flex-direction: row; align-items: center;">
+          <span class="ft-label" style="margin: 0 4px 0 0;">Terminado:</span> [ X ]
+        </div>
+        <div class="ft-cell w-25" style="text-align: center; justify-content: center; flex-direction: row; align-items: center;">
+          <span class="ft-label" style="margin: 0 4px 0 0;">En Proceso:</span> [ &nbsp; ]
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
+
+
+

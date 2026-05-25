@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>LANNA — Inventario de Exposición</title>
+    <link rel="icon" href="logo/isotipo.svg" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="brief-interactive.css" />
+    <style>
+      /* Ajustes menores específicos para el listado del inventario manteniendo el estilo brief */
+      .logo {
+        /* Filtro dorado exacto extraído del index.html oficial */
+        filter: brightness(0) saturate(100%) invert(79%) sepia(35%) saturate(600%) hue-rotate(5deg) brightness(105%) !important;
+      }
+      .inventory-list {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 1.5rem;
+      }
+      .inventory-list li {
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        font-size: 1.1rem;
+      }
+      .inventory-list li:last-child {
+        border-bottom: none;
+      }
+      .inventory-list strong {
+        color: var(--accent); /* Dorado Lanna */
+        font-weight: 500;
+        margin-right: 0.5rem;
+        letter-spacing: 0.05em;
+      }
+    </style>
+  </head>
+  <body class="dark-theme">
+    
+    <!-- Cabecera idéntica al Brief -->
+    <header class="site-header">
+      <div class="header-inner">
+        <img src="logo/isotipo.svg" alt="LANNA Logo" class="logo" />
+        <nav class="top-nav">
+          <a href="#">Inventario Oficial</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main" id="main">
+      <!-- Sección Hero -->
+      <section class="hero">
+        <h1>LANNA — Inventario de Exposición</h1>
+        <p class="lead">
+          Documento oficial para la curaduría y revisión de los productos mínimos de la colección inaugural y exposición final del proyecto.
+        </p>
+      </section>
+
+      <!-- Secciones de Contenido -->
+      <section id="content-sections" class="sections">
+        
+        <!-- Colección Chía -->
+        <article data-section="chia">
+          <h2>01 · Conjunto de la Mujer | Chía - Luna</h2>
+          <p>Colección mitológica representante de la noche, el misterio y la protección térmica extrema.</p>
+          <ul class="inventory-list">
+            <li><strong>01</strong> Sombrero de fieltro de lana negro</li>
+            <li><strong>01</strong> Ruana de lino negro con bordados en lana de oveja virgen</li>
+            <li><strong>01</strong> Pantalón de lino negro con bordados en lana de oveja virgen</li>
+            <li><strong>01</strong> Cotizas con base de neumático</li>
+          </ul>
+        </article>
+
+        <!-- Colección Sué -->
+        <article data-section="sue">
+          <h2>02 · Conjunto del Hombre | Sué - Sol</h2>
+          <p>Colección mitológica representante del día, la fuerza y la iluminación andina.</p>
+          <ul class="inventory-list">
+            <li><strong>01</strong> Sombrero de tapia pisada beige</li>
+            <li><strong>01</strong> Suéter de lino beige con bordados en lana de oveja virgen</li>
+            <li><strong>01</strong> Pantalón de lino beige con bordados en lana de oveja virgen</li>
+            <li><strong>01</strong> Alpargatas de fique</li>
+          </ul>
+        </article>
+
+        <!-- Souvenirs y Empaque -->
+        <article data-section="souvenirs">
+          <h2>03 · Souvenirs & Packaging</h2>
+          <p>Elementos complementarios que cierran la experiencia de usuario y garantizan el impacto cero.</p>
+          <ul class="inventory-list">
+            <li><strong>01</strong> Monederos bordados con lana de oveja virgen (Incluye etiqueta de papel reciclado con semillas)</li>
+            <li><strong>01</strong> Carteritas bordadas con lana de oveja virgen (Incluye etiqueta de papel reciclado con semillas)</li>
+            <li><strong>01</strong> Empaque para las prendas a base de materiales reciclables</li>
+          </ul>
+        </article>
+
+      </section>
+    </main>
+
+    <!-- Footer idéntico al Brief -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <small>LANNA — Inventario de Productos · Mayo 2026</small>
+      </div>
+    </footer>
+
+  </body>
+</html>

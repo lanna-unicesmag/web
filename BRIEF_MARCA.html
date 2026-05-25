@@ -1,0 +1,1469 @@
+<!DOCTYPE html><html><head>
+<title>BRIEF_MARCA.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*
+
+Arduino® Light Theme - Stefania Mellai <s.mellai@arduino.cc>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #FFFFFF;
+}
+
+.hljs,
+.hljs-subst {
+  color: #434f54;
+}
+
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-doctag,
+.hljs-name {
+  color: #00979D;
+}
+
+.hljs-built_in,
+.hljs-literal,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: #D35400;
+}
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #00979D;
+}
+
+.hljs-type,
+.hljs-string,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #005C5F;
+}
+
+.hljs-title,
+.hljs-section {
+  color: #880000;
+  font-weight: bold;
+}
+
+.hljs-comment {
+  color: rgba(149,165,166,.8);
+}
+
+.hljs-meta-keyword {
+  color: #728E00;
+}
+
+.hljs-meta {
+  color: #434f54;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-function {
+  color: #728E00;
+}
+
+.hljs-number {
+  color: #8A7B52;  
+}
+
+</style>
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family:   "HelveticaNeue-Light", sans-serif, "宋体","Segoe WPC", "Segoe UI", "SFUIText-Light","Droid Sans Fallback";
+	font-size: 18px;
+	padding: 0 12px;
+	line-height: 1.6;
+	word-wrap: break-word;
+	color: #333333;
+}
+
+.content-wrapper{
+	max-width: 860px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom: 1px solid #eee;
+}
+
+
+h2{
+	padding-bottom: .3em;
+    font-size: 2em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+h3{
+	font-size: 1.75em;
+    line-height: 1.225;
+}
+
+h1, h2, h3 {
+	font-weight: bold;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+.table-of-contents li{
+	list-style-type: initial;
+}
+</style>
+
+<style>
+@font-face{font-family:KaTeX_AMS;font-style:normal;font-weight:400;src:url(fonts/KaTeX_AMS-Regular.woff2) format("woff2"),url(fonts/KaTeX_AMS-Regular.woff) format("woff"),url(fonts/KaTeX_AMS-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Caligraphic;font-style:normal;font-weight:700;src:url(fonts/KaTeX_Caligraphic-Bold.woff2) format("woff2"),url(fonts/KaTeX_Caligraphic-Bold.woff) format("woff"),url(fonts/KaTeX_Caligraphic-Bold.ttf) format("truetype")}@font-face{font-family:KaTeX_Caligraphic;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Caligraphic-Regular.woff2) format("woff2"),url(fonts/KaTeX_Caligraphic-Regular.woff) format("woff"),url(fonts/KaTeX_Caligraphic-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Fraktur;font-style:normal;font-weight:700;src:url(fonts/KaTeX_Fraktur-Bold.woff2) format("woff2"),url(fonts/KaTeX_Fraktur-Bold.woff) format("woff"),url(fonts/KaTeX_Fraktur-Bold.ttf) format("truetype")}@font-face{font-family:KaTeX_Fraktur;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Fraktur-Regular.woff2) format("woff2"),url(fonts/KaTeX_Fraktur-Regular.woff) format("woff"),url(fonts/KaTeX_Fraktur-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Main;font-style:normal;font-weight:700;src:url(fonts/KaTeX_Main-Bold.woff2) format("woff2"),url(fonts/KaTeX_Main-Bold.woff) format("woff"),url(fonts/KaTeX_Main-Bold.ttf) format("truetype")}@font-face{font-family:KaTeX_Main;font-style:italic;font-weight:700;src:url(fonts/KaTeX_Main-BoldItalic.woff2) format("woff2"),url(fonts/KaTeX_Main-BoldItalic.woff) format("woff"),url(fonts/KaTeX_Main-BoldItalic.ttf) format("truetype")}@font-face{font-family:KaTeX_Main;font-style:italic;font-weight:400;src:url(fonts/KaTeX_Main-Italic.woff2) format("woff2"),url(fonts/KaTeX_Main-Italic.woff) format("woff"),url(fonts/KaTeX_Main-Italic.ttf) format("truetype")}@font-face{font-family:KaTeX_Main;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Main-Regular.woff2) format("woff2"),url(fonts/KaTeX_Main-Regular.woff) format("woff"),url(fonts/KaTeX_Main-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Math;font-style:italic;font-weight:700;src:url(fonts/KaTeX_Math-BoldItalic.woff2) format("woff2"),url(fonts/KaTeX_Math-BoldItalic.woff) format("woff"),url(fonts/KaTeX_Math-BoldItalic.ttf) format("truetype")}@font-face{font-family:KaTeX_Math;font-style:italic;font-weight:400;src:url(fonts/KaTeX_Math-Italic.woff2) format("woff2"),url(fonts/KaTeX_Math-Italic.woff) format("woff"),url(fonts/KaTeX_Math-Italic.ttf) format("truetype")}@font-face{font-family:"KaTeX_SansSerif";font-style:normal;font-weight:700;src:url(fonts/KaTeX_SansSerif-Bold.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Bold.woff) format("woff"),url(fonts/KaTeX_SansSerif-Bold.ttf) format("truetype")}@font-face{font-family:"KaTeX_SansSerif";font-style:italic;font-weight:400;src:url(fonts/KaTeX_SansSerif-Italic.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Italic.woff) format("woff"),url(fonts/KaTeX_SansSerif-Italic.ttf) format("truetype")}@font-face{font-family:"KaTeX_SansSerif";font-style:normal;font-weight:400;src:url(fonts/KaTeX_SansSerif-Regular.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Regular.woff) format("woff"),url(fonts/KaTeX_SansSerif-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Script;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Script-Regular.woff2) format("woff2"),url(fonts/KaTeX_Script-Regular.woff) format("woff"),url(fonts/KaTeX_Script-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Size1;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Size1-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size1-Regular.woff) format("woff"),url(fonts/KaTeX_Size1-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Size2;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Size2-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size2-Regular.woff) format("woff"),url(fonts/KaTeX_Size2-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Size3;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Size3-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size3-Regular.woff) format("woff"),url(fonts/KaTeX_Size3-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Size4;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Size4-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size4-Regular.woff) format("woff"),url(fonts/KaTeX_Size4-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Typewriter;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Typewriter-Regular.woff2) format("woff2"),url(fonts/KaTeX_Typewriter-Regular.woff) format("woff"),url(fonts/KaTeX_Typewriter-Regular.ttf) format("truetype")}.katex{text-rendering:auto;font:normal 1.21em KaTeX_Main,Times New Roman,serif;line-height:1.2;text-indent:0}.katex *{-ms-high-contrast-adjust:none!important;border-color:currentColor}.katex .katex-version:after{content:"0.16.2"}.katex .katex-mathml{clip:rect(1px,1px,1px,1px);border:0;height:1px;overflow:hidden;padding:0;position:absolute;width:1px}.katex .katex-html>.newline{display:block}.katex .base{position:relative;white-space:nowrap;width:-webkit-min-content;width:-moz-min-content;width:min-content}.katex .base,.katex .strut{display:inline-block}.katex .textbf{font-weight:700}.katex .textit{font-style:italic}.katex .textrm{font-family:KaTeX_Main}.katex .textsf{font-family:KaTeX_SansSerif}.katex .texttt{font-family:KaTeX_Typewriter}.katex .mathnormal{font-family:KaTeX_Math;font-style:italic}.katex .mathit{font-family:KaTeX_Main;font-style:italic}.katex .mathrm{font-style:normal}.katex .mathbf{font-family:KaTeX_Main;font-weight:700}.katex .boldsymbol{font-family:KaTeX_Math;font-style:italic;font-weight:700}.katex .amsrm,.katex .mathbb,.katex .textbb{font-family:KaTeX_AMS}.katex .mathcal{font-family:KaTeX_Caligraphic}.katex .mathfrak,.katex .textfrak{font-family:KaTeX_Fraktur}.katex .mathtt{font-family:KaTeX_Typewriter}.katex .mathscr,.katex .textscr{font-family:KaTeX_Script}.katex .mathsf,.katex .textsf{font-family:KaTeX_SansSerif}.katex .mathboldsf,.katex .textboldsf{font-family:KaTeX_SansSerif;font-weight:700}.katex .mathitsf,.katex .textitsf{font-family:KaTeX_SansSerif;font-style:italic}.katex .mainrm{font-family:KaTeX_Main;font-style:normal}.katex .vlist-t{border-collapse:collapse;display:inline-table;table-layout:fixed}.katex .vlist-r{display:table-row}.katex .vlist{display:table-cell;position:relative;vertical-align:bottom}.katex .vlist>span{display:block;height:0;position:relative}.katex .vlist>span>span{display:inline-block}.katex .vlist>span>.pstrut{overflow:hidden;width:0}.katex .vlist-t2{margin-right:-2px}.katex .vlist-s{display:table-cell;font-size:1px;min-width:2px;vertical-align:bottom;width:2px}.katex .vbox{align-items:baseline;display:inline-flex;flex-direction:column}.katex .hbox{width:100%}.katex .hbox,.katex .thinbox{display:inline-flex;flex-direction:row}.katex .thinbox{max-width:0;width:0}.katex .msupsub{text-align:left}.katex .mfrac>span>span{text-align:center}.katex .mfrac .frac-line{border-bottom-style:solid;display:inline-block;width:100%}.katex .hdashline,.katex .hline,.katex .mfrac .frac-line,.katex .overline .overline-line,.katex .rule,.katex .underline .underline-line{min-height:1px}.katex .mspace{display:inline-block}.katex .clap,.katex .llap,.katex .rlap{position:relative;width:0}.katex .clap>.inner,.katex .llap>.inner,.katex .rlap>.inner{position:absolute}.katex .clap>.fix,.katex .llap>.fix,.katex .rlap>.fix{display:inline-block}.katex .llap>.inner{right:0}.katex .clap>.inner,.katex .rlap>.inner{left:0}.katex .clap>.inner>span{margin-left:-50%;margin-right:50%}.katex .rule{border:0 solid;display:inline-block;position:relative}.katex .hline,.katex .overline .overline-line,.katex .underline .underline-line{border-bottom-style:solid;display:inline-block;width:100%}.katex .hdashline{border-bottom-style:dashed;display:inline-block;width:100%}.katex .sqrt>.root{margin-left:.27777778em;margin-right:-.55555556em}.katex .fontsize-ensurer.reset-size1.size1,.katex .sizing.reset-size1.size1{font-size:1em}.katex .fontsize-ensurer.reset-size1.size2,.katex .sizing.reset-size1.size2{font-size:1.2em}.katex .fontsize-ensurer.reset-size1.size3,.katex .sizing.reset-size1.size3{font-size:1.4em}.katex .fontsize-ensurer.reset-size1.size4,.katex .sizing.reset-size1.size4{font-size:1.6em}.katex .fontsize-ensurer.reset-size1.size5,.katex .sizing.reset-size1.size5{font-size:1.8em}.katex .fontsize-ensurer.reset-size1.size6,.katex .sizing.reset-size1.size6{font-size:2em}.katex .fontsize-ensurer.reset-size1.size7,.katex .sizing.reset-size1.size7{font-size:2.4em}.katex .fontsize-ensurer.reset-size1.size8,.katex .sizing.reset-size1.size8{font-size:2.88em}.katex .fontsize-ensurer.reset-size1.size9,.katex .sizing.reset-size1.size9{font-size:3.456em}.katex .fontsize-ensurer.reset-size1.size10,.katex .sizing.reset-size1.size10{font-size:4.148em}.katex .fontsize-ensurer.reset-size1.size11,.katex .sizing.reset-size1.size11{font-size:4.976em}.katex .fontsize-ensurer.reset-size2.size1,.katex .sizing.reset-size2.size1{font-size:.83333333em}.katex .fontsize-ensurer.reset-size2.size2,.katex .sizing.reset-size2.size2{font-size:1em}.katex .fontsize-ensurer.reset-size2.size3,.katex .sizing.reset-size2.size3{font-size:1.16666667em}.katex .fontsize-ensurer.reset-size2.size4,.katex .sizing.reset-size2.size4{font-size:1.33333333em}.katex .fontsize-ensurer.reset-size2.size5,.katex .sizing.reset-size2.size5{font-size:1.5em}.katex .fontsize-ensurer.reset-size2.size6,.katex .sizing.reset-size2.size6{font-size:1.66666667em}.katex .fontsize-ensurer.reset-size2.size7,.katex .sizing.reset-size2.size7{font-size:2em}.katex .fontsize-ensurer.reset-size2.size8,.katex .sizing.reset-size2.size8{font-size:2.4em}.katex .fontsize-ensurer.reset-size2.size9,.katex .sizing.reset-size2.size9{font-size:2.88em}.katex .fontsize-ensurer.reset-size2.size10,.katex .sizing.reset-size2.size10{font-size:3.45666667em}.katex .fontsize-ensurer.reset-size2.size11,.katex .sizing.reset-size2.size11{font-size:4.14666667em}.katex .fontsize-ensurer.reset-size3.size1,.katex .sizing.reset-size3.size1{font-size:.71428571em}.katex .fontsize-ensurer.reset-size3.size2,.katex .sizing.reset-size3.size2{font-size:.85714286em}.katex .fontsize-ensurer.reset-size3.size3,.katex .sizing.reset-size3.size3{font-size:1em}.katex .fontsize-ensurer.reset-size3.size4,.katex .sizing.reset-size3.size4{font-size:1.14285714em}.katex .fontsize-ensurer.reset-size3.size5,.katex .sizing.reset-size3.size5{font-size:1.28571429em}.katex .fontsize-ensurer.reset-size3.size6,.katex .sizing.reset-size3.size6{font-size:1.42857143em}.katex .fontsize-ensurer.reset-size3.size7,.katex .sizing.reset-size3.size7{font-size:1.71428571em}.katex .fontsize-ensurer.reset-size3.size8,.katex .sizing.reset-size3.size8{font-size:2.05714286em}.katex .fontsize-ensurer.reset-size3.size9,.katex .sizing.reset-size3.size9{font-size:2.46857143em}.katex .fontsize-ensurer.reset-size3.size10,.katex .sizing.reset-size3.size10{font-size:2.96285714em}.katex .fontsize-ensurer.reset-size3.size11,.katex .sizing.reset-size3.size11{font-size:3.55428571em}.katex .fontsize-ensurer.reset-size4.size1,.katex .sizing.reset-size4.size1{font-size:.625em}.katex .fontsize-ensurer.reset-size4.size2,.katex .sizing.reset-size4.size2{font-size:.75em}.katex .fontsize-ensurer.reset-size4.size3,.katex .sizing.reset-size4.size3{font-size:.875em}.katex .fontsize-ensurer.reset-size4.size4,.katex .sizing.reset-size4.size4{font-size:1em}.katex .fontsize-ensurer.reset-size4.size5,.katex .sizing.reset-size4.size5{font-size:1.125em}.katex .fontsize-ensurer.reset-size4.size6,.katex .sizing.reset-size4.size6{font-size:1.25em}.katex .fontsize-ensurer.reset-size4.size7,.katex .sizing.reset-size4.size7{font-size:1.5em}.katex .fontsize-ensurer.reset-size4.size8,.katex .sizing.reset-size4.size8{font-size:1.8em}.katex .fontsize-ensurer.reset-size4.size9,.katex .sizing.reset-size4.size9{font-size:2.16em}.katex .fontsize-ensurer.reset-size4.size10,.katex .sizing.reset-size4.size10{font-size:2.5925em}.katex .fontsize-ensurer.reset-size4.size11,.katex .sizing.reset-size4.size11{font-size:3.11em}.katex .fontsize-ensurer.reset-size5.size1,.katex .sizing.reset-size5.size1{font-size:.55555556em}.katex .fontsize-ensurer.reset-size5.size2,.katex .sizing.reset-size5.size2{font-size:.66666667em}.katex .fontsize-ensurer.reset-size5.size3,.katex .sizing.reset-size5.size3{font-size:.77777778em}.katex .fontsize-ensurer.reset-size5.size4,.katex .sizing.reset-size5.size4{font-size:.88888889em}.katex .fontsize-ensurer.reset-size5.size5,.katex .sizing.reset-size5.size5{font-size:1em}.katex .fontsize-ensurer.reset-size5.size6,.katex .sizing.reset-size5.size6{font-size:1.11111111em}.katex .fontsize-ensurer.reset-size5.size7,.katex .sizing.reset-size5.size7{font-size:1.33333333em}.katex .fontsize-ensurer.reset-size5.size8,.katex .sizing.reset-size5.size8{font-size:1.6em}.katex .fontsize-ensurer.reset-size5.size9,.katex .sizing.reset-size5.size9{font-size:1.92em}.katex .fontsize-ensurer.reset-size5.size10,.katex .sizing.reset-size5.size10{font-size:2.30444444em}.katex .fontsize-ensurer.reset-size5.size11,.katex .sizing.reset-size5.size11{font-size:2.76444444em}.katex .fontsize-ensurer.reset-size6.size1,.katex .sizing.reset-size6.size1{font-size:.5em}.katex .fontsize-ensurer.reset-size6.size2,.katex .sizing.reset-size6.size2{font-size:.6em}.katex .fontsize-ensurer.reset-size6.size3,.katex .sizing.reset-size6.size3{font-size:.7em}.katex .fontsize-ensurer.reset-size6.size4,.katex .sizing.reset-size6.size4{font-size:.8em}.katex .fontsize-ensurer.reset-size6.size5,.katex .sizing.reset-size6.size5{font-size:.9em}.katex .fontsize-ensurer.reset-size6.size6,.katex .sizing.reset-size6.size6{font-size:1em}.katex .fontsize-ensurer.reset-size6.size7,.katex .sizing.reset-size6.size7{font-size:1.2em}.katex .fontsize-ensurer.reset-size6.size8,.katex .sizing.reset-size6.size8{font-size:1.44em}.katex .fontsize-ensurer.reset-size6.size9,.katex .sizing.reset-size6.size9{font-size:1.728em}.katex .fontsize-ensurer.reset-size6.size10,.katex .sizing.reset-size6.size10{font-size:2.074em}.katex .fontsize-ensurer.reset-size6.size11,.katex .sizing.reset-size6.size11{font-size:2.488em}.katex .fontsize-ensurer.reset-size7.size1,.katex .sizing.reset-size7.size1{font-size:.41666667em}.katex .fontsize-ensurer.reset-size7.size2,.katex .sizing.reset-size7.size2{font-size:.5em}.katex .fontsize-ensurer.reset-size7.size3,.katex .sizing.reset-size7.size3{font-size:.58333333em}.katex .fontsize-ensurer.reset-size7.size4,.katex .sizing.reset-size7.size4{font-size:.66666667em}.katex .fontsize-ensurer.reset-size7.size5,.katex .sizing.reset-size7.size5{font-size:.75em}.katex .fontsize-ensurer.reset-size7.size6,.katex .sizing.reset-size7.size6{font-size:.83333333em}.katex .fontsize-ensurer.reset-size7.size7,.katex .sizing.reset-size7.size7{font-size:1em}.katex .fontsize-ensurer.reset-size7.size8,.katex .sizing.reset-size7.size8{font-size:1.2em}.katex .fontsize-ensurer.reset-size7.size9,.katex .sizing.reset-size7.size9{font-size:1.44em}.katex .fontsize-ensurer.reset-size7.size10,.katex .sizing.reset-size7.size10{font-size:1.72833333em}.katex .fontsize-ensurer.reset-size7.size11,.katex .sizing.reset-size7.size11{font-size:2.07333333em}.katex .fontsize-ensurer.reset-size8.size1,.katex .sizing.reset-size8.size1{font-size:.34722222em}.katex .fontsize-ensurer.reset-size8.size2,.katex .sizing.reset-size8.size2{font-size:.41666667em}.katex .fontsize-ensurer.reset-size8.size3,.katex .sizing.reset-size8.size3{font-size:.48611111em}.katex .fontsize-ensurer.reset-size8.size4,.katex .sizing.reset-size8.size4{font-size:.55555556em}.katex .fontsize-ensurer.reset-size8.size5,.katex .sizing.reset-size8.size5{font-size:.625em}.katex .fontsize-ensurer.reset-size8.size6,.katex .sizing.reset-size8.size6{font-size:.69444444em}.katex .fontsize-ensurer.reset-size8.size7,.katex .sizing.reset-size8.size7{font-size:.83333333em}.katex .fontsize-ensurer.reset-size8.size8,.katex .sizing.reset-size8.size8{font-size:1em}.katex .fontsize-ensurer.reset-size8.size9,.katex .sizing.reset-size8.size9{font-size:1.2em}.katex .fontsize-ensurer.reset-size8.size10,.katex .sizing.reset-size8.size10{font-size:1.44027778em}.katex .fontsize-ensurer.reset-size8.size11,.katex .sizing.reset-size8.size11{font-size:1.72777778em}.katex .fontsize-ensurer.reset-size9.size1,.katex .sizing.reset-size9.size1{font-size:.28935185em}.katex .fontsize-ensurer.reset-size9.size2,.katex .sizing.reset-size9.size2{font-size:.34722222em}.katex .fontsize-ensurer.reset-size9.size3,.katex .sizing.reset-size9.size3{font-size:.40509259em}.katex .fontsize-ensurer.reset-size9.size4,.katex .sizing.reset-size9.size4{font-size:.46296296em}.katex .fontsize-ensurer.reset-size9.size5,.katex .sizing.reset-size9.size5{font-size:.52083333em}.katex .fontsize-ensurer.reset-size9.size6,.katex .sizing.reset-size9.size6{font-size:.5787037em}.katex .fontsize-ensurer.reset-size9.size7,.katex .sizing.reset-size9.size7{font-size:.69444444em}.katex .fontsize-ensurer.reset-size9.size8,.katex .sizing.reset-size9.size8{font-size:.83333333em}.katex .fontsize-ensurer.reset-size9.size9,.katex .sizing.reset-size9.size9{font-size:1em}.katex .fontsize-ensurer.reset-size9.size10,.katex .sizing.reset-size9.size10{font-size:1.20023148em}.katex .fontsize-ensurer.reset-size9.size11,.katex .sizing.reset-size9.size11{font-size:1.43981481em}.katex .fontsize-ensurer.reset-size10.size1,.katex .sizing.reset-size10.size1{font-size:.24108004em}.katex .fontsize-ensurer.reset-size10.size2,.katex .sizing.reset-size10.size2{font-size:.28929605em}.katex .fontsize-ensurer.reset-size10.size3,.katex .sizing.reset-size10.size3{font-size:.33751205em}.katex .fontsize-ensurer.reset-size10.size4,.katex .sizing.reset-size10.size4{font-size:.38572806em}.katex .fontsize-ensurer.reset-size10.size5,.katex .sizing.reset-size10.size5{font-size:.43394407em}.katex .fontsize-ensurer.reset-size10.size6,.katex .sizing.reset-size10.size6{font-size:.48216008em}.katex .fontsize-ensurer.reset-size10.size7,.katex .sizing.reset-size10.size7{font-size:.57859209em}.katex .fontsize-ensurer.reset-size10.size8,.katex .sizing.reset-size10.size8{font-size:.69431051em}.katex .fontsize-ensurer.reset-size10.size9,.katex .sizing.reset-size10.size9{font-size:.83317261em}.katex .fontsize-ensurer.reset-size10.size10,.katex .sizing.reset-size10.size10{font-size:1em}.katex .fontsize-ensurer.reset-size10.size11,.katex .sizing.reset-size10.size11{font-size:1.19961427em}.katex .fontsize-ensurer.reset-size11.size1,.katex .sizing.reset-size11.size1{font-size:.20096463em}.katex .fontsize-ensurer.reset-size11.size2,.katex .sizing.reset-size11.size2{font-size:.24115756em}.katex .fontsize-ensurer.reset-size11.size3,.katex .sizing.reset-size11.size3{font-size:.28135048em}.katex .fontsize-ensurer.reset-size11.size4,.katex .sizing.reset-size11.size4{font-size:.32154341em}.katex .fontsize-ensurer.reset-size11.size5,.katex .sizing.reset-size11.size5{font-size:.36173633em}.katex .fontsize-ensurer.reset-size11.size6,.katex .sizing.reset-size11.size6{font-size:.40192926em}.katex .fontsize-ensurer.reset-size11.size7,.katex .sizing.reset-size11.size7{font-size:.48231511em}.katex .fontsize-ensurer.reset-size11.size8,.katex .sizing.reset-size11.size8{font-size:.57877814em}.katex .fontsize-ensurer.reset-size11.size9,.katex .sizing.reset-size11.size9{font-size:.69453376em}.katex .fontsize-ensurer.reset-size11.size10,.katex .sizing.reset-size11.size10{font-size:.83360129em}.katex .fontsize-ensurer.reset-size11.size11,.katex .sizing.reset-size11.size11{font-size:1em}.katex .delimsizing.size1{font-family:KaTeX_Size1}.katex .delimsizing.size2{font-family:KaTeX_Size2}.katex .delimsizing.size3{font-family:KaTeX_Size3}.katex .delimsizing.size4{font-family:KaTeX_Size4}.katex .delimsizing.mult .delim-size1>span{font-family:KaTeX_Size1}.katex .delimsizing.mult .delim-size4>span{font-family:KaTeX_Size4}.katex .nulldelimiter{display:inline-block;width:.12em}.katex .delimcenter,.katex .op-symbol{position:relative}.katex .op-symbol.small-op{font-family:KaTeX_Size1}.katex .op-symbol.large-op{font-family:KaTeX_Size2}.katex .accent>.vlist-t,.katex .op-limits>.vlist-t{text-align:center}.katex .accent .accent-body{position:relative}.katex .accent .accent-body:not(.accent-full){width:0}.katex .overlay{display:block}.katex .mtable .vertical-separator{display:inline-block;min-width:1px}.katex .mtable .arraycolsep{display:inline-block}.katex .mtable .col-align-c>.vlist-t{text-align:center}.katex .mtable .col-align-l>.vlist-t{text-align:left}.katex .mtable .col-align-r>.vlist-t{text-align:right}.katex .svg-align{text-align:left}.katex svg{fill:currentColor;stroke:currentColor;fill-rule:nonzero;fill-opacity:1;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;display:block;height:inherit;position:absolute;width:100%}.katex svg path{stroke:none}.katex img{border-style:none;max-height:none;max-width:none;min-height:0;min-width:0}.katex .stretchy{display:block;overflow:hidden;position:relative;width:100%}.katex .stretchy:after,.katex .stretchy:before{content:""}.katex .hide-tail{overflow:hidden;position:relative;width:100%}.katex .halfarrow-left{left:0;overflow:hidden;position:absolute;width:50.2%}.katex .halfarrow-right{overflow:hidden;position:absolute;right:0;width:50.2%}.katex .brace-left{left:0;overflow:hidden;position:absolute;width:25.1%}.katex .brace-center{left:25%;overflow:hidden;position:absolute;width:50%}.katex .brace-right{overflow:hidden;position:absolute;right:0;width:25.1%}.katex .x-arrow-pad{padding:0 .5em}.katex .cd-arrow-pad{padding:0 .55556em 0 .27778em}.katex .mover,.katex .munder,.katex .x-arrow{text-align:center}.katex .boxpad{padding:0 .3em}.katex .fbox,.katex .fcolorbox{border:.04em solid;box-sizing:border-box}.katex .cancel-pad{padding:0 .2em}.katex .cancel-lap{margin-left:-.2em;margin-right:-.2em}.katex .sout{border-bottom-style:solid;border-bottom-width:.08em}.katex .angl{border-right:.049em solid;border-top:.049em solid;box-sizing:border-box;margin-right:.03889em}.katex .anglpad{padding:0 .03889em}.katex .eqn-num:before{content:"(" counter(katexEqnNo) ")";counter-increment:katexEqnNo}.katex .mml-eqn-num:before{content:"(" counter(mmlEqnNo) ")";counter-increment:mmlEqnNo}.katex .mtr-glue{width:50%}.katex .cd-vert-arrow{display:inline-block;position:relative}.katex .cd-label-left{display:inline-block;position:absolute;right:calc(50% + .3em);text-align:left}.katex .cd-label-right{display:inline-block;left:calc(50% + .3em);position:absolute;text-align:right}.katex-display{display:block;margin:1em 0;text-align:center}.katex-display>.katex{display:block;text-align:center;white-space:nowrap}.katex-display>.katex>.katex-html{display:block;position:relative}.katex-display>.katex>.katex-html>.tag{position:absolute;right:0}.katex-display.leqno>.katex>.katex-html>.tag{left:0;right:auto}.katex-display.fleqn>.katex{padding-left:2em;text-align:left}body{counter-reset:katexEqnNo mmlEqnNo}
+
+</style>
+
+</head>
+<body>
+    <div class="content-wrapper">
+        <h1 id="lanna-%E2%80%94-brand-brief" tabindex="-1">LANNA — BRAND BRIEF</h1>
+<h3 id="documento-de-identidad-de-marca-%C2%B7-versi%C3%B3n-2.0" tabindex="-1">Documento de Identidad de Marca · Versión 2.0</h3>
+<p><strong>UNICESMAG · Programa de Diseño · Ecodiseño · 2026</strong>
+<strong>Equipo:</strong> Shamuel Woodcock · María Villota · Edward Paz</p>
+<hr>
+<h2 id="00-%C2%B7-contexto-de-mercado-y-problema" tabindex="-1">00 · CONTEXTO DE MERCADO Y PROBLEMA</h2>
+<h3 id="el-problema" tabindex="-1">El problema</h3>
+<p>La industria de la moda es la segunda más contaminante del mundo. En Colombia, el sector textil genera más de <strong>400.000 toneladas de residuos al año</strong>. Al mismo tiempo, las tradiciones textiles artesanales del Altiplano Cundiboyacense se erosionan: los artesanos no encuentran mercados que paguen precio justo y las técnicas ancestrales se pierden por falta de relevo generacional.</p>
+<p>En paralelo, existe un segmento creciente de consumidores con alto poder adquisitivo que buscan moda consciente con origen verificable y narrativa cultural auténtica. Ese segmento <strong>no tiene oferta local de lujo sostenible</strong>. Las marcas de artesanía colombiana no operan en el espacio premium. Las marcas de lujo internacionales no tienen raíz local. El espacio está vacío.</p>
+<h3 id="la-oportunidad" tabindex="-1">La oportunidad</h3>
+<p><strong>LANNA</strong> ocupa ese espacio vacío: moda de lujo silencioso con raíz muisca, proceso trazable y marco riguroso de ecodiseño. Una propuesta que es simultáneamente respuesta al problema ambiental, respuesta al problema cultural y negocio viable.</p>
+<hr>
+<h2 id="00b-%C2%B7-tagline-oficial" tabindex="-1">00B · TAGLINE OFICIAL</h2>
+<blockquote>
+<p><strong>"Antes del oro, hubo un hilo."</strong></p>
+</blockquote>
+<p>Tagline secundario (uso editorial):</p>
+<blockquote>
+<p><em>"El primer acto de lujo de esta tierra fue tejer."</em></p>
+</blockquote>
+<p>No vende. No promete. Afirma. Sitúa al cliente en una narrativa histórica en la que la marca ya existía antes de que él llegara.</p>
+<hr>
+<h2 id="00c-%C2%B7-promesa-de-marca" tabindex="-1">00C · PROMESA DE MARCA</h2>
+<blockquote>
+<p><strong>LANNA le promete al cliente que lo que tiene en sus manos es exactamente lo que dice ser: lana criolla del altiplano, tejida a mano, con tintes de la tierra, sin ningún elemento que no pueda volver a la tierra.</strong></p>
+</blockquote>
+<p>La promesa no es emocional. Es <strong>técnica y verificable</strong>. Cualquier afirmación de la marca puede rastrearse hasta su origen físico.</p>
+<hr>
+<h2 id="00d-%C2%B7-arquetipo-de-marca" tabindex="-1">00D · ARQUETIPO DE MARCA</h2>
+<p><strong>Arquetipo principal: El Creador</strong>
+Da forma a lo que imagina. No reproduce: origina. Valora la artesanía y el proceso por encima del resultado masificado. LANNA no adapta tendencias: genera una propuesta propia desde una tradición real.</p>
+<p><strong>Arquetipo secundario: El Sabio</strong>
+Conoce su proceso, su territorio, su historia. Habla desde el conocimiento verificable. Esa autoridad fundamenta el precio premium.</p>
+<hr>
+<h2 id="00e-%C2%B7-personalidad-de-marca" tabindex="-1">00E · PERSONALIDAD DE MARCA</h2>
+<p>Si LANNA fuera una persona:</p>
+<table>
+<thead>
+<tr>
+<th>Rasgo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Serena</strong></td>
+<td>Habla despacio. No tiene prisa. Sabe que lo que tiene vale.</td>
+</tr>
+<tr>
+<td><strong>Culta</strong></td>
+<td>Conoce su historia y la cuenta sin condescendencia.</td>
+</tr>
+<tr>
+<td><strong>Íntegra</strong></td>
+<td>No exagera ni oculta. Lo que dice es lo que hace.</td>
+</tr>
+<tr>
+<td><strong>Artesanal</strong></td>
+<td>Prefiere lo imperfecto hecho a mano a lo perfecto hecho en serie.</td>
+</tr>
+<tr>
+<td><strong>Atemporal</strong></td>
+<td>No sigue el momento. Es del momento anterior y del siguiente.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>NO es:</strong> extrovertida, urgente, aspiracional, masiva, decorativa.</p>
+<hr>
+<h2 id="01-%C2%B7-esencia" tabindex="-1">01 · ESENCIA</h2>
+<p><strong>LANNA</strong> es una empresa colombiana de ecodiseño de moda que recupera la tradición textil muisca del Altiplano Cundiboyacense para llevarla a un contexto contemporáneo bajo la filosofía del <strong>Quiet Luxury</strong> — el lujo silencioso.</p>
+<p>No es una marca de tendencias. Es una marca de permanencia.
+No compite con el volumen. Compite con el significado.</p>
+<p>LANNA nace de una convicción: <strong>lo más lujoso que ha producido esta tierra no fue el oro de El Dorado, sino el hilo que Bochica le enseñó a tejer al pueblo muisca.</strong></p>
+<hr>
+<h2 id="02-%C2%B7-historia-y-origen" tabindex="-1">02 · HISTORIA Y ORIGEN</h2>
+<p>El Altiplano Cundiboyacense se ubica a <strong>2.600 m.s.n.m.</strong> Colombia posee el <strong>60% de todos los páramos del mundo</strong>. En esa geografía de vientos fríos y nubes bajas, la lana no era un material: era una necesidad, una religión y un código de identidad.</p>
+<p><strong>Bochica</strong> — dios creador del panteón muisca — les enseñó a hilar. Las mantas muiscas funcionaban como vestimenta, moneda y ofrenda ceremonial. Boyacá —<em>la región de las mantas</em>— guarda esa memoria viva. En Nobsa, en Ráquira, los telares todavía suenan. LANNA parte de ahí.</p>
+<hr>
+<h2 id="03-%C2%B7-prop%C3%B3sito" tabindex="-1">03 · PROPÓSITO</h2>
+<blockquote>
+<p><strong>Rescatar la tradición textil muisca del Altiplano Cundiboyacense para convertirla en moda de lujo ecosostenible, honrando el proceso, el territorio y al artesano.</strong></p>
+</blockquote>
+<p>LANNA no romantiza el pasado. Lo activa económicamente. Cada prenda paga el tiempo real de un artesano boyacense a precio justo. Cada tinte nace de plantas del mismo territorio. Cada fibra vuelve a la tierra. <strong>El ciclo se cierra.</strong></p>
+<hr>
+<h2 id="04-%C2%B7-visi%C3%B3n" tabindex="-1">04 · VISIÓN</h2>
+<p>Ser la primera marca colombiana de <strong>Quiet Luxury Andino</strong> reconocida por su rigurosidad en ecodiseño, su trazabilidad de origen y la cohesión entre estética, cultura y sostenibilidad.</p>
+<hr>
+<h2 id="05-%C2%B7-nombre-y-etimolog%C3%ADa" tabindex="-1">05 · NOMBRE Y ETIMOLOGÍA</h2>
+<p><strong>LANNA</strong> suena igual que "lana" pero se escribe con doble N.</p>
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>La primera <strong>N</strong></td>
+<td>La <strong>urdimbre</strong> — hilos verticales del telar; la estructura</td>
+</tr>
+<tr>
+<td>La segunda <strong>N</strong></td>
+<td>La <strong>trama</strong> — hilos horizontales; el movimiento</td>
+</tr>
+</tbody>
+</table>
+<p>Juntas forman el tejido. En el isotipo se materializan en la geometría del <strong>volante de huso muisca</strong>. La doble N ancla los dos valores conceptuales: <strong>Naturaleza</strong> y <strong>Nobleza</strong>.</p>
+<hr>
+<h2 id="06-%C2%B7-filosof%C3%ADa-y-valores" tabindex="-1">06 · FILOSOFÍA Y VALORES</h2>
+<h3 id="autenticidad" tabindex="-1">Autenticidad</h3>
+<p>Origen trazable. Proceso visible. Nada que esconder. Desde la oveja en el páramo hasta la prenda, cada paso puede documentarse.</p>
+<h3 id="permanencia" tabindex="-1">Permanencia</h3>
+<p>Diseñamos para décadas, no para temporadas. Una prenda de LANNA no tiene fecha de caducidad estética. La permanencia es el lujo más honesto.</p>
+<h3 id="silencio" tabindex="-1">Silencio</h3>
+<p>El verdadero lujo no necesita gritar. Sin logos sobredimensionados ni ornamentos gratuitos. LANNA no convence: seduce. En voz baja.</p>
+<hr>
+<h2 id="07-%C2%B7-propuesta-de-valor" tabindex="-1">07 · PROPUESTA DE VALOR</h2>
+<blockquote>
+<p><em>"El cliente de LANNA no compra una ruana. Compra ancestralidad trazable."</em></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Dimensión</th>
+<th>Propuesta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cultural</strong></td>
+<td>Raíz muisca, mitología de Bochica, morfología del volante de huso</td>
+</tr>
+<tr>
+<td><strong>Ambiental</strong></td>
+<td>Marco 9R completo + LCA según ISO 14040 + Rueda LIDS</td>
+</tr>
+<tr>
+<td><strong>Estética</strong></td>
+<td>Quiet Luxury, paleta sobria, minimalismo de alta resolución</td>
+</tr>
+<tr>
+<td><strong>Económica</strong></td>
+<td>Precio justo que refleja el valor real del proceso artesanal</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="08-%C2%B7-identidad-visual" tabindex="-1">08 · IDENTIDAD VISUAL</h2>
+<h3 id="08.1-%C2%B7-paleta-crom%C3%A1tica" tabindex="-1">08.1 · Paleta Cromática</h3>
+<table>
+<thead>
+<tr>
+<th>Nombre</th>
+<th>Hex</th>
+<th>RGB</th>
+<th>Rol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Negro — Tierra</strong></td>
+<td><code>#121312</code></td>
+<td>18 / 19 / 18</td>
+<td>Base estructural. El suelo andino, el silencio.</td>
+</tr>
+<tr>
+<td><strong>Crema — Lana Cruda</strong></td>
+<td><code>#F5F0E8</code></td>
+<td>245 / 240 / 232</td>
+<td>Respiración. La fibra sin intervención.</td>
+</tr>
+<tr>
+<td><strong>Dorado — Sua · El Sol</strong></td>
+<td><code>#E5C272</code></td>
+<td>229 / 194 / 114</td>
+<td>El único color que habla. El sol muisca.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="08.2-%C2%B7-tipograf%C3%ADa" tabindex="-1">08.2 · Tipografía</h3>
+<table>
+<thead>
+<tr>
+<th>Rol</th>
+<th>Fuente</th>
+<th>Pesos</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Principal</strong></td>
+<td>Outfit</td>
+<td>700 · 900</td>
+<td>Titulares, nombre, navegación</td>
+</tr>
+<tr>
+<td><strong>Secundaria</strong></td>
+<td>Outfit</td>
+<td>200 · 300</td>
+<td>Cuerpo, descriptores, etiquetas</td>
+</tr>
+<tr>
+<td><strong>Editorial</strong></td>
+<td>Playfair Display Italic</td>
+<td>400 · 600</td>
+<td>Citas, frases de marca</td>
+</tr>
+</tbody>
+</table>
+<h3 id="08.3-%C2%B7-isotipo" tabindex="-1">08.3 · Isotipo</h3>
+<p>Abstracción geométrica del <strong>volante de huso muisca</strong>. La doble N integrada en geometría circular: símbolo que es simultáneamente letra, herramienta y cultura. El círculo no es decorativo: es conceptual. El círculo es el ciclo.</p>
+<ul>
+<li>Sobre fondo oscuro → Dorado <code>#E5C272</code></li>
+<li>Sobre fondo claro → Negro <code>#121312</code></li>
+</ul>
+<h3 id="08.4-%C2%B7-tono-visual" tabindex="-1">08.4 · Tono visual</h3>
+<p>Fotografía en bajo contraste. Encuadres amplios. Texturas de fibra. Oscuridad habitada. Luz lateral suave. Sin poses de catálogo: las prendas viven en el cuerpo, el cuerpo vive en el espacio.</p>
+<hr>
+<h2 id="09-%C2%B7-materiales" tabindex="-1">09 · MATERIALES</h2>
+<table>
+<thead>
+<tr>
+<th>Material</th>
+<th>Origen</th>
+<th>Propiedades</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lana virgen criolla</strong></td>
+<td>Ovejas criollas del Altiplano</td>
+<td>Biodegradable, renovable, termorreguladora</td>
+<td>Tejido principal</td>
+</tr>
+<tr>
+<td><strong>Fique (cabuya)</strong></td>
+<td><em>Furcraea andina</em>, planta nativa</td>
+<td>Vegetal, resistente, sin pesticidas, biodegradable</td>
+<td>Bordes y refuerzos</td>
+</tr>
+<tr>
+<td><strong>Tintes vegetales</strong></td>
+<td>Cebolla / Nogal andino / Hierro oxidado</td>
+<td>Cero anilinas, cero metales pesados</td>
+<td>Color de la fibra</td>
+</tr>
+<tr>
+<td><strong>Botones de pepa de aguacate</strong></td>
+<td>Residuo artesanal</td>
+<td>Natural, biodegradable, cada pieza única</td>
+<td>Cierre (solo CHÍA)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tintes%3A-fuente-y-proceso" tabindex="-1">Tintes: fuente y proceso</h3>
+<table>
+<thead>
+<tr>
+<th>Color</th>
+<th>Fuente</th>
+<th>Proceso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Amarillo dorado</strong></td>
+<td>Cáscara de cebolla (<em>Allium cepa</em>)</td>
+<td>Hervir → inmersión lana → fijar con alumbre de potasio</td>
+</tr>
+<tr>
+<td><strong>Negro tierra</strong></td>
+<td>Nogal andino + agua de hierro oxidado</td>
+<td>Taninos + hierro → negro permanente</td>
+</tr>
+<tr>
+<td><strong>Blanco / Crema</strong></td>
+<td>Sin tintura</td>
+<td>Lavado con saponaria. Color natural de la fibra.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mordiente:</strong> Alumbre de potasio — sal mineral natural, sin toxicidad. Fija el color permanentemente. Técnica documentada en Nobsa y Ráquira desde el siglo XVI.</p>
+<hr>
+<h2 id="10-%C2%B7-proceso-productivo" tabindex="-1">10 · PROCESO PRODUCTIVO</h2>
+<pre class="hljs"><code><div>ESQUILA   ›  Corte de lana. No invasivo. La lana regenera anualmente.
+LAVADO    ›  Agua + saponaria o ceniza. Sin detergentes sintéticos.
+CARDADO   ›  Peinado artesanal de fibras. Alinea y esponja.
+HILADO    ›  Volante de huso o rueca. Fibra → hilo continuo.
+TEJIDO    ›  Telar de madera. Rectángulo completo. Sin cortes. Sin retazos.
+TINTURA   ›  Baño vegetal caliente. Fijación con alumbre.
+ACABADO   ›  Abertura para la cabeza. Bordes en fique. Botón (solo CHÍA).
+</div></code></pre>
+<h3 id="el-rect%C3%A1ngulo-perfecto-%E2%80%94-zero-waste-por-dise%C3%B1o-ancestral" tabindex="-1">El Rectángulo Perfecto — Zero Waste por diseño ancestral</h3>
+<p>La ruana nace del telar como un rectángulo completo. No hay patrón de corte. No hay retazos. Lo que la industria llama "reto de sostenibilidad", los muiscas lo resolvieron hace 500 años por diseño. LANNA lo hereda por convicción: <strong>Zero Waste Design</strong>.</p>
+<hr>
+<h2 id="11-%C2%B7-marco-de-sostenibilidad" tabindex="-1">11 · MARCO DE SOSTENIBILIDAD</h2>
+<h3 id="11.1-%C2%B7-las-9r" tabindex="-1">11.1 · Las 9R</h3>
+<table>
+<thead>
+<tr>
+<th>R</th>
+<th>Principio</th>
+<th>Aplicación LANNA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>R0</strong></td>
+<td>Rechazar</td>
+<td>Sin sintéticos, sin nylon, sin plástico en ninguna parte</td>
+</tr>
+<tr>
+<td><strong>R1</strong></td>
+<td>Repensar</td>
+<td>El rectángulo perfecto elimina el desperdicio desde el diseño</td>
+</tr>
+<tr>
+<td><strong>R2</strong></td>
+<td>Reducir</td>
+<td>Cero retazos. Proceso manual = mínima energía fósil</td>
+</tr>
+<tr>
+<td><strong>R3</strong></td>
+<td>Reusar</td>
+<td>Atemporal. Diseñada para tres generaciones</td>
+</tr>
+<tr>
+<td><strong>R4</strong></td>
+<td>Reparar</td>
+<td>La lana se remienda y refuerza con técnicas simples</td>
+</tr>
+<tr>
+<td><strong>R5</strong></td>
+<td>Restaurar</td>
+<td>Re-tintable. Envejece con dignidad</td>
+</tr>
+<tr>
+<td><strong>R6</strong></td>
+<td>Remanufacturar</td>
+<td>Fibra de prendas dañadas regresa al telar</td>
+</tr>
+<tr>
+<td><strong>R7</strong></td>
+<td>Reproponer</td>
+<td>Ruana → manta → tapiz → relleno</td>
+</tr>
+<tr>
+<td><strong>R8</strong></td>
+<td>Reciclar</td>
+<td>100% biodegradable. En suelo húmedo: 1-5 años</td>
+</tr>
+</tbody>
+</table>
+<h3 id="11.2-%C2%B7-lca-%2F-iso-14040" tabindex="-1">11.2 · LCA / ISO 14040</h3>
+<table>
+<thead>
+<tr>
+<th>Etapa</th>
+<th>Acción LANNA</th>
+<th>Huella</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Materia prima</strong></td>
+<td>Lana criolla local, sin industrializar</td>
+<td>Baja huella hídrica. Sin blanqueo.</td>
+</tr>
+<tr>
+<td><strong>Manufactura</strong></td>
+<td>Telar artesanal manual</td>
+<td>Sin energía fósil en proceso central.</td>
+</tr>
+<tr>
+<td><strong>Empaque</strong></td>
+<td>Kraft + fique + papel semilla</td>
+<td>100% biodegradable.</td>
+</tr>
+<tr>
+<td><strong>Distribución</strong></td>
+<td>Cadena corta, artesanos locales</td>
+<td>Huella logística reducida.</td>
+</tr>
+<tr>
+<td><strong>Uso</strong></td>
+<td>20+ años de vida útil</td>
+<td>Amortiza toda la huella de producción.</td>
+</tr>
+<tr>
+<td><strong>Restauración</strong></td>
+<td>Reparable, re-tintable</td>
+<td>Vida útil extendida indefinidamente.</td>
+</tr>
+<tr>
+<td><strong>Fin de vida</strong></td>
+<td>Biodegradable</td>
+<td>Regresa al suelo. Ciclo cerrado.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="11.3-%C2%B7-rueda-lids" tabindex="-1">11.3 · Rueda LIDS</h3>
+<p>Marco de evaluación de circularidad aplicado en etapas de diseño para identificar fortalezas y oportunidades de mejora en cada dimensión del ciclo productivo.</p>
+<hr>
+<h2 id="12-%C2%B7-colecci%C3%B3n-inaugural-%E2%80%94-bochica" tabindex="-1">12 · COLECCIÓN INAUGURAL — BOCHICA</h2>
+<h3 id="su%C3%A9-%C2%B7-el-sol" tabindex="-1">SUÉ · El Sol</h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Inspiración</strong></td>
+<td>Sué, deidad solar muisca. Fuerza, luz, masculinidad.</td>
+</tr>
+<tr>
+<td><strong>Prenda</strong></td>
+<td>Ruana en lana virgen criolla sin tintura.</td>
+</tr>
+<tr>
+<td><strong>Color</strong></td>
+<td>Blanco natural — la fibra en su estado más puro.</td>
+</tr>
+<tr>
+<td><strong>Dimensiones</strong></td>
+<td>130 × 130 cm (estándar) · 150 × 150 cm (extendida)</td>
+</tr>
+<tr>
+<td><strong>Detalles</strong></td>
+<td>Bordes en fique. Sin botón.</td>
+</tr>
+<tr>
+<td><strong>Mensaje</strong></td>
+<td>Quien viste SUÉ lleva el sol del altiplano.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ch%C3%ADa-%C2%B7-la-luna" tabindex="-1">CHÍA · La Luna</h3>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Inspiración</strong></td>
+<td>Chía, diosa lunar muisca. Fertilidad, noche, feminidad.</td>
+</tr>
+<tr>
+<td><strong>Prenda</strong></td>
+<td>Ruana en lana criolla teñida negro tierra.</td>
+</tr>
+<tr>
+<td><strong>Color</strong></td>
+<td>Negro — nogal andino + agua de hierro oxidado.</td>
+</tr>
+<tr>
+<td><strong>Dimensiones</strong></td>
+<td>130 × 130 cm (estándar) · 150 × 150 cm (extendida)</td>
+</tr>
+<tr>
+<td><strong>Detalles</strong></td>
+<td>Bordes en fique. Botón de pepa de aguacate.</td>
+</tr>
+<tr>
+<td><strong>Mensaje</strong></td>
+<td>Quien viste CHÍA lleva la noche del altiplano.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tallaje" tabindex="-1">Tallaje</h3>
+<p>Talla única por diseño y sostenibilidad. La ruana es drapeada, no sastre: se adapta al cuerpo. Sin patrones por talla. Sin retazos adicionales. Dos configuraciones de telar (ver dimensiones) son el único ajuste necesario.</p>
+<hr>
+<h2 id="13-%C2%B7-sistema-de-packaging" tabindex="-1">13 · SISTEMA DE PACKAGING</h2>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Material</th>
+<th>Justificación eco</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Caja circular kraft</strong></td>
+<td>Cartón sin blanquear</td>
+<td>Sin cloro, sin dioxinas. Biodegradable.</td>
+</tr>
+<tr>
+<td><strong>Grabado del volante de huso</strong></td>
+<td>Tinta base acuosa</td>
+<td>Sin solventes petroquímicos.</td>
+</tr>
+<tr>
+<td><strong>Cordón de cierre</strong></td>
+<td>Fique nativo colombiano</td>
+<td>100% biodegradable.</td>
+</tr>
+<tr>
+<td><strong>Tarjeta semilla</strong></td>
+<td>Papel reciclado con semillas nativas</td>
+<td>Al descartarla, se siembra. Cero basura.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Unboxing:</strong> La prenda va enrollada en espiral. Desenrollar conecta con el acto de hilar al revés. No es empaque: es una ceremonia pequeña.</p>
+<hr>
+<h2 id="14-%C2%B7-souvenir-%E2%80%94-primeros-pasos" tabindex="-1">14 · SOUVENIR — PRIMEROS PASOS</h2>
+<table>
+<thead>
+<tr>
+<th>Objeto</th>
+<th>Material</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Monedero tejido</strong></td>
+<td>Lana criolla, patrón del volante de huso</td>
+<td>Empaque + objeto funcional</td>
+</tr>
+<tr>
+<td><strong>Llavero-botón</strong></td>
+<td>Pepa de aguacate tallada a mano</td>
+<td>Muestra de materia prima artesanal</td>
+</tr>
+<tr>
+<td><strong>Etiqueta semilla</strong></td>
+<td>Papel reciclado con semillas nativas</td>
+<td>Información de marca + acto de siembra</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="15-%C2%B7-objetos-de-marca" tabindex="-1">15 · OBJETOS DE MARCA</h2>
+<table>
+<thead>
+<tr>
+<th>Objeto</th>
+<th>Material</th>
+<th>Concepto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tote Bag</strong></td>
+<td>Lona algodón natural + serigrafia base agua</td>
+<td>Forma semitriangular del volante de huso</td>
+</tr>
+<tr>
+<td><strong>Taza</strong></td>
+<td>Cerámica artesanal con isotipo grabado</td>
+<td>El ritual diario como acto de identidad</td>
+</tr>
+<tr>
+<td><strong>Agenda</strong></td>
+<td>Papel reciclado + pasta de lana prensada</td>
+<td><em>Bochica enseñó a hilar; nosotros a registrar</em></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="16-%C2%B7-audiencia-objetivo-y-buyer-personas" tabindex="-1">16 · AUDIENCIA OBJETIVO Y BUYER PERSONAS</h2>
+<p><strong>Primario:</strong> Consumidor consciente, 25-45 años, urbano, poder adquisitivo medio-alto. Valora origen trazable. Rechaza fast fashion.</p>
+<p><strong>Secundario:</strong> Turista cultural que busca un objeto auténtico de Colombia con historia y proceso verificable.</p>
+<p><strong>Fuera de alcance:</strong> Quien compra por logo, quien busca novedad cada temporada.</p>
+<hr>
+<h3 id="buyer-persona-01-%E2%80%94-valentina-morales" tabindex="-1">Buyer Persona 01 — Valentina Morales</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Edad</strong></td>
+<td>34 años</td>
+</tr>
+<tr>
+<td><strong>Ciudad</strong></td>
+<td>Bogotá (Chapinero / Usaquén)</td>
+</tr>
+<tr>
+<td><strong>Ocupación</strong></td>
+<td>Directora creativa en agencia de diseño</td>
+</tr>
+<tr>
+<td><strong>Ingresos</strong></td>
+<td>$6-9 millones COP / mes</td>
+</tr>
+<tr>
+<td><strong>Motivaciones</strong></td>
+<td>Autenticidad, origen, proceso artesanal. No quiere verse como todos.</td>
+</tr>
+<tr>
+<td><strong>Dolores</strong></td>
+<td>Harta del greenwashing. No encuentra marcas colombianas con diseño premium sostenible real.</td>
+</tr>
+<tr>
+<td><strong>Frase</strong></td>
+<td><em>"Prefiero tres prendas perfectas que veinte que no significan nada."</em></td>
+</tr>
+<tr>
+<td><strong>Relación con LANNA</strong></td>
+<td>Comprador recurrente. Embajadora orgánica. Recomienda en su círculo.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="buyer-persona-02-%E2%80%94-james-crawford" tabindex="-1">Buyer Persona 02 — James Crawford</h3>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Edad</strong></td>
+<td>48 años</td>
+</tr>
+<tr>
+<td><strong>Ciudad</strong></td>
+<td>Visitante extranjero (Nueva York / Barcelona / CDMX)</td>
+</tr>
+<tr>
+<td><strong>Ocupación</strong></td>
+<td>Consultor de negocios internacionales</td>
+</tr>
+<tr>
+<td><strong>Ingresos</strong></td>
+<td>USD 8.000+ / mes</td>
+</tr>
+<tr>
+<td><strong>Motivaciones</strong></td>
+<td>Objeto único con historia verificable. Calidad tangible. Conexión cultural real.</td>
+</tr>
+<tr>
+<td><strong>Dolores</strong></td>
+<td>Las artesanías de aeropuerto no tienen calidad. No sabe dónde encontrar moda colombiana seria.</td>
+</tr>
+<tr>
+<td><strong>Frase</strong></td>
+<td><em>"Si pago por algo hecho a mano, quiero saber quién lo hizo y por qué."</em></td>
+</tr>
+<tr>
+<td><strong>Relación con LANNA</strong></td>
+<td>Alto ticket. Potencial embajador internacional.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="16b-%C2%B7-mensajes-clave" tabindex="-1">16B · MENSAJES CLAVE</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Mensaje</th>
+<th>Audiencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>M1</strong></td>
+<td><em>"Todo lo que toca LANNA puede volver a la tierra."</em></td>
+<td>Ambas</td>
+</tr>
+<tr>
+<td><strong>M2</strong></td>
+<td><em>"Boyacá es la región de las mantas. Siempre lo fue."</em></td>
+<td>Primaria / cultural</td>
+</tr>
+<tr>
+<td><strong>M3</strong></td>
+<td><em>"Cada pieza tiene nombre, origen y artesano verificable."</em></td>
+<td>Ambas</td>
+</tr>
+<tr>
+<td><strong>M4</strong></td>
+<td><em>"El lujo silencioso no necesita etiquetas visibles. Solo calidad real."</em></td>
+<td>Primaria / premium</td>
+</tr>
+<tr>
+<td><strong>M5</strong></td>
+<td><em>"Bochica enseñó a hilar. Nosotros continuamos ese hilo."</em></td>
+<td>Ambas / editorial</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Regla:</strong> Al menos un mensaje clave debe estar presente, explícita o implícitamente, en cada pieza de comunicación.</p>
+<hr>
+<h2 id="17-%C2%B7-posicionamiento-competitivo" tabindex="-1">17 · POSICIONAMIENTO COMPETITIVO</h2>
+<table>
+<thead>
+<tr>
+<th>Dimensión</th>
+<th>LANNA</th>
+<th>Artesanía tradicional</th>
+<th>Moda eco genérica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Estética</strong></td>
+<td>Contemporánea, minimalista</td>
+<td>Folklórica, costumbrista</td>
+<td>Trendy, genérica</td>
+</tr>
+<tr>
+<td><strong>Sostenibilidad</strong></td>
+<td>Marco 9R + LCA verificable</td>
+<td>Sin marco formal</td>
+<td>Marketing verde</td>
+</tr>
+<tr>
+<td><strong>Precio</strong></td>
+<td>Premium ($1.200.000+)</td>
+<td>Bajo-medio</td>
+<td>Medio</td>
+</tr>
+<tr>
+<td><strong>Origen</strong></td>
+<td>Trazable y documentado</td>
+<td>Variable</td>
+<td>Opaco</td>
+</tr>
+<tr>
+<td><strong>Narrativa</strong></td>
+<td>Mitología muisca activa</td>
+<td>Artesanía pasiva</td>
+<td>Global, sin identidad</td>
+</tr>
+</tbody>
+</table>
+<p><strong>LANNA ocupa un espacio vacío:</strong> lujo silencioso + ecodiseño riguroso + herencia muisca. Ese cruce no existe hoy en el mercado colombiano.</p>
+<hr>
+<h2 id="17b-%C2%B7-arquitectura-de-marca" tabindex="-1">17B · ARQUITECTURA DE MARCA</h2>
+<pre class="hljs"><code><div>LANNA (marca paraguas)
+│
+├── COLECCIONES
+│   └── Colección BOCHICA (inaugural)
+│       ├── SUÉ · El Sol
+│       └── CHÍA · La Luna
+│
+├── OBJETOS DE MARCA
+│   ├── Tote Bag
+│   ├── Taza cerámica
+│   └── Agenda
+│
+└── SOUVENIR / EXPERIENCIAS
+    └── Kit Primeros Pasos
+        ├── Monedero tejido
+        ├── Llavero-botón aguacate
+        └── Etiqueta semilla
+</div></code></pre>
+<p><strong>Sistema de naming para futuras colecciones:</strong> Cada colección lleva el nombre de una deidad o concepto del panteón muisca. Universo narrativo cohesivo y expandible.</p>
+<p><em>Ejemplos:</em> Colección CHIBCHACUM · Colección BACHUÉ · Colección NEMCATACOA</p>
+<hr>
+<h2 id="18-%C2%B7-modelo-de-negocio" tabindex="-1">18 · MODELO DE NEGOCIO</h2>
+<h3 id="costos-por-prenda-terminada" tabindex="-1">Costos por prenda terminada</h3>
+<table>
+<thead>
+<tr>
+<th>Rubro</th>
+<th>Monto COP</th>
+<th>Qué incluye</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Materia prima</strong></td>
+<td>$90.000</td>
+<td>~500g de hilo de lana criolla hilado artesanalmente</td>
+</tr>
+<tr>
+<td><strong>Mano de obra</strong></td>
+<td>$120.000</td>
+<td>1,5-2 días de artesano en telar. Precio justo.</td>
+</tr>
+<tr>
+<td><strong>Materiales + empaque</strong></td>
+<td>$60.000</td>
+<td>Tintes, alumbre, fique, botón, caja kraft, cordón, tarjeta semilla</td>
+</tr>
+<tr>
+<td><strong>Costos indirectos</strong></td>
+<td>$30.000</td>
+<td>Transporte, diseño, plataforma, herramientas</td>
+</tr>
+<tr>
+<td><strong>COSTO TOTAL</strong></td>
+<td><strong>$300.000</strong></td>
+<td>Por prenda terminada, empacada y lista para vender</td>
+</tr>
+</tbody>
+</table>
+<h3 id="precio-y-margen" tabindex="-1">Precio y margen</h3>
+<table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PVP</strong></td>
+<td>$1.200.000 COP</td>
+</tr>
+<tr>
+<td><strong>Markup</strong></td>
+<td>4× el costo</td>
+</tr>
+<tr>
+<td><strong>Margen bruto</strong></td>
+<td>75% ($900.000 / pieza)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="escala" tabindex="-1">Escala</h3>
+<p>5 artesanos → 10-15 prendas/mes → <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>12</mn><mo>−</mo><mn>18</mn><mi>M</mi><mi>v</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>a</mi><mi>s</mi><mo>→</mo></mrow><annotation encoding="application/x-tex">12-18M ventas → </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">12</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">18</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span></span></span></span>9-13,5M margen bruto mensual.</p>
+<h3 id="canales" tabindex="-1">Canales</h3>
+<table>
+<thead>
+<tr>
+<th>Canal</th>
+<th>Tipo</th>
+<th>Prioridad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Venta directa online</td>
+<td>D2C</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td>Boutiques de diseño</td>
+<td>Consignación / wholesale</td>
+<td>Media</td>
+</tr>
+<tr>
+<td>Ferias de diseño premium</td>
+<td>Validación y presencia</td>
+<td>Media</td>
+</tr>
+<tr>
+<td>Tiendas de museos</td>
+<td>Turismo cultural</td>
+<td>Media</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="19-%C2%B7-voz-y-tono-de-comunicaci%C3%B3n" tabindex="-1">19 · VOZ Y TONO DE COMUNICACIÓN</h2>
+<table>
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Serena</strong></td>
+<td>No grita. Sin exclamaciones. Sin urgencia de temporada.</td>
+</tr>
+<tr>
+<td><strong>Culta</strong></td>
+<td>Referencias culturales sin elitismo.</td>
+</tr>
+<tr>
+<td><strong>Directa</strong></td>
+<td>Sin rodeos. La calidad no necesita adornos de lenguaje.</td>
+</tr>
+<tr>
+<td><strong>Poética</strong></td>
+<td>El lenguaje tiene textura, como la lana. Sin caer en lo cursi.</td>
+</tr>
+<tr>
+<td><strong>Honesta</strong></td>
+<td>Si algo cuesta trabajo, lo dice. Lo artesanal e imperfecto se celebra.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nunca dice:</strong> "tendencia", "colección de temporada", "oferta", "eco-friendly" como slogan vacío.</p>
+<p><strong>Sí dice:</strong> "permanencia", "origen", "proceso", "trazable", "ancestral", "silencio", "dignidad", "ciclo".</p>
+<hr>
+<h2 id="20-%C2%B7-objetivos-de-comunicaci%C3%B3n" tabindex="-1">20 · OBJETIVOS DE COMUNICACIÓN</h2>
+<table>
+<thead>
+<tr>
+<th>Objetivo</th>
+<th>Indicador</th>
+<th>Plazo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Establecer LANNA como referente de moda sostenible premium</td>
+<td>Reconocimiento en segmento objetivo</td>
+<td>12 meses</td>
+</tr>
+<tr>
+<td>Comunicar trazabilidad del proceso como diferenciador</td>
+<td>% piezas que referencian el proceso</td>
+<td>Permanente</td>
+</tr>
+<tr>
+<td>Generar conexión emocional con herencia muisca sin folklorismo</td>
+<td>Engagement en contenido cultural</td>
+<td>6 meses</td>
+</tr>
+<tr>
+<td>Posicionar el precio como reflejo de valor real</td>
+<td>Reducción de objeciones de precio</td>
+<td>6 meses</td>
+</tr>
+<tr>
+<td>Construir comunidad de embajadores orgánicos</td>
+<td>Recomendaciones documentadas</td>
+<td>12 meses</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="20b-%C2%B7-m%C3%A9tricas-de-%C3%A9xito-(kpis)" tabindex="-1">20B · MÉTRICAS DE ÉXITO (KPIs)</h2>
+<h3 id="negocio" tabindex="-1">Negocio</h3>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>Meta Año 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prendas vendidas</td>
+<td>80-120 unidades</td>
+</tr>
+<tr>
+<td>Ingreso bruto</td>
+<td>$96-144 millones COP</td>
+</tr>
+<tr>
+<td>Margen bruto</td>
+<td>≥ 70%</td>
+</tr>
+<tr>
+<td>Ticket promedio</td>
+<td>$1.200.000 COP</td>
+</tr>
+</tbody>
+</table>
+<h3 id="marca" tabindex="-1">Marca</h3>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>Meta Año 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tasa de recompra</td>
+<td>≥ 25%</td>
+</tr>
+<tr>
+<td>Net Promoter Score (NPS)</td>
+<td>≥ 70</td>
+</tr>
+<tr>
+<td>Menciones orgánicas en redes</td>
+<td>≥ 50 / mes</td>
+</tr>
+<tr>
+<td>Alianzas con boutiques premium</td>
+<td>≥ 2</td>
+</tr>
+<tr>
+<td>Apariciones editoriales</td>
+<td>≥ 3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="impacto-social-%2F-ambiental" tabindex="-1">Impacto social / ambiental</h3>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>Meta Año 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Artesanos boyacenses vinculados</td>
+<td>≥ 3</td>
+</tr>
+<tr>
+<td>% materiales biodegradables</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Residuos de producción</td>
+<td>0 kg (cero retazos)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="21-%C2%B7-manifiesto" tabindex="-1">21 · MANIFIESTO</h2>
+<p><em>Antes del oro, hubo un hilo.</em>
+<em>Antes del Dorado, hubo un telar.</em>
+<em>Antes de cualquier símbolo de riqueza que esta tierra produjera,</em>
+<em>hubo un dios que se sentó junto a su pueblo</em>
+<em>y le enseñó a convertir la lana en identidad.</em></p>
+<p><em>Bochica no les enseñó a fabricar.</em>
+<em>Les enseñó a crear.</em>
+<em>Y esa diferencia lo es todo.</em></p>
+<p><em>LANNA no fabrica ruanas.</em>
+<em>Continúa un hilo que tiene quinientos años.</em>
+<em>Un hilo que nació a 2.600 metros sobre el nivel del mar,</em>
+<em>entre el viento del páramo y las manos de un artesano</em>
+<em>que sabe lo que hace y por qué lo hace.</em></p>
+<p><em>Usamos lo que la tierra nos da.</em>
+<em>Devolvemos lo que la tierra puede recibir.</em>
+<em>Y entre esas dos acciones, creamos algo</em>
+<em>que merece durar.</em></p>
+<p><em>El lujo verdadero no envejece.</em>
+<em>Solo se hace más honesto con el tiempo.</em></p>
+<hr>
+<p><strong>LANNA. Naturaleza. Nobleza. Silencio.</strong></p>
+<hr>
+<p><em>Repositorio: <code>c:\OneDrive - unicesmag.edu.co\Ecodiseño\Lanna\WEB</code></em>
+<em>Versión 2.0 — Abril 2026</em></p>
+
+    </div>
+
+
+</body></html>

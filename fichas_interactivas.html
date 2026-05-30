@@ -1,1326 +1,1634 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=2560">
-  <title>LANNA — Fichas Técnicas Interactivas</title>
-  <link rel="icon" href="logo/isotipo.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-  <style>
-    /* ==========================================================================
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=2560" />
+    <title>LANNA — Fichas Técnicas Interactivas</title>
+    <link rel="icon" href="logo/isotipo.svg" type="image/svg+xml" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ==========================================================================
        LANNA DESIGN TOKENS (Quiet Luxury — Inspirado en pitch.html)
        ========================================================================== */
-    :root {
-      --dark: #121312;
-      --stone: #1e1f1e;
-      --light: #f5f0e8;
-      --gold: #e5c272;
-      --gold-bg: rgba(229, 194, 114, 0.08);
-      --border-color: rgba(245, 240, 232, 0.1);
-      --ease: cubic-bezier(0.4, 0, 0.2, 1);
-      --fw: "Outfit", sans-serif;
-      --fh: "Playfair Display", serif;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      outline: none;
-    }
-
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background-color: var(--dark);
-      color: var(--light);
-      font-family: var(--fw);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* 16:9 Screen Layout Container */
-    .app-wrapper {
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    /* HEADER / TOP BAR */
-    header.top-bar {
-      height: 70px;
-      border-bottom: 1px solid var(--border-color);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 2rem;
-      flex-shrink: 0;
-      z-index: 100;
-      background: rgba(18, 19, 18, 0.95);
-      backdrop-filter: blur(10px);
-    }
-
-    .btn-back {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      background: transparent;
-      border: 1px solid var(--border-color);
-      color: var(--light);
-      padding: 0.6rem 1.2rem;
-      font-family: var(--fw);
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s var(--ease);
-      border-radius: 2px;
-      width: 100%;
-    }
-
-    .btn-back:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-      background: var(--gold-bg);
-      transform: translateX(-4px);
-    }
-
-    .header-logo {
-      height: 20px;
-      filter: brightness(0) saturate(100%) invert(86%) sepia(21%) saturate(795%) hue-rotate(345deg) brightness(97%) contrast(93%) !important;
-      opacity: 1;
-    }
-
-    .btn-action-group {
-      display: flex;
-      gap: 0.8rem;
-    }
-
-    .btn-action {
-      background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      padding: 0.6rem 1.2rem;
-      font-family: var(--fw);
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.3s var(--ease);
-      border-radius: 2px;
-    }
-
-    .btn-action:hover {
-      background: var(--gold);
-      color: var(--dark);
-      box-shadow: 0 0 20px rgba(229, 194, 114, 0.3);
-    }
-
-    /* MAIN CONTENT SPLIT-PANE */
-    .split-pane {
-      flex: 1;
-      display: flex;
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* SIDEBAR SECTOR (FIJO Y ANGOSTO) */
-    aside.sidebar {
-      width: 260px;
-      border-right: 1px solid var(--border-color);
-      background: rgba(18, 19, 18, 0.65);
-      display: flex;
-      flex-direction: column;
-      padding: 1.5rem;
-      overflow-y: auto;
-      flex-shrink: 0;
-    }
-
-    /* Custom scrollbar for sidebar */
-    aside.sidebar::-webkit-scrollbar {
-      width: 4px;
-    }
-    aside.sidebar::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    aside.sidebar::-webkit-scrollbar-thumb {
-      border-radius: 2px;
-    }
-
-    .sidebar-footer {
-      margin-top: auto;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 210px;
-      gap: 1rem;
-    }
-
-    /* Category Switching Tabs */
-    .category-switch {
-      display: flex;
-      max-width: 210px;
-      background: rgba(30, 31, 30, 0.8);
-      border: 1px solid var(--border-color);
-      padding: 0.2rem;
-      margin-bottom: 1.5rem;
-      border-radius: 3px;
-      flex-shrink: 0;
-    }
-
-    .switch-btn {
-      flex: 1;
-      background: transparent;
-      border: none;
-      color: var(--light);
-      padding: 0.65rem 0;
-      font-family: var(--fw);
-      font-weight: 500;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.3s var(--ease);
-      border-radius: 2px;
-    }
-
-    .switch-btn.active {
-      background: var(--gold);
-      color: var(--dark);
-      font-weight: 700;
-    }
-
-    /* Item Groups */
-    .menu-group {
-      display: none;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    .menu-group.active {
-      display: flex;
-    }
-
-    .ensemble-section {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .section-title {
-      font-family: var(--fw);
-      font-weight: 700;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.4rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .section-title::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(229, 194, 114, 0.2) 0%, rgba(229, 194, 114, 0) 100%);
-    }
-
-    /* Grid of Selection Cards (Cuadraditos interactivos) */
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(2, 100px);
-      gap: 0.6rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .card-btn {
-      position: relative;
-      aspect-ratio: 1;
-      border: 1px solid rgba(245, 240, 232, 0.08);
-      background-size: cover;
-      background-position: center;
-      cursor: pointer;
-      overflow: hidden;
-      border-radius: 3px;
-      transition: all 0.4s var(--ease);
-      display: flex;
-      align-items: flex-end;
-      padding: 0.5rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-
-    .card-btn::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(18, 19, 18, 0.95) 0%, rgba(18, 19, 18, 0.3) 100%);
-      z-index: 1;
-      transition: all 0.4s var(--ease);
-    }
-
-    .card-btn .card-label {
-      position: relative;
-      z-index: 2;
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--light);
-      line-height: 1.1;
-      transition: all 0.3s var(--ease);
-    }
-
-    .card-btn:hover {
-      border-color: var(--gold);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(229, 194, 114, 0.15);
-    }
-
-    .card-btn:hover::before {
-      background: linear-gradient(to top, rgba(18, 19, 18, 0.95) 0%, rgba(18, 19, 18, 0.15) 100%);
-    }
-
-    .card-btn.active {
-      border-color: var(--gold);
-      box-shadow: 0 0 15px rgba(229, 194, 114, 0.25);
-    }
-
-    .card-btn.active .card-label {
-      color: var(--gold);
-    }
-
-    /* FULL-BLEED VISOR PANELS (70% WIDTH - A SANGRE) */
-    main.viewer {
-      flex: 1;
-      background: var(--dark);
-      display: flex;
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* Viewer content wrapper (A sangre, 100% full height/width) */
-    .viewer-content {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      opacity: 0;
-      transform: scale(0.99);
-      transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
-      padding: 2rem;
-      gap: 2rem;
-      overflow: hidden;
-    }
-
-    .viewer-content.active {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* Viewer Left: High-end interactive gallery (42% width) */
-    .viewer-gallery {
-      width: 42%;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      flex-shrink: 0;
-      height: 100%;
-    }
-
-    .main-image-display {
-      width: 100%;
-      aspect-ratio: 1;
-      flex-shrink: 0;
-      border: 1px solid var(--border-color);
-      border-radius: 4px;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      box-shadow: 0 20px 45px rgba(0,0,0,0.6);
-      transition: background-image 0.35s var(--ease);
-      position: relative;
-    }
-
-    .main-image-display::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      box-shadow: inset 0 0 50px rgba(0,0,0,0.4);
-      pointer-events: none;
-    }
-
-    .gallery-thumbnails {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.6rem;
-      flex-shrink: 0;
-    }
-
-    .thumb-btn {
-      aspect-ratio: 1;
-      border: 1px solid var(--border-color);
-      border-radius: 3px;
-      background-size: cover;
-      background-position: center;
-      cursor: pointer;
-      transition: all 0.3s var(--ease);
-      opacity: 0.6;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    .thumb-btn:hover {
-      opacity: 0.9;
-      border-color: rgba(245, 240, 232, 0.4);
-    }
-
-    .thumb-btn.active {
-      opacity: 1;
-      border-color: var(--gold);
-      box-shadow: 0 0 10px rgba(229, 194, 114, 0.3);
-    }
-
-    /* Viewer Right: Spec-Sheet display panel (58% width) */
-    .viewer-specs {
-      width: 58%;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      overflow-y: auto;
-      padding-right: 1rem;
-      height: 100%;
-    }
-
-    /* Custom scrollbar for specs */
-    .viewer-specs::-webkit-scrollbar {
-      width: 4px;
-    }
-    .viewer-specs::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    .viewer-specs::-webkit-scrollbar-thumb {
-      background: rgba(245, 240, 232, 0.15);
-      border-radius: 2px;
-    }
-
-    /* Spec sheet header styling */
-    .spec-header {
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 1rem;
-    }
-
-    .spec-ref {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.4rem;
-      display: block;
-    }
-
-    .spec-title-text {
-      font-family: var(--fw);
-      font-weight: 900;
-      font-size: 2.2rem;
-      text-transform: uppercase;
-      letter-spacing: -0.01em;
-      line-height: 1.1;
-      color: var(--light);
-    }
-
-    /* Grid of sleek metadata chips */
-    .spec-chips-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.6rem;
-    }
-
-    .spec-chip {
-      background: rgba(30, 31, 30, 0.5);
-      border-left: 3px solid var(--gold);
-      border-right: 1px solid rgba(245, 240, 232, 0.04);
-      border-top: 1px solid rgba(245, 240, 232, 0.04);
-      border-bottom: 1px solid rgba(245, 240, 232, 0.04);
-      padding: 0.6rem 0.8rem;
-      border-radius: 2px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    }
-
-    .spec-chip-label {
-      font-size: 0.55rem;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      margin-bottom: 2px;
-      display: block;
-    }
-
-    .spec-chip-value {
-      font-size: 0.76rem;
-      font-weight: 300;
-      color: var(--light);
-      line-height: 1.3;
-    }
-
-    /* Details row structure */
-    .spec-section-title {
-      font-family: var(--fw);
-      font-weight: 700;
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.4rem;
-      border-bottom: 1px solid rgba(229, 194, 114, 0.2);
-      padding-bottom: 0.3rem;
-    }
-
-    .spec-description {
-      font-size: 0.85rem;
-      font-weight: 300;
-      line-height: 1.6;
-      color: rgba(245, 240, 232, 0.8);
-    }
-
-    /* Cronograma: Vertical Visual Timeline */
-    .timeline-container {
-      position: relative;
-      padding-left: 1.5rem;
-      margin: 0.4rem 0;
-    }
-
-    .timeline-container::before {
-      content: "";
-      position: absolute;
-      left: 6px;
-      top: 6px;
-      bottom: 6px;
-      width: 1px;
-      border-left: 1px dashed rgba(229, 194, 114, 0.3);
-    }
-
-    .timeline-step {
-      position: relative;
-      margin-bottom: 0.8rem;
-    }
-    .timeline-step:last-child {
-      margin-bottom: 0;
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: -1.5rem;
-      top: 3px;
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      background: var(--gold);
-      border: 3px solid var(--dark);
-      box-shadow: 0 0 0 1px var(--gold);
-    }
-
-    .timeline-text {
-      font-size: 0.8rem;
-      font-weight: 300;
-      line-height: 1.4;
-      color: rgba(245, 240, 232, 0.8);
-    }
-
-    /* Components Table */
-    .comp-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: rgba(30, 31, 30, 0.4);
-      border: 1px solid var(--border-color);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .comp-table th, .comp-table td {
-      padding: 0.65rem 0.9rem;
-      font-size: 0.78rem;
-      text-align: left;
-    }
-
-    .comp-table th {
-      background: rgba(18, 19, 18, 0.8);
-      color: var(--gold);
-      font-weight: 600;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .comp-table td {
-      border-bottom: 1px solid rgba(245, 240, 232, 0.05);
-      font-weight: 300;
-    }
-    .comp-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    /* Observations block: Playfair cursive overlay */
-    .obs-block {
-      background: var(--gold-bg);
-      border-left: 2px solid var(--gold);
-      padding: 1rem 1.4rem;
-      border-radius: 0 4px 4px 0;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
-    .obs-label {
-      font-size: 0.6rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--gold);
-      letter-spacing: 0.1em;
-      margin-bottom: 0.4rem;
-      display: block;
-    }
-
-    .obs-text {
-      font-family: var(--fh);
-      font-style: italic;
-      font-size: 0.9rem;
-      line-height: 1.5;
-      color: rgba(245, 240, 232, 0.9);
-    }
-
-    
-    /* Botón Fullscreen */
-    .fs-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--dark);
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 9999;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    }
-    .fs-button:hover {
-      background: var(--gold);
-      color: var(--dark);
-      transform: scale(1.1);
-    }
-
-    /* PRINT LAYOUT (TAMAÑO CARTA VERTICAL) */
-    @media print {
-      body * {
-        visibility: hidden;
+      :root {
+        --dark: #121312;
+        --stone: #1e1f1e;
+        --light: #f5f0e8;
+        --gold: #e5c272;
+        --gold-bg: rgba(229, 194, 114, 0.08);
+        --border-color: rgba(245, 240, 232, 0.1);
+        --ease: cubic-bezier(0.4, 0, 0.2, 1);
+        --fw: "Outfit", sans-serif;
+        --fh: "Playfair Display", serif;
       }
-      #print-area, #print-area * {
-        visibility: visible;
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
       }
-      #print-area {
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: var(--dark);
+        color: var(--light);
+        font-family: var(--fw);
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* 16:9 Screen Layout Container */
+      .app-wrapper {
+        width: 1600px;
+        height: 900px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        flex-shrink: 0;
+        transform-origin: center center;
+      }
+
+      /* HEADER / TOP BAR */
+      header.top-bar {
+        height: 70px;
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 2rem;
+        flex-shrink: 0;
+        z-index: 100;
+        background: rgba(18, 19, 18, 0.95);
+        backdrop-filter: blur(10px);
+      }
+
+      .btn-back {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        background: transparent;
+        border: 1px solid var(--border-color);
+        color: var(--light);
+        padding: 0.6rem 1.2rem;
+        font-family: var(--fw);
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s var(--ease);
+        border-radius: 2px;
+        width: 100%;
+      }
+
+      .btn-back:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+        background: var(--gold-bg);
+        transform: translateX(-4px);
+      }
+
+      .header-logo {
+        height: 20px;
+        filter: brightness(0) saturate(100%) invert(86%) sepia(21%)
+          saturate(795%) hue-rotate(345deg) brightness(97%) contrast(93%) !important;
+        opacity: 1;
+      }
+
+      .btn-action-group {
+        display: flex;
+        gap: 0.8rem;
+      }
+
+      .btn-action {
+        background: transparent;
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        padding: 0.6rem 1.2rem;
+        font-family: var(--fw);
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s var(--ease);
+        border-radius: 2px;
+      }
+
+      .btn-action:hover {
+        background: var(--gold);
+        color: var(--dark);
+        box-shadow: 0 0 20px rgba(229, 194, 114, 0.3);
+      }
+
+      /* MAIN CONTENT SPLIT-PANE */
+      .split-pane {
+        flex: 1;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* SIDEBAR SECTOR (FIJO Y ANGOSTO) */
+      aside.sidebar {
+        width: 260px;
+        border-right: 1px solid var(--border-color);
+        background: rgba(18, 19, 18, 0.65);
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        overflow-y: auto;
+        flex-shrink: 0;
+      }
+
+      /* Custom scrollbar for sidebar */
+      aside.sidebar::-webkit-scrollbar {
+        width: 4px;
+      }
+      aside.sidebar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      aside.sidebar::-webkit-scrollbar-thumb {
+        border-radius: 2px;
+      }
+
+      .sidebar-footer {
+        margin-top: auto;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 210px;
+        gap: 1rem;
+      }
+
+      /* Category Switching Tabs */
+      .category-switch {
+        display: flex;
+        max-width: 210px;
+        background: rgba(30, 31, 30, 0.8);
+        border: 1px solid var(--border-color);
+        padding: 0.2rem;
+        margin-bottom: 1.5rem;
+        border-radius: 3px;
+        flex-shrink: 0;
+      }
+
+      .switch-btn {
+        flex: 1;
+        background: transparent;
+        border: none;
+        color: var(--light);
+        padding: 0.65rem 0;
+        font-family: var(--fw);
+        font-weight: 500;
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s var(--ease);
+        border-radius: 2px;
+      }
+
+      .switch-btn.active {
+        background: var(--gold);
+        color: var(--dark);
+        font-weight: 700;
+      }
+
+      /* Item Groups */
+      .menu-group {
+        display: none;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+
+      .menu-group.active {
+        display: flex;
+      }
+
+      .ensemble-section {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .section-title {
+        font-family: var(--fw);
+        font-weight: 700;
+        font-size: 0.6rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.4rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .section-title::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          rgba(229, 194, 114, 0.2) 0%,
+          rgba(229, 194, 114, 0) 100%
+        );
+      }
+
+      /* Grid of Selection Cards (Cuadraditos interactivos) */
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 100px);
+        gap: 0.6rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .card-btn {
+        position: relative;
+        aspect-ratio: 1;
+        border: 1px solid rgba(245, 240, 232, 0.08);
+        background-size: cover;
+        background-position: center;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 3px;
+        transition: all 0.4s var(--ease);
+        display: flex;
+        align-items: flex-end;
+        padding: 0.5rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .card-btn::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(18, 19, 18, 0.95) 0%,
+          rgba(18, 19, 18, 0.3) 100%
+        );
+        z-index: 1;
+        transition: all 0.4s var(--ease);
+      }
+
+      .card-btn .card-label {
+        position: relative;
+        z-index: 2;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--light);
+        line-height: 1.1;
+        transition: all 0.3s var(--ease);
+      }
+
+      .card-btn:hover {
+        border-color: var(--gold);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(229, 194, 114, 0.15);
+      }
+
+      .card-btn:hover::before {
+        background: linear-gradient(
+          to top,
+          rgba(18, 19, 18, 0.95) 0%,
+          rgba(18, 19, 18, 0.15) 100%
+        );
+      }
+
+      .card-btn.active {
+        border-color: var(--gold);
+        box-shadow: 0 0 15px rgba(229, 194, 114, 0.25);
+      }
+
+      .card-btn.active .card-label {
+        color: var(--gold);
+      }
+
+      /* FULL-BLEED VISOR PANELS (70% WIDTH - A SANGRE) */
+      main.viewer {
+        flex: 1;
+        background: var(--dark);
+        display: flex;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Viewer content wrapper (A sangre, 100% full height/width) */
+      .viewer-content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        opacity: 0;
+        transform: scale(0.99);
+        transition:
+          opacity 0.35s var(--ease),
+          transform 0.35s var(--ease);
+        padding: 2rem;
+        gap: 2rem;
+        overflow: hidden;
+      }
+
+      .viewer-content.active {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* Viewer Left: High-end interactive gallery (width to fill height perfectly) */
+      .viewer-gallery {
+        width: 660px;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        flex-shrink: 0;
+        height: 100%;
+      }
+
+      .main-image-display {
+        width: 100%;
+        aspect-ratio: 1;
+        flex-shrink: 0;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+        transition: background-image 0.35s var(--ease);
+        position: relative;
+      }
+
+      .main-image-display::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.4);
+        pointer-events: none;
+      }
+
+      .gallery-thumbnails {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.6rem;
+        flex-shrink: 0;
+      }
+
+      .thumb-btn {
+        aspect-ratio: 1;
+        border: 1px solid var(--border-color);
+        border-radius: 3px;
+        background-size: cover;
+        background-position: center;
+        cursor: pointer;
+        transition: all 0.3s var(--ease);
+        opacity: 0.6;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .thumb-btn:hover {
+        opacity: 0.9;
+        border-color: rgba(245, 240, 232, 0.4);
+      }
+
+      .thumb-btn.active {
+        opacity: 1;
+        border-color: var(--gold);
+        box-shadow: 0 0 10px rgba(229, 194, 114, 0.3);
+      }
+
+      /* Viewer Right: Spec-Sheet display panel (takes remaining width) */
+      .viewer-specs {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        overflow-y: auto;
+        padding-right: 1rem;
+        height: 100%;
+      }
+
+      /* Custom scrollbar for specs */
+      .viewer-specs::-webkit-scrollbar {
+        width: 4px;
+      }
+      .viewer-specs::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .viewer-specs::-webkit-scrollbar-thumb {
+        background: rgba(245, 240, 232, 0.15);
+        border-radius: 2px;
+      }
+
+      /* Spec sheet header styling */
+      .spec-header {
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 1rem;
+      }
+
+      .spec-ref {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.4rem;
+        display: block;
+      }
+
+      .spec-title-text {
+        font-family: var(--fw);
+        font-weight: 900;
+        font-size: 2.2rem;
+        text-transform: uppercase;
+        letter-spacing: -0.01em;
+        line-height: 1.1;
+        color: var(--light);
+      }
+
+      /* Grid of sleek metadata chips */
+      .spec-chips-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.6rem;
+      }
+
+      .spec-chip {
+        background: rgba(30, 31, 30, 0.5);
+        border-left: 3px solid var(--gold);
+        border-right: 1px solid rgba(245, 240, 232, 0.04);
+        border-top: 1px solid rgba(245, 240, 232, 0.04);
+        border-bottom: 1px solid rgba(245, 240, 232, 0.04);
+        padding: 0.6rem 0.8rem;
+        border-radius: 2px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      }
+
+      .spec-chip-label {
+        font-size: 0.55rem;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        margin-bottom: 2px;
+        display: block;
+      }
+
+      .spec-chip-value {
+        font-size: 0.76rem;
+        font-weight: 300;
+        color: var(--light);
+        line-height: 1.3;
+      }
+
+      /* Details row structure */
+      .spec-section-title {
+        font-family: var(--fw);
+        font-weight: 700;
+        font-size: 0.72rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.4rem;
+        border-bottom: 1px solid rgba(229, 194, 114, 0.2);
+        padding-bottom: 0.3rem;
+      }
+
+      .spec-description {
+        font-size: 0.85rem;
+        font-weight: 300;
+        line-height: 1.6;
+        color: rgba(245, 240, 232, 0.8);
+      }
+
+      /* Cronograma: Vertical Visual Timeline */
+      .timeline-container {
+        position: relative;
+        padding-left: 1.5rem;
+        margin: 0.4rem 0 0.4rem 0.5rem;
+      }
+
+      .timeline-container::before {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: 6px;
+        bottom: 6px;
+        width: 1px;
+        border-left: 1px dashed rgba(229, 194, 114, 0.3);
+        z-index: 0;
+      }
+
+      .timeline-step {
+        position: relative;
+        margin-bottom: 0.8rem;
+        z-index: 1;
+      }
+      .timeline-step:last-child {
+        margin-bottom: 0;
+      }
+
+      .timeline-dot {
+        position: absolute;
+        left: -1.5rem;
+        top: 3px;
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background: var(--gold);
+        border: 3px solid var(--dark);
+        box-shadow: 0 0 0 1px var(--gold);
+        z-index: 2;
+      }
+
+      .timeline-text {
+        font-size: 0.8rem;
+        font-weight: 300;
+        line-height: 1.4;
+        color: rgba(245, 240, 232, 0.8);
+      }
+
+      /* Components Table */
+      .comp-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: rgba(30, 31, 30, 0.4);
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .comp-table th,
+      .comp-table td {
+        padding: 0.65rem 0.9rem;
+        font-size: 0.78rem;
+        text-align: left;
+      }
+
+      .comp-table th {
+        background: rgba(18, 19, 18, 0.8);
+        color: var(--gold);
+        font-weight: 600;
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .comp-table td {
+        border-bottom: 1px solid rgba(245, 240, 232, 0.05);
+        font-weight: 300;
+      }
+      .comp-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      /* Observations block: Playfair cursive overlay */
+      .obs-block {
+        background: var(--gold-bg);
+        border-left: 2px solid var(--gold);
+        padding: 1rem 1.4rem;
+        border-radius: 0 4px 4px 0;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .obs-label {
+        font-size: 0.6rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--gold);
+        letter-spacing: 0.1em;
+        margin-bottom: 0.4rem;
+        display: block;
+      }
+
+      .obs-text {
+        font-family: var(--fh);
+        font-style: italic;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: rgba(245, 240, 232, 0.9);
+      }
+
+      /* Botón Fullscreen */
+      .fs-button {
         position: fixed;
-        left: 0;
-        top: 0;
-        width: 215.9mm !important;
-        height: 279.4mm !important;
-        padding: 10mm !important;
-        background: white !important;
-        color: black !important;
-        box-shadow: none !important;
-        z-index: 9999999;
+        bottom: 20px;
+        right: 20px;
+        background: var(--dark);
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 9999;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
       }
-    }
-  </style>
-</head>
-<body>
+      .fs-button:hover {
+        background: var(--gold);
+        color: var(--dark);
+        transform: scale(1.1);
+      }
 
-  <div class="app-wrapper">
-    <!-- HEADER ELIMINADO PARA MAXIMIZAR ESPACIO -->
+      /* PRINT LAYOUT (TAMAÑO CARTA VERTICAL) */
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+        #print-area,
+        #print-area * {
+          visibility: visible;
+        }
+        #print-area {
+          position: fixed;
+          left: 0;
+          top: 0;
+          width: 215.9mm !important;
+          height: 279.4mm !important;
+          padding: 10mm !important;
+          background: white !important;
+          color: black !important;
+          box-shadow: none !important;
+          z-index: 9999999;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-wrapper">
+      <!-- HEADER ELIMINADO PARA MAXIMIZAR ESPACIO -->
 
-    <!-- CONTENT BODY -->
-    <div class="split-pane">
-      
-      <!-- SIDEBAR SECTOR (30% WIDTH) -->
-      <aside class="sidebar">
-        
-        <!-- Category switcher tabs -->
-        <div class="category-switch">
-          <button class="switch-btn active" id="switch-prendas">Prendas</button>
-          <button class="switch-btn" id="switch-souvenirs">Souvenirs</button>
-        </div>
+      <!-- CONTENT BODY -->
+      <div class="split-pane">
+        <!-- SIDEBAR SECTOR (30% WIDTH) -->
+        <aside class="sidebar">
+          <!-- Category switcher tabs -->
+          <div class="category-switch">
+            <button class="switch-btn active" id="switch-prendas">
+              Prendas
+            </button>
+            <button class="switch-btn" id="switch-souvenirs">Souvenirs</button>
+          </div>
 
-        <!-- PRENDAS GROUP -->
-        <div class="menu-group active" id="group-prendas">
-          <div class="ensemble-section">
-            <span class="section-title">Conjunto Chía &nbsp;·&nbsp; Luna</span>
-            <div class="grid-container">
-              <button class="card-btn active" data-id="g_ruana_chia" style="background-image: url('ficha_tecnica/01/B.jpeg?v=2');">
-                <span class="card-label">Ruana</span>
-              </button>
-              <button class="card-btn" data-id="g_pantalon_chia" style="background-image: url('ficha_tecnica/02/B.jpeg?v=2');">
-                <span class="card-label">Pantalón</span>
-              </button>
-              <button class="card-btn" data-id="g_cotizas_chia" style="background-image: url('ficha_tecnica/03/B.jpeg?v=2');">
-                <span class="card-label">Cotizas</span>
-              </button>
-              <!-- Sombrero agregado para completar 2x2 -->
-              <button class="card-btn" data-id="g_sombrero_chia" style="background-image: url('ficha_tecnica/04/B.jpeg?v=2');">
-                <span class="card-label">Sombrero</span>
-              </button>
+          <!-- PRENDAS GROUP -->
+          <div class="menu-group active" id="group-prendas">
+            <div class="ensemble-section">
+              <span class="section-title"
+                >Conjunto Chía &nbsp;·&nbsp; Luna</span
+              >
+              <div class="grid-container">
+                <button
+                  class="card-btn active"
+                  data-id="g_ruana_chia"
+                  style="
+                    background-image: url(&quot;ficha_tecnica/01/B.jpeg?v=2&quot;);
+                  "
+                >
+                  <span class="card-label">Ruana</span>
+                </button>
+                <button
+                  class="card-btn"
+                  data-id="g_pantalon_chia"
+                  style="
+                    background-image: url(&quot;ficha_tecnica/02/B.jpeg?v=2&quot;);
+                  "
+                >
+                  <span class="card-label">Pantalón</span>
+                </button>
+                <button
+                  class="card-btn"
+                  data-id="g_cotizas_chia"
+                  style="
+                    background-image: url(&quot;ficha_tecnica/03/B.jpeg?v=2&quot;);
+                  "
+                >
+                  <span class="card-label">Cotizas</span>
+                </button>
+                <!-- Sombrero agregado para completar 2x2 -->
+                <button
+                  class="card-btn"
+                  data-id="g_sombrero_chia"
+                  style="
+                    background-image: url(&quot;ficha_tecnica/04/B.jpeg?v=2&quot;);
+                  "
+                >
+                  <span class="card-label">Sombrero</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="ensemble-section">
+              <span class="section-title">Conjunto Sué &nbsp;·&nbsp; Sol</span>
+              <div class="grid-container">
+                <button
+                  class="card-btn"
+                  data-id="g_sueter_sue"
+                  style="
+                    background-image: url(&quot;ficha_tecnica/05/B.jpeg?v=2&quot;);
+                  "
+                >
+                  <span class="card-label">Suéter</span>
+                </button>
+                <button
+                  class="card-btn"
+                  data-id="g_pantalon_sue"
+                  style="
+                    background-image: url(&quot;ficha_tecnica/06/B.jpeg?v=2&quot;);
+                  "
+                >
+                  <span class="card-label">Pantalón</span>
+                </button>
+                <button
+                  class="card-btn"
+                  data-id="g_alpargatas_sue"
+                  style="
+                    background-image: url(&quot;ficha_tecnica/07/B.jpeg?v=2&quot;);
+                  "
+                >
+                  <span class="card-label">Alpargatas</span>
+                </button>
+                <button
+                  class="card-btn"
+                  data-id="g_sombrero_sue"
+                  style="
+                    background-image: url(&quot;ficha_tecnica/08/B.jpeg?v=2&quot;);
+                  "
+                >
+                  <span class="card-label">Sombrero</span>
+                </button>
+              </div>
             </div>
           </div>
 
-          <div class="ensemble-section">
-            <span class="section-title">Conjunto Sué &nbsp;·&nbsp; Sol</span>
-            <div class="grid-container">
-              <button class="card-btn" data-id="g_sueter_sue" style="background-image: url('ficha_tecnica/05/B.jpeg?v=2');">
-                <span class="card-label">Suéter</span>
-              </button>
-              <button class="card-btn" data-id="g_pantalon_sue" style="background-image: url('ficha_tecnica/06/B.jpeg?v=2');">
-                <span class="card-label">Pantalón</span>
-              </button>
-              <button class="card-btn" data-id="g_alpargatas_sue" style="background-image: url('ficha_tecnica/07/B.jpeg?v=2');">
-                <span class="card-label">Alpargatas</span>
-              </button>
-              <button class="card-btn" data-id="g_sombrero_sue" style="background-image: url('ficha_tecnica/08/B.jpeg?v=2');">
-                <span class="card-label">Sombrero</span>
-              </button>
+          <!-- SOUVENIRS & PACKAGING GROUP -->
+          <div class="menu-group" id="group-souvenirs">
+            <div class="ensemble-section">
+              <span class="section-title">Monederos</span>
+              <div class="grid-container">
+                <button
+                  class="card-btn"
+                  data-id="s_monedero_sue"
+                  style="
+                    background-image: url(&quot;souvenirs/placeholder_beige.png&quot;);
+                  "
+                >
+                  <span class="card-label">Sol (Beige)</span>
+                </button>
+                <button
+                  class="card-btn"
+                  data-id="s_monedero_chia"
+                  style="
+                    background-image: url(&quot;souvenirs/placeholder_negro.png&quot;);
+                  "
+                >
+                  <span class="card-label">Luna (Negro)</span>
+                </button>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <!-- SOUVENIRS & PACKAGING GROUP -->
-        <div class="menu-group" id="group-souvenirs">
-          <div class="ensemble-section">
-            <span class="section-title">Monederos</span>
-            <div class="grid-container">
-              <button class="card-btn" data-id="s_monedero_sue" style="background-image: url('souvenirs/placeholder_beige.png');">
-                <span class="card-label">Sol (Beige)</span>
-              </button>
-              <button class="card-btn" data-id="s_monedero_chia" style="background-image: url('souvenirs/placeholder_negro.png');">
-                <span class="card-label">Luna (Negro)</span>
-              </button>
+            <div class="ensemble-section">
+              <span class="section-title">Llaveros</span>
+              <div class="grid-container">
+                <button
+                  class="card-btn"
+                  data-id="s_collar_sue"
+                  style="
+                    background-image: url(&quot;souvenirs/placeholder_beige.png&quot;);
+                  "
+                >
+                  <span class="card-label">Sol (Beige)</span>
+                </button>
+                <button
+                  class="card-btn"
+                  data-id="s_collar_chia"
+                  style="
+                    background-image: url(&quot;souvenirs/placeholder_negro.png&quot;);
+                  "
+                >
+                  <span class="card-label">Luna (Negro)</span>
+                </button>
+              </div>
             </div>
-          </div>
 
-          <div class="ensemble-section">
-            <span class="section-title">Llaveros</span>
-            <div class="grid-container">
-              <button class="card-btn" data-id="s_collar_sue" style="background-image: url('souvenirs/placeholder_beige.png');">
-                <span class="card-label">Sol (Beige)</span>
-              </button>
-              <button class="card-btn" data-id="s_collar_chia" style="background-image: url('souvenirs/placeholder_negro.png');">
-                <span class="card-label">Luna (Negro)</span>
-              </button>
-            </div>
-          </div>
-
-          <div class="ensemble-section">
-            <span class="section-title">Experiencia de Marca</span>
-            <div class="grid-container">
-              <button class="card-btn" data-id="s_empaque" style="background-image: url('final/p1.png'); aspect-ratio: auto; height: 80px; grid-column: span 2;">
-                <span class="card-label">Caja Kraft Circular</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- FOOTER SIDEBAR (Navegación Inferior) -->
-        <div class="sidebar-footer">
-          <a href="index.html" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; width: 100%; transition: all 0.3s var(--ease); opacity: 0.9;" onmouseover="this.style.opacity='1'; this.style.transform='translateY(-2px)'" onmouseout="this.style.opacity='0.9'; this.style.transform='translateY(0)'">
-            <img src="logo/logotipo.svg" alt="LANNA" class="header-logo" style="margin-bottom: 0.8rem;">
-            <div style="color: var(--light); font-size: 0.65rem; text-align: center; letter-spacing: 0.15em; font-family: var(--fw); text-transform: uppercase;">
-              +57 300 305 3941<br>
-              <span style="font-weight: 700; color: var(--gold); font-size: 0.6rem;">Pasto, Nariño</span>
-            </div>
-          </a>
-        </div>
-
-      </aside>
-
-      <!-- VISOR PANEL DERECHO (70% WIDTH - A SANGRE) -->
-      <main class="viewer">
-        
-        <!-- Viewer Interactive Container (Dynamically populates) -->
-        <div class="viewer-content active" id="viewer-content">
-          
-          <!-- Gallery Block (Left 40%) -->
-          <div class="viewer-gallery">
-            <div class="main-image-display" id="main-display-box" style="background-image: url('ficha_tecnica/01/B.jpeg?v=2');"></div>
-            <div class="gallery-thumbnails" id="gallery-thumbs">
-              <!-- Dynamically Populated thumbnails -->
+            <div class="ensemble-section">
+              <span class="section-title">Experiencia de Marca</span>
+              <div class="grid-container">
+                <button
+                  class="card-btn"
+                  data-id="s_empaque"
+                  style="
+                    background-image: url(&quot;final/p1.png&quot;);
+                    aspect-ratio: auto;
+                    height: 80px;
+                    grid-column: span 2;
+                  "
+                >
+                  <span class="card-label">Caja Kraft Circular</span>
+                </button>
+              </div>
             </div>
           </div>
 
-          <!-- Spec Panel Block (Right 60%) -->
-          <div class="viewer-specs" id="viewer-specs-panel">
-            <!-- Dynamically Populated specs -->
+          <!-- FOOTER SIDEBAR (Navegación Inferior) -->
+          <div class="sidebar-footer">
+            <a
+              href="index.html"
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                width: 100%;
+                transition: all 0.3s var(--ease);
+                opacity: 0.9;
+              "
+              onmouseover="
+                this.style.opacity = '1';
+                this.style.transform = 'translateY(-2px)';
+              "
+              onmouseout="
+                this.style.opacity = '0.9';
+                this.style.transform = 'translateY(0)';
+              "
+            >
+              <img
+                src="logo/logotipo.svg"
+                alt="LANNA"
+                class="header-logo"
+                style="margin-bottom: 0.8rem"
+              />
+              <div
+                style="
+                  color: var(--light);
+                  font-size: 0.65rem;
+                  text-align: center;
+                  letter-spacing: 0.15em;
+                  font-family: var(--fw);
+                  text-transform: uppercase;
+                "
+              >
+                +57 300 305 3941<br />
+                <span
+                  style="
+                    font-weight: 700;
+                    color: var(--gold);
+                    font-size: 0.6rem;
+                  "
+                  >Pasto, Nariño</span
+                >
+              </div>
+            </a>
           </div>
+        </aside>
 
-        </div>
+        <!-- VISOR PANEL DERECHO (70% WIDTH - A SANGRE) -->
+        <main class="viewer">
+          <!-- Viewer Interactive Container (Dynamically populates) -->
+          <div class="viewer-content active" id="viewer-content">
+            <!-- Gallery Block (Left 40%) -->
+            <div class="viewer-gallery">
+              <div
+                class="main-image-display"
+                id="main-display-box"
+                style="
+                  background-image: url(&quot;ficha_tecnica/01/B.jpeg?v=2&quot;);
+                "
+              ></div>
+              <div class="gallery-thumbnails" id="gallery-thumbs">
+                <!-- Dynamically Populated thumbnails -->
+              </div>
+            </div>
 
-      </main>
-
+            <!-- Spec Panel Block (Right 60%) -->
+            <div class="viewer-specs" id="viewer-specs-panel">
+              <!-- Dynamically Populated specs -->
+            </div>
+          </div>
+        </main>
+      </div>
     </div>
-  </div>
 
-  <!-- CONTAINER HIDDEN DE IMPRESIÓN (FORMATO CARTA VERTICAL) -->
-  <div id="print-area" style="display:none;"></div>
+    <!-- CONTAINER HIDDEN DE IMPRESIÓN (FORMATO CARTA VERTICAL) -->
+    <div id="print-area" style="display: none"></div>
 
-  <!-- ==========================================================================
+    <!-- ==========================================================================
        DATOS COMPLETOS DE FICHAS TÉCNICAS (JSON DATABASE)
        ========================================================================== */ -->
-  <script>
-    const database = {
-      // PRENDAS
-      "g_ruana_chia": {
-        nombre: "Ruana &ldquo;Chía&rdquo;",
-        ref: "Colección Mitológica - Chía (La Luna) - 01",
-        oficio: "Sastrería y Bordado",
-        tecnica: "Confección y bordado a mano",
-        materia_prima: "Lino americano, Lana virgen, Hueso de aguacate",
-        especificaciones: "Ruana construida a medida en lino americano color negro absoluto. Incorpora grabados artesanales bordados en lana virgen teñida de color amarillo de forma natural, inspirados en los diseños del volante de huso Muisca.",
-        tipo: "Indumentaria Exterior",
-        color: "Negro Absoluto",
-        capacidad: "5 piezas / mes",
-        grosor: "Lino pesado: 3mm",
-        talla: "L (Drapeado Unisex)",
-        peso: "800 - 1100 gr.",
-        precio_unitario: "$1.200.000 COP",
-        precio_mayor: "$950.000 COP (Min. 5 unid)",
-        artesano: "Equipo de Diseño LANNA",
-        telefono: "+57 300 305 3941",
-        municipio: "Pasto",
-        taller: "Taller Central LANNA",
-        departamento: "Nariño",
-        hecho_a_mano: "SI",
-        centro_poblado: "Pasto, Nariño",
-        fecha: "13/05/2026",
-        prod_no: "001",
-        linea: "Chía (Luna)",
-        crono: [
-          "1. Preproducción: Toma de medidas y patronaje a medida.",
-          "2. Producción: Corte y confección del cuerpo en lino americano.",
-          "3. Acabados: Grabado (bordado) a mano en lana con inspiración en el volante de huso Muisca y avíos (2 botones a base de pepa de aguacate).",
-          "4. Exhibición: Empaque ecológico y distribución para la venta."
-        ],
-        components: [
-          { no: "1.", pieza: "Cuerpo", mat: "Lino americano", pct: "85%" },
-          { no: "2.", pieza: "Grabados", mat: "Lana virgen", pct: "10%" },
-          { no: "3.", pieza: "Avíos", mat: "Botones hueso aguacate", pct: "5%" },
-          { no: "4.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" }
-        ],
-        images: ["ficha_tecnica/01/B.jpeg?v=2", "ficha_tecnica/01/C.jpeg?v=2", "ficha_tecnica/01/A.jpeg?v=2", "ficha_tecnica/01/D.jpeg?v=2"]
-      },
-      "g_pantalon_chia": {
-        nombre: "Pantalón &ldquo;Chía&rdquo;",
-        ref: "Colección Mitológica - Chía (La Luna) - 02",
-        oficio: "Sastrería y Bordado",
-        tecnica: "Confección y bordado a mano",
-        materia_prima: "Lino americano, Lana virgen",
-        especificaciones: "Pantalón construido a medida en lino americano color negro absoluto. Incorpora grabados artesanales bordados en lana virgen teñida de color natural, inspirados en los diseños del volante de huso Muisca.",
-        tipo: "Indumentaria Inferior",
-        color: "Negro Absoluto",
-        capacidad: "5 piezas / mes",
-        grosor: "Lino pesado: 3mm",
-        talla: "A medida",
-        peso: "400 - 600 gr.",
-        precio_unitario: "$900.000 COP",
-        precio_mayor: "$750.000 COP",
-        artesano: "Equipo de Diseño LANNA",
-        telefono: "+57 300 305 3941",
-        municipio: "Pasto",
-        taller: "Taller Central LANNA",
-        departamento: "Nariño",
-        hecho_a_mano: "SI",
-        centro_poblado: "Pasto, Nariño",
-        fecha: "13/05/2026",
-        prod_no: "002",
-        linea: "Chía (Luna)",
-        crono: [
-          "1. Preproducción: Toma de medidas y patronaje a medida.",
-          "2. Producción: Corte y confección del pantalón en lino americano.",
-          "3. Acabados: Grabado (bordado) a mano en lana con inspiración en el volante de huso Muisca.",
-          "4. Exhibición: Empaque ecológico y distribución para la venta."
-        ],
-        components: [
-          { no: "1.", pieza: "Cuerpo", mat: "Lino americano", pct: "90%" },
-          { no: "2.", pieza: "Grabados", mat: "Lana virgen", pct: "10%" },
-          { no: "3.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" }
-        ],
-        images: ["ficha_tecnica/02/B.jpeg?v=2", "ficha_tecnica/02/C.jpeg?v=2", "ficha_tecnica/02/A.jpeg?v=2", "ficha_tecnica/02/D.jpeg?v=2"]
-      },
-      "g_sombrero_chia": {
-        nombre: "Sombrero &ldquo;Chía&rdquo;",
-        ref: "Colección Mitológica - Chía (La Luna) - 04",
-        oficio: "Tejeduría manual / Sombrerería",
-        tecnica: "Fieltrado a mano",
-        materia_prima: "Fieltro de Lana",
-        especificaciones: "Sombrero tradicional andino elaborado en fieltro de lana pura color negro absoluto. Brinda protección térmica y contra la intemperie en climas de páramo.",
-        tipo: "Accesorio / Indumentaria de Cabeza",
-        color: "Negro Absoluto",
-        capacidad: "10 piezas / mes",
-        grosor: "4mm",
-        talla: "M - L",
-        peso: "350 gr.",
-        precio_unitario: "$800.000 COP",
-        precio_mayor: "$640.000 COP",
-        artesano: "Equipo de Diseño LANNA",
-        telefono: "+57 300 305 3941",
-        municipio: "Pasto",
-        taller: "Taller Central LANNA",
-        departamento: "Nariño",
-        hecho_a_mano: "SI",
-        centro_poblado: "Pasto, Nariño",
-        fecha: "13/05/2026",
-        prod_no: "004",
-        linea: "Chía (Luna)",
-        crono: [
-          "1. Preproducción: Clasificación y cardado de la lana negra.",
-          "2. Producción: Proceso de fieltrado manual para dar forma a la campana del sombrero.",
-          "3. Acabados: Planchado, moldeado de copa y ala.",
-          "4. Exhibición: Empaque y distribución."
-        ],
-        components: [
-          { no: "1.", pieza: "Cuerpo Sombrero", mat: "Lana Fieltrada", pct: "100%" },
-          { no: "2.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" }
-        ],
-        images: ["ficha_tecnica/04/B.jpeg?v=2", "ficha_tecnica/04/C.jpeg?v=2", "ficha_tecnica/04/A.jpeg?v=2", "ficha_tecnica/04/D.jpeg?v=2"]
-      },
-      "g_cotizas_chia": {
-        nombre: "Cotizas &ldquo;Chía&rdquo;",
-        ref: "Colección Mitológica - Chía (La Luna) - 03",
-        oficio: "Talabartería / Calzado",
-        tecnica: "Ensamblado y tejido",
-        materia_prima: "Caucho de llanta reciclada, Lona negra",
-        especificaciones: "Calzado artesanal estilo cotiza para mujer. Construido con suela de caucho de llanta reciclada para alta durabilidad y capellada en lona negra o dril grueso de alta resistencia.",
-        tipo: "Calzado / Indumentaria",
-        color: "Negro Absoluto",
-        capacidad: "15 pares / mes",
-        grosor: "Suela: 12mm &bull; Textil: 3mm",
-        talla: "38 (A medida)",
-        peso: "500 - 700 gr.",
-        precio_unitario: "$400.000 COP",
-        precio_mayor: "$300.000 COP",
-        artesano: "Equipo de Diseño LANNA",
-        telefono: "+57 300 305 3941",
-        municipio: "Pasto",
-        taller: "Taller Central LANNA",
-        departamento: "Nariño",
-        hecho_a_mano: "SI",
-        centro_poblado: "Pasto, Nariño",
-        fecha: "13/05/2026",
-        prod_no: "003",
-        linea: "Chía (Luna)",
-        crono: [
-          "1. Preproducción: Recuperación, lavado, desinfección y troquelado de la llanta reciclada.",
-          "2. Producción: Corte de la capellada superior en textil negro absoluto.",
-          "3. Acabados: Ensamblado y costura manual al estilo tradicional campesino.",
-          "4. Exhibición: Empaque ecológico y distribución para la venta."
-        ],
-        components: [
-          { no: "1.", pieza: "Suela", mat: "Caucho de llanta", pct: "50%" },
-          { no: "2.", pieza: "Capellada", mat: "Lona o dril grueso", pct: "45%" },
-          { no: "3.", pieza: "Costuras", mat: "Hilo encerado", pct: "5%" },
-          { no: "4.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" }
-        ],
-        images: ["ficha_tecnica/03/B.jpeg?v=2", "ficha_tecnica/03/C.jpeg?v=2", "ficha_tecnica/03/A.jpeg?v=2", "ficha_tecnica/03/D.jpeg?v=2"]
-      },
-      "g_sueter_sue": {
-        nombre: "Suéter &ldquo;Sué&rdquo;",
-        ref: "Colección Mitológica - Sué (El Sol) - 05",
-        oficio: "Sastrería y Bordado",
-        tecnica: "Confección y bordado a mano",
-        materia_prima: "Lino americano, Lana virgen",
-        especificaciones: "Suéter construido a medida en lino americano color beige. Incorpora gran cantidad de grabados artesanales bordados en lana virgen teñida de color natural, inspirados en motivos de la deidad Sué (el sol).",
-        tipo: "Indumentaria Exterior",
-        color: "Beige",
-        capacidad: "5 piezas / mes",
-        grosor: "Lino pesado: 3mm",
-        talla: "L (A medida)",
-        peso: "800 - 1100 gr.",
-        precio_unitario: "$1.800.000 COP",
-        precio_mayor: "$1.400.000 COP",
-        artesano: "Equipo de Diseño LANNA",
-        telefono: "+57 300 305 3941",
-        municipio: "Pasto",
-        taller: "Taller Central LANNA",
-        departamento: "Nariño",
-        hecho_a_mano: "SI",
-        centro_poblado: "Pasto, Nariño",
-        fecha: "13/05/2026",
-        prod_no: "005",
-        linea: "Sué (Sol)",
-        crono: [
-          "1. Preproducción: Toma de medidas y patronaje a medida.",
-          "2. Producción: Corte y confección del cuerpo en lino americano.",
-          "3. Acabados: Grabado (bordado) a mano en lana con inspiración en el sol (deidad Sué).",
-          "4. Exhibición: Empaque ecológico y distribución para la venta."
-        ],
-        components: [
-          { no: "1.", pieza: "Cuerpo", mat: "Lino americano", pct: "85%" },
-          { no: "2.", pieza: "Grabados", mat: "Lana virgen", pct: "15%" },
-          { no: "3.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" }
-        ],
-        images: ["ficha_tecnica/05/B.jpeg?v=2", "ficha_tecnica/05/C.jpeg?v=2", "ficha_tecnica/05/A.jpeg?v=2", "ficha_tecnica/05/D.jpeg?v=2"]
-      },
-      "g_pantalon_sue": {
-        nombre: "Pantalón &ldquo;Sué&rdquo;",
-        ref: "Colección Mitológica - Sué (El Sol) - 06",
-        oficio: "Sastrería y Bordado",
-        tecnica: "Confección y bordado a mano",
-        materia_prima: "Lino americano",
-        especificaciones: "Pantalón construido a medida en lino americano color beige, de diseño minimalista sin bordados, resaltando la textura natural del tejido.",
-        tipo: "Indumentaria Inferior",
-        color: "Beige",
-        capacidad: "5 piezas / mes",
-        grosor: "Lino pesado: 3mm",
-        talla: "A medida",
-        peso: "400 - 600 gr.",
-        precio_unitario: "$800.000 COP",
-        precio_mayor: "$650.000 COP",
-        artesano: "Equipo de Diseño LANNA",
-        telefono: "+57 300 305 3941",
-        municipio: "Pasto",
-        taller: "Taller Central LANNA",
-        departamento: "Nariño",
-        hecho_a_mano: "SI",
-        centro_poblado: "Pasto, Nariño",
-        fecha: "13/05/2026",
-        prod_no: "006",
-        linea: "Sué (Sol)",
-        crono: [
-          "1. Preproducción: Toma de medidas y patronaje a medida.",
-          "2. Producción: Corte y confección del pantalón en lino americano.",
-          "3. Acabados: Planchado, revisión de costuras y etiquetado.",
-          "4. Exhibición: Empaque ecológico y distribución para la venta."
-        ],
-        components: [
-          { no: "1.", pieza: "Cuerpo", mat: "Lino americano", pct: "100%" },
-          { no: "2.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" }
-        ],
-        images: ["ficha_tecnica/06/B.jpeg?v=2", "ficha_tecnica/06/C.jpeg?v=2", "ficha_tecnica/06/A.jpeg?v=2", "ficha_tecnica/06/D.jpeg?v=2"]
-      },
-      "g_alpargatas_sue": {
-        nombre: "Alpargatas &ldquo;Sué&rdquo;",
-        ref: "Colección Mitológica - Sué (El Sol) - 07",
-        oficio: "Talabartería / Calzado",
-        tecnica: "Ensamblado y tejido",
-        materia_prima: "Fique natural tejido, Lona de algodón",
-        especificaciones: "Calzado artesanal estilo alpargata para hombre. Construido con suela de fique trenzado (o fibra vegetal compactada) y capellada en lona de algodón cosida a mano.",
-        tipo: "Calzado / Indumentaria",
-        color: "Beige",
-        capacidad: "15 pares / mes",
-        grosor: "Suela: 15mm &bull; Textil: 2mm",
-        talla: "42 (A medida)",
-        peso: "500 - 700 gr.",
-        precio_unitario: "$400.000 COP",
-        precio_mayor: "$300.000 COP",
-        artesano: "Equipo de Diseño LANNA",
-        telefono: "+57 300 305 3941",
-        municipio: "Pasto",
-        taller: "Taller Central LANNA",
-        departamento: "Nariño",
-        hecho_a_mano: "SI",
-        centro_poblado: "Pasto, Nariño",
-        fecha: "13/05/2026",
-        prod_no: "007",
-        linea: "Sué (Sol)",
-        crono: [
-          "1. Preproducción: Trenzado y preparación de la suela en fique natural.",
-          "2. Producción: Corte de la capellada superior en textil beige.",
-          "3. Acabados: Cosido manual crítico uniendo la capellada a la suela de fibra.",
-          "4. Exhibición: Empaque ecológico y distribución para la venta."
-        ],
-        components: [
-          { no: "1.", pieza: "Suela", mat: "Fique natural", pct: "50%" },
-          { no: "2.", pieza: "Capellada", mat: "Lona de algodón", pct: "45%" },
-          { no: "3.", pieza: "Costuras", mat: "Hilo de algodón", pct: "5%" },
-          { no: "4.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" }
-        ],
-        images: ["ficha_tecnica/07/B.jpeg?v=2", "ficha_tecnica/07/C.jpeg?v=2", "ficha_tecnica/07/A.jpeg?v=2", "ficha_tecnica/07/D.jpeg?v=2"]
-      },
-      "g_sombrero_sue": {
-        nombre: "Sombrero &ldquo;Sué&rdquo;",
-        ref: "Colección Mitológica - Sué (El Sol) - 08",
-        oficio: "Cestería / Sombrerería",
-        tecnica: "Trenzado en trencilla",
-        materia_prima: "Fibras vegetales (Palmiche y Fique)",
-        especificaciones: "Sombrero de tapia pisada elaborado artesanalmente con trenzado de palmiche y fique. Inspirado en la funcionalidad y resistencia del campesino boyacense.",
-        tipo: "Accesorio / Sombrerería",
-        color: "Beige",
-        capacidad: "10 unidades / mes",
-        grosor: "Trenza de palmiche: 3mm",
-        talla: "Única (Ajustable)",
-        peso: "300 - 450 gr.",
-        precio_unitario: "$800.000 COP",
-        precio_mayor: "$640.000 COP",
-        artesano: "Equipo de Diseño LANNA",
-        telefono: "+57 300 305 3941",
-        municipio: "Pasto",
-        taller: "Taller Central LANNA",
-        departamento: "Nariño",
-        hecho_a_mano: "SI",
-        centro_poblado: "Pasto, Nariño",
-        fecha: "13/05/2026",
-        prod_no: "008",
-        linea: "Sué (Sol)",
-        crono: [
-          "1. Preproducción: Recolección y tratamiento de fibras de palmiche y fique.",
-          "2. Producción: Tejido manual en forma de trencilla y ensamblado de horma.",
-          "3. Acabados: Ajuste de tafilete interior, planchado de horma y etiqueta.",
-          "4. Exhibición: Empaque ecológico y distribución para la venta."
-        ],
-        components: [
-          { no: "1.", pieza: "Estructura", mat: "Palmiche y Fique", pct: "95%" },
-          { no: "2.", pieza: "Tafilete", mat: "Algodón", pct: "5%" },
-          { no: "3.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" }
-        ],
-        images: ["ficha_tecnica/08/B.jpeg?v=2", "ficha_tecnica/08/C.jpeg?v=2", "ficha_tecnica/08/A.jpeg?v=2", "ficha_tecnica/08/D.jpeg?v=2"]
-      },
+    <script>
+      const database = {
+        // PRENDAS
+        g_ruana_chia: {
+          nombre: "Ruana &ldquo;Chía&rdquo;",
+          ref: "Colección Mitológica - Chía (La Luna) - 01",
+          oficio: "Sastrería y Bordado",
+          tecnica: "Confección y bordado a mano",
+          materia_prima: "Lino americano, Lana virgen, Hueso de aguacate",
+          especificaciones:
+            "Ruana construida a medida en lino americano color negro absoluto. Incorpora grabados artesanales bordados en lana virgen teñida de color amarillo de forma natural, inspirados en los diseños del volante de huso Muisca.",
+          tipo: "Indumentaria Exterior",
+          color: "Negro Absoluto",
+          capacidad: "5 piezas / mes",
+          grosor: "Lino pesado: 3mm",
+          talla: "L (Drapeado Unisex)",
+          peso: "800 - 1100 gr.",
+          precio_unitario: "$1.200.000 COP",
+          precio_mayor: "$950.000 COP (Min. 5 unid)",
+          artesano: "Equipo de Diseño LANNA",
+          telefono: "+57 300 305 3941",
+          municipio: "Pasto",
+          taller: "Taller Central LANNA",
+          departamento: "Nariño",
+          hecho_a_mano: "SI",
+          centro_poblado: "Pasto, Nariño",
+          fecha: "03/06/2026",
+          prod_no: "001",
+          linea: "Chía (Luna)",
+          crono: [
+            "1. Preproducción: Toma de medidas y patronaje a medida.",
+            "2. Producción: Corte y confección del cuerpo en lino americano.",
+            "3. Acabados: Grabado (bordado) a mano en lana con inspiración en el volante de huso Muisca y avíos (2 botones a base de pepa de aguacate).",
+            "4. Exhibición: Empaque ecológico y distribución para la venta.",
+          ],
+          components: [
+            { no: "1.", pieza: "Cuerpo", mat: "Lino americano", pct: "85%" },
+            { no: "2.", pieza: "Grabados", mat: "Lana virgen", pct: "10%" },
+            {
+              no: "3.",
+              pieza: "Avíos",
+              mat: "Botones hueso aguacate",
+              pct: "5%",
+            },
+            { no: "4.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" },
+          ],
+          images: [
+            "ficha_tecnica/01/B.jpeg?v=2",
+            "ficha_tecnica/01/C.jpeg?v=2",
+            "ficha_tecnica/01/A.jpeg?v=2",
+            "ficha_tecnica/01/D.jpeg?v=2",
+          ],
+        },
+        g_pantalon_chia: {
+          nombre: "Pantalón &ldquo;Chía&rdquo;",
+          ref: "Colección Mitológica - Chía (La Luna) - 02",
+          oficio: "Sastrería y Bordado",
+          tecnica: "Confección y bordado a mano",
+          materia_prima: "Lino americano, Lana virgen",
+          especificaciones:
+            "Pantalón construido a medida en lino americano color negro absoluto. Incorpora grabados artesanales bordados en lana virgen teñida de color natural, inspirados en los diseños del volante de huso Muisca.",
+          tipo: "Indumentaria Inferior",
+          color: "Negro Absoluto",
+          capacidad: "5 piezas / mes",
+          grosor: "Lino pesado: 3mm",
+          talla: "A medida",
+          peso: "400 - 600 gr.",
+          precio_unitario: "$900.000 COP",
+          precio_mayor: "$750.000 COP",
+          artesano: "Equipo de Diseño LANNA",
+          telefono: "+57 300 305 3941",
+          municipio: "Pasto",
+          taller: "Taller Central LANNA",
+          departamento: "Nariño",
+          hecho_a_mano: "SI",
+          centro_poblado: "Pasto, Nariño",
+          fecha: "03/06/2026",
+          prod_no: "002",
+          linea: "Chía (Luna)",
+          crono: [
+            "1. Preproducción: Toma de medidas y patronaje a medida.",
+            "2. Producción: Corte y confección del pantalón en lino americano.",
+            "3. Acabados: Grabado (bordado) a mano en lana con inspiración en el volante de huso Muisca.",
+            "4. Exhibición: Empaque ecológico y distribución para la venta.",
+          ],
+          components: [
+            { no: "1.", pieza: "Cuerpo", mat: "Lino americano", pct: "90%" },
+            { no: "2.", pieza: "Grabados", mat: "Lana virgen", pct: "10%" },
+            { no: "3.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" },
+          ],
+          images: [
+            "ficha_tecnica/02/B.jpeg?v=2",
+            "ficha_tecnica/02/C.jpeg?v=2",
+            "ficha_tecnica/02/A.jpeg?v=2",
+            "ficha_tecnica/02/D.jpeg?v=2",
+          ],
+        },
+        g_sombrero_chia: {
+          nombre: "Sombrero &ldquo;Chía&rdquo;",
+          ref: "Colección Mitológica - Chía (La Luna) - 04",
+          oficio: "Tejeduría manual / Sombrerería",
+          tecnica: "Fieltrado a mano",
+          materia_prima: "Fieltro de Lana",
+          especificaciones:
+            "Sombrero tradicional andino elaborado en fieltro de lana pura color negro absoluto. Brinda protección térmica y contra la intemperie en climas de páramo.",
+          tipo: "Accesorio / Indumentaria de Cabeza",
+          color: "Negro Absoluto",
+          capacidad: "10 piezas / mes",
+          grosor: "4mm",
+          talla: "M - L",
+          peso: "350 gr.",
+          precio_unitario: "$800.000 COP",
+          precio_mayor: "$640.000 COP",
+          artesano: "Equipo de Diseño LANNA",
+          telefono: "+57 300 305 3941",
+          municipio: "Pasto",
+          taller: "Taller Central LANNA",
+          departamento: "Nariño",
+          hecho_a_mano: "SI",
+          centro_poblado: "Pasto, Nariño",
+          fecha: "03/06/2026",
+          prod_no: "004",
+          linea: "Chía (Luna)",
+          crono: [
+            "1. Preproducción: Clasificación y cardado de la lana negra.",
+            "2. Producción: Proceso de fieltrado manual para dar forma a la campana del sombrero.",
+            "3. Acabados: Planchado, moldeado de copa y ala.",
+            "4. Exhibición: Empaque y distribución.",
+          ],
+          components: [
+            {
+              no: "1.",
+              pieza: "Cuerpo Sombrero",
+              mat: "Lana Fieltrada",
+              pct: "100%",
+            },
+            { no: "2.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" },
+          ],
+          images: [
+            "ficha_tecnica/04/B.jpeg?v=2",
+            "ficha_tecnica/04/C.jpeg?v=2",
+            "ficha_tecnica/04/A.jpeg?v=2",
+            "ficha_tecnica/04/D.jpeg?v=2",
+          ],
+        },
+        g_cotizas_chia: {
+          nombre: "Cotizas &ldquo;Chía&rdquo;",
+          ref: "Colección Mitológica - Chía (La Luna) - 03",
+          oficio: "Talabartería / Calzado",
+          tecnica: "Ensamblado y tejido",
+          materia_prima: "Caucho de llanta reciclada, Lona negra",
+          especificaciones:
+            "Calzado artesanal estilo cotiza para mujer. Construido con suela de caucho de llanta reciclada para alta durabilidad y capellada en lona negra o dril grueso de alta resistencia.",
+          tipo: "Calzado / Indumentaria",
+          color: "Negro Absoluto",
+          capacidad: "15 pares / mes",
+          grosor: "Suela: 12mm &bull; Textil: 3mm",
+          talla: "38 (A medida)",
+          peso: "500 - 700 gr.",
+          precio_unitario: "$400.000 COP",
+          precio_mayor: "$300.000 COP",
+          artesano: "Equipo de Diseño LANNA",
+          telefono: "+57 300 305 3941",
+          municipio: "Pasto",
+          taller: "Taller Central LANNA",
+          departamento: "Nariño",
+          hecho_a_mano: "SI",
+          centro_poblado: "Pasto, Nariño",
+          fecha: "03/06/2026",
+          prod_no: "003",
+          linea: "Chía (Luna)",
+          crono: [
+            "1. Preproducción: Recuperación, lavado, desinfección y troquelado de la llanta reciclada.",
+            "2. Producción: Corte de la capellada superior en textil negro absoluto.",
+            "3. Acabados: Ensamblado y costura manual al estilo tradicional campesino.",
+            "4. Exhibición: Empaque ecológico y distribución para la venta.",
+          ],
+          components: [
+            { no: "1.", pieza: "Suela", mat: "Caucho de llanta", pct: "50%" },
+            {
+              no: "2.",
+              pieza: "Capellada",
+              mat: "Lona o dril grueso",
+              pct: "45%",
+            },
+            { no: "3.", pieza: "Costuras", mat: "Hilo encerado", pct: "5%" },
+            { no: "4.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" },
+          ],
+          images: [
+            "ficha_tecnica/03/B.jpeg?v=2",
+            "ficha_tecnica/03/C.jpeg?v=2",
+            "ficha_tecnica/03/A.jpeg?v=2",
+            "ficha_tecnica/03/D.jpeg?v=2",
+          ],
+        },
+        g_sueter_sue: {
+          nombre: "Suéter &ldquo;Sué&rdquo;",
+          ref: "Colección Mitológica - Sué (El Sol) - 05",
+          oficio: "Sastrería y Bordado",
+          tecnica: "Confección y bordado a mano",
+          materia_prima: "Lino americano, Lana virgen",
+          especificaciones:
+            "Suéter construido a medida en lino americano color beige. Incorpora gran cantidad de grabados artesanales bordados en lana virgen teñida de color natural, inspirados en motivos de la deidad Sué (el sol).",
+          tipo: "Indumentaria Exterior",
+          color: "Beige",
+          capacidad: "5 piezas / mes",
+          grosor: "Lino pesado: 3mm",
+          talla: "L (A medida)",
+          peso: "800 - 1100 gr.",
+          precio_unitario: "$1.800.000 COP",
+          precio_mayor: "$1.400.000 COP",
+          artesano: "Equipo de Diseño LANNA",
+          telefono: "+57 300 305 3941",
+          municipio: "Pasto",
+          taller: "Taller Central LANNA",
+          departamento: "Nariño",
+          hecho_a_mano: "SI",
+          centro_poblado: "Pasto, Nariño",
+          fecha: "03/06/2026",
+          prod_no: "005",
+          linea: "Sué (Sol)",
+          crono: [
+            "1. Preproducción: Toma de medidas y patronaje a medida.",
+            "2. Producción: Corte y confección del cuerpo en lino americano.",
+            "3. Acabados: Grabado (bordado) a mano en lana con inspiración en el sol (deidad Sué).",
+            "4. Exhibición: Empaque ecológico y distribución para la venta.",
+          ],
+          components: [
+            { no: "1.", pieza: "Cuerpo", mat: "Lino americano", pct: "85%" },
+            { no: "2.", pieza: "Grabados", mat: "Lana virgen", pct: "15%" },
+            { no: "3.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" },
+          ],
+          images: [
+            "ficha_tecnica/05/B.jpeg?v=2",
+            "ficha_tecnica/05/C.jpeg?v=2",
+            "ficha_tecnica/05/A.jpeg?v=2",
+            "ficha_tecnica/05/D.jpeg?v=2",
+          ],
+        },
+        g_pantalon_sue: {
+          nombre: "Pantalón &ldquo;Sué&rdquo;",
+          ref: "Colección Mitológica - Sué (El Sol) - 06",
+          oficio: "Sastrería y Bordado",
+          tecnica: "Confección y bordado a mano",
+          materia_prima: "Lino americano",
+          especificaciones:
+            "Pantalón construido a medida en lino americano color beige, de diseño minimalista sin bordados, resaltando la textura natural del tejido.",
+          tipo: "Indumentaria Inferior",
+          color: "Beige",
+          capacidad: "5 piezas / mes",
+          grosor: "Lino pesado: 3mm",
+          talla: "A medida",
+          peso: "400 - 600 gr.",
+          precio_unitario: "$800.000 COP",
+          precio_mayor: "$650.000 COP",
+          artesano: "Equipo de Diseño LANNA",
+          telefono: "+57 300 305 3941",
+          municipio: "Pasto",
+          taller: "Taller Central LANNA",
+          departamento: "Nariño",
+          hecho_a_mano: "SI",
+          centro_poblado: "Pasto, Nariño",
+          fecha: "03/06/2026",
+          prod_no: "006",
+          linea: "Sué (Sol)",
+          crono: [
+            "1. Preproducción: Toma de medidas y patronaje a medida.",
+            "2. Producción: Corte y confección del pantalón en lino americano.",
+            "3. Acabados: Planchado, revisión de costuras y etiquetado.",
+            "4. Exhibición: Empaque ecológico y distribución para la venta.",
+          ],
+          components: [
+            { no: "1.", pieza: "Cuerpo", mat: "Lino americano", pct: "100%" },
+            { no: "2.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" },
+          ],
+          images: [
+            "ficha_tecnica/06/B.jpeg?v=2",
+            "ficha_tecnica/06/C.jpeg?v=2",
+            "ficha_tecnica/06/A.jpeg?v=2",
+            "ficha_tecnica/06/D.jpeg?v=2",
+          ],
+        },
+        g_alpargatas_sue: {
+          nombre: "Alpargatas &ldquo;Sué&rdquo;",
+          ref: "Colección Mitológica - Sué (El Sol) - 07",
+          oficio: "Talabartería / Calzado",
+          tecnica: "Ensamblado y tejido",
+          materia_prima: "Fique natural tejido, Lona de algodón",
+          especificaciones:
+            "Calzado artesanal estilo alpargata para hombre. Construido con suela de fique trenzado (o fibra vegetal compactada) y capellada en lona de algodón cosida a mano.",
+          tipo: "Calzado / Indumentaria",
+          color: "Beige",
+          capacidad: "15 pares / mes",
+          grosor: "Suela: 15mm &bull; Textil: 2mm",
+          talla: "42 (A medida)",
+          peso: "500 - 700 gr.",
+          precio_unitario: "$400.000 COP",
+          precio_mayor: "$300.000 COP",
+          artesano: "Equipo de Diseño LANNA",
+          telefono: "+57 300 305 3941",
+          municipio: "Pasto",
+          taller: "Taller Central LANNA",
+          departamento: "Nariño",
+          hecho_a_mano: "SI",
+          centro_poblado: "Pasto, Nariño",
+          fecha: "03/06/2026",
+          prod_no: "007",
+          linea: "Sué (Sol)",
+          crono: [
+            "1. Preproducción: Trenzado y preparación de la suela en fique natural.",
+            "2. Producción: Corte de la capellada superior en textil beige.",
+            "3. Acabados: Cosido manual crítico uniendo la capellada a la suela de fibra.",
+            "4. Exhibición: Empaque ecológico y distribución para la venta.",
+          ],
+          components: [
+            { no: "1.", pieza: "Suela", mat: "Fique natural", pct: "50%" },
+            {
+              no: "2.",
+              pieza: "Capellada",
+              mat: "Lona de algodón",
+              pct: "45%",
+            },
+            { no: "3.", pieza: "Costuras", mat: "Hilo de algodón", pct: "5%" },
+            { no: "4.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" },
+          ],
+          images: [
+            "ficha_tecnica/07/B.jpeg?v=2",
+            "ficha_tecnica/07/C.jpeg?v=2",
+            "ficha_tecnica/07/A.jpeg?v=2",
+            "ficha_tecnica/07/D.jpeg?v=2",
+          ],
+        },
+        g_sombrero_sue: {
+          nombre: "Sombrero &ldquo;Sué&rdquo;",
+          ref: "Colección Mitológica - Sué (El Sol) - 08",
+          oficio: "Cestería / Sombrerería",
+          tecnica: "Trenzado en trencilla",
+          materia_prima: "Fibras vegetales (Palmiche y Fique)",
+          especificaciones:
+            "Sombrero de tapia pisada elaborado artesanalmente con trenzado de palmiche y fique. Inspirado en la funcionalidad y resistencia del campesino boyacense.",
+          tipo: "Accesorio / Sombrerería",
+          color: "Beige",
+          capacidad: "10 unidades / mes",
+          grosor: "Trenza de palmiche: 3mm",
+          talla: "Única (Ajustable)",
+          peso: "300 - 450 gr.",
+          precio_unitario: "$800.000 COP",
+          precio_mayor: "$640.000 COP",
+          artesano: "Equipo de Diseño LANNA",
+          telefono: "+57 300 305 3941",
+          municipio: "Pasto",
+          taller: "Taller Central LANNA",
+          departamento: "Nariño",
+          hecho_a_mano: "SI",
+          centro_poblado: "Pasto, Nariño",
+          fecha: "03/06/2026",
+          prod_no: "008",
+          linea: "Sué (Sol)",
+          crono: [
+            "1. Preproducción: Recolección y tratamiento de fibras de palmiche y fique.",
+            "2. Producción: Tejido manual en forma de trencilla y ensamblado de horma.",
+            "3. Acabados: Ajuste de tafilete interior, planchado de horma y etiqueta.",
+            "4. Exhibición: Empaque ecológico y distribución para la venta.",
+          ],
+          components: [
+            {
+              no: "1.",
+              pieza: "Estructura",
+              mat: "Palmiche y Fique",
+              pct: "95%",
+            },
+            { no: "2.", pieza: "Tafilete", mat: "Algodón", pct: "5%" },
+            { no: "3.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" },
+          ],
+          images: [
+            "ficha_tecnica/08/B.jpeg?v=2",
+            "ficha_tecnica/08/C.jpeg?v=2",
+            "ficha_tecnica/08/A.jpeg?v=2",
+            "ficha_tecnica/08/D.jpeg?v=2",
+          ],
+        },
 
-      // SOUVENIRS
-      "s_monedero_chia": {
-        nombre: "Monedero Tejido &ldquo;Chía&rdquo;",
-        ref: "Souvenirs &amp; Experiencias - Kit Primeros Pasos - MC01",
-        oficio: "Tejeduría Artesanal",
-        tecnica: "Tejido manual en lana virgen",
-        especificaciones: "Monedero circular tejido completamente en lana virgen de oveja color negro absoluto con terminaciones en amarillo. Incorpora un broche metálico a presión (tipo clip) para cierre seguro y lazo de lana.",
-        tipo: "Accesorio / Souvenir de Mano",
-        color: "Negro (Terminales Amarillos)",
-        capacidad: "45 unidades / mes",
-        grosor: "Lana pesada (4mm)",
-        talla: "Única (12cm Ø)",
-        peso: "90 gr.",
-        precio_unitario: "$65.000 COP",
-        hecho_a_mano: "SI",
-        fecha: "13/05/2026",
-        prod_no: "S-01",
-        linea: "Chía (Luna)",
-        crono: [
-          "1. Preproducción: Hilado y tinturado natural de la lana virgen de oveja a color negro.",
-          "2. Producción: Tejido del cuerpo circular en telar o manual, integrando terminaciones amarillas.",
-          "3. Acabados: Ensamble del broche metálico a presión en la boca del monedero.",
-          "4. Exhibición: Empacado en el Kit Primeros Pasos."
-        ],
-        components: [
-          { no: "1.", pieza: "Cuerpo circular", mat: "Lana virgen de oveja", pct: "90%" },
-          { no: "2.", pieza: "Cierre", mat: "Broche a presión", pct: "10%" }
-        ],
-        images: ["souvenirs/placeholder_negro.png", "souvenirs/placeholder_negro.png", "souvenirs/placeholder_negro.png", "souvenirs/placeholder_negro.png"]
-      },
-      "s_monedero_sue": {
-        nombre: "Monedero Tejido &ldquo;Sué&rdquo;",
-        ref: "Souvenirs &amp; Experiencias - Kit Primeros Pasos - MS02",
-        oficio: "Tejeduría Artesanal",
-        tecnica: "Tejido manual en lana virgen",
-        especificaciones: "Monedero circular tejido completamente en lana virgen de oveja color beige con terminaciones en amarillo. Incorpora un broche metálico a presión (tipo clip) para cierre seguro y lazo de lana.",
-        tipo: "Accesorio / Souvenir de Mano",
-        color: "Beige (Terminales Amarillos)",
-        capacidad: "45 unidades / mes",
-        grosor: "Lana pesada (4mm)",
-        talla: "Única (12cm Ø)",
-        peso: "90 gr.",
-        precio_unitario: "$65.000 COP",
-        hecho_a_mano: "SI",
-        fecha: "13/05/2026",
-        prod_no: "S-02",
-        linea: "Sué (Sol)",
-        crono: [
-          "1. Preproducción: Clasificación, lavado y cardado ecológico de la lana virgen cruda beige.",
-          "2. Producción: Tejido del cuerpo circular en telar o manual, integrando terminaciones amarillas.",
-          "3. Acabados: Ensamble del broche metálico a presión en la boca del monedero.",
-          "4. Exhibición: Empacado en el Kit Primeros Pasos."
-        ],
-        components: [
-          { no: "1.", pieza: "Cuerpo circular", mat: "Lana virgen de oveja", pct: "90%" },
-          { no: "2.", pieza: "Cierre", mat: "Broche a presión", pct: "10%" }
-        ],
-        images: ["souvenirs/placeholder_beige.png", "souvenirs/placeholder_beige.png", "souvenirs/placeholder_beige.png", "souvenirs/placeholder_beige.png"]
-      },
+        // SOUVENIRS
+        s_monedero_chia: {
+          nombre: "Monedero Tejido &ldquo;Chía&rdquo;",
+          ref: "Souvenirs &amp; Experiencias - Kit Primeros Pasos - MC01",
+          oficio: "Tejeduría Artesanal",
+          tecnica: "Tejido manual en lana virgen",
+          especificaciones:
+            "Monedero circular tejido completamente en lana virgen de oveja color negro absoluto con terminaciones en amarillo. Incorpora un broche metálico a presión (tipo clip) para cierre seguro y lazo de lana.",
+          tipo: "Accesorio / Souvenir de Mano",
+          color: "Negro (Terminales Amarillos)",
+          capacidad: "45 unidades / mes",
+          grosor: "Lana pesada (4mm)",
+          talla: "Única (12cm Ø)",
+          peso: "90 gr.",
+          precio_unitario: "$65.000 COP",
+          hecho_a_mano: "SI",
+          fecha: "03/06/2026",
+          prod_no: "S-01",
+          linea: "Chía (Luna)",
+          crono: [
+            "1. Preproducción: Hilado y tinturado natural de la lana virgen de oveja a color negro.",
+            "2. Producción: Tejido del cuerpo circular en telar o manual, integrando terminaciones amarillas.",
+            "3. Acabados: Ensamble del broche metálico a presión en la boca del monedero.",
+            "4. Exhibición: Empacado en el Kit Primeros Pasos.",
+          ],
+          components: [
+            {
+              no: "1.",
+              pieza: "Cuerpo circular",
+              mat: "Lana virgen de oveja",
+              pct: "90%",
+            },
+            { no: "2.", pieza: "Cierre", mat: "Broche a presión", pct: "10%" },
+          ],
+          images: [
+            "souvenirs/placeholder_negro.png",
+            "souvenirs/placeholder_negro.png",
+            "souvenirs/placeholder_negro.png",
+            "souvenirs/placeholder_negro.png",
+          ],
+        },
+        s_monedero_sue: {
+          nombre: "Monedero Tejido &ldquo;Sué&rdquo;",
+          ref: "Souvenirs &amp; Experiencias - Kit Primeros Pasos - MS02",
+          oficio: "Tejeduría Artesanal",
+          tecnica: "Tejido manual en lana virgen",
+          especificaciones:
+            "Monedero circular tejido completamente en lana virgen de oveja color beige con terminaciones en amarillo. Incorpora un broche metálico a presión (tipo clip) para cierre seguro y lazo de lana.",
+          tipo: "Accesorio / Souvenir de Mano",
+          color: "Beige (Terminales Amarillos)",
+          capacidad: "45 unidades / mes",
+          grosor: "Lana pesada (4mm)",
+          talla: "Única (12cm Ø)",
+          peso: "90 gr.",
+          precio_unitario: "$65.000 COP",
+          hecho_a_mano: "SI",
+          fecha: "03/06/2026",
+          prod_no: "S-02",
+          linea: "Sué (Sol)",
+          crono: [
+            "1. Preproducción: Clasificación, lavado y cardado ecológico de la lana virgen cruda beige.",
+            "2. Producción: Tejido del cuerpo circular en telar o manual, integrando terminaciones amarillas.",
+            "3. Acabados: Ensamble del broche metálico a presión en la boca del monedero.",
+            "4. Exhibición: Empacado en el Kit Primeros Pasos.",
+          ],
+          components: [
+            {
+              no: "1.",
+              pieza: "Cuerpo circular",
+              mat: "Lana virgen de oveja",
+              pct: "90%",
+            },
+            { no: "2.", pieza: "Cierre", mat: "Broche a presión", pct: "10%" },
+          ],
+          images: [
+            "souvenirs/placeholder_beige.png",
+            "souvenirs/placeholder_beige.png",
+            "souvenirs/placeholder_beige.png",
+            "souvenirs/placeholder_beige.png",
+          ],
+        },
 
-      "s_collar_chia": {
-        nombre: "Llavero Tejido &ldquo;Chía&rdquo;",
-        ref: "Souvenirs &amp; Joyería Botánica - Llavero Luna - CC05",
-        oficio: "Tejeduría y Ensamble",
-        tecnica: "Tejido manual y ensamble de herrajes",
-        especificaciones: "Llavero fabricado completamente en lana virgen de oveja color negro con terminaciones y detalles en amarillo. Cuenta con agarradero (herraje) de metal robusto clásico de llavero.",
-        tipo: "Accesorio / Llavero",
-        color: "Negro (Terminales Amarillos)",
-        capacidad: "100 unidades / mes",
-        grosor: "Lana media (3mm)",
-        talla: "Única, con herraje",
-        peso: "25 gr.",
-        precio_unitario: "$35.000 COP",
-        hecho_a_mano: "SI",
-        fecha: "13/05/2026",
-        prod_no: "S-05",
-        linea: "Chía (Luna)",
-        crono: [
-          "1. Preproducción: Hilado y teñido orgánico de la lana virgen a negro.",
-          "2. Producción: Tejido manual de la estructura base del llavero.",
-          "3. Acabados: Ensamble del herraje metálico de llavero de alta seguridad.",
-          "4. Exhibición: Montaje en tarjeta plantable con semillas."
-        ],
-        components: [
-          { no: "1.", pieza: "Cuerpo tejido", mat: "Lana virgen de oveja", pct: "85%" },
-          { no: "2.", pieza: "Agarradero", mat: "Herraje metálico", pct: "15%" }
-        ],
-        images: ["souvenirs/placeholder_negro.png", "souvenirs/placeholder_negro.png", "souvenirs/placeholder_negro.png", "souvenirs/placeholder_negro.png"]
-      },
-      "s_collar_sue": {
-        nombre: "Llavero Tejido &ldquo;Sué&rdquo;",
-        ref: "Souvenirs &amp; Joyería Botánica - Llavero Sol - CS06",
-        oficio: "Tejeduría y Ensamble",
-        tecnica: "Tejido manual y ensamble de herrajes",
-        especificaciones: "Llavero fabricado completamente en lana virgen de oveja color beige con terminaciones y detalles en amarillo. Cuenta con agarradero (herraje) de metal robusto clásico de llavero.",
-        tipo: "Accesorio / Llavero",
-        color: "Beige (Terminales Amarillos)",
-        capacidad: "100 unidades / mes",
-        grosor: "Lana media (3mm)",
-        talla: "Única, con herraje",
-        peso: "25 gr.",
-        precio_unitario: "$35.000 COP",
-        hecho_a_mano: "SI",
-        fecha: "13/05/2026",
-        prod_no: "S-06",
-        linea: "Sué (Sol)",
-        crono: [
-          "1. Preproducción: Lavado y preparación de lana virgen cruda color beige.",
-          "2. Producción: Tejido manual de la estructura base del llavero.",
-          "3. Acabados: Ensamble del herraje metálico de llavero de alta seguridad.",
-          "4. Exhibición: Montaje en tarjeta plantable con semillas."
-        ],
-        components: [
-          { no: "1.", pieza: "Cuerpo tejido", mat: "Lana virgen de oveja", pct: "85%" },
-          { no: "2.", pieza: "Agarradero", mat: "Herraje metálico", pct: "15%" }
-        ],
-        images: ["souvenirs/placeholder_beige.png", "souvenirs/placeholder_beige.png", "souvenirs/placeholder_beige.png", "souvenirs/placeholder_beige.png"]
-      },
+        s_collar_chia: {
+          nombre: "Llavero Tejido &ldquo;Chía&rdquo;",
+          ref: "Souvenirs &amp; Joyería Botánica - Llavero Luna - CC05",
+          oficio: "Tejeduría y Ensamble",
+          tecnica: "Tejido manual y ensamble de herrajes",
+          especificaciones:
+            "Llavero fabricado completamente en lana virgen de oveja color negro con terminaciones y detalles en amarillo. Cuenta con agarradero (herraje) de metal robusto clásico de llavero.",
+          tipo: "Accesorio / Llavero",
+          color: "Negro (Terminales Amarillos)",
+          capacidad: "100 unidades / mes",
+          grosor: "Lana media (3mm)",
+          talla: "Única, con herraje",
+          peso: "25 gr.",
+          precio_unitario: "$35.000 COP",
+          hecho_a_mano: "SI",
+          fecha: "03/06/2026",
+          prod_no: "S-05",
+          linea: "Chía (Luna)",
+          crono: [
+            "1. Preproducción: Hilado y teñido orgánico de la lana virgen a negro.",
+            "2. Producción: Tejido manual de la estructura base del llavero.",
+            "3. Acabados: Ensamble del herraje metálico de llavero de alta seguridad.",
+            "4. Exhibición: Montaje en tarjeta plantable con semillas.",
+          ],
+          components: [
+            {
+              no: "1.",
+              pieza: "Cuerpo tejido",
+              mat: "Lana virgen de oveja",
+              pct: "85%",
+            },
+            {
+              no: "2.",
+              pieza: "Agarradero",
+              mat: "Herraje metálico",
+              pct: "15%",
+            },
+          ],
+          images: [
+            "souvenirs/placeholder_negro.png",
+            "souvenirs/placeholder_negro.png",
+            "souvenirs/placeholder_negro.png",
+            "souvenirs/placeholder_negro.png",
+          ],
+        },
+        s_collar_sue: {
+          nombre: "Llavero Tejido &ldquo;Sué&rdquo;",
+          ref: "Souvenirs &amp; Joyería Botánica - Llavero Sol - CS06",
+          oficio: "Tejeduría y Ensamble",
+          tecnica: "Tejido manual y ensamble de herrajes",
+          especificaciones:
+            "Llavero fabricado completamente en lana virgen de oveja color beige con terminaciones y detalles en amarillo. Cuenta con agarradero (herraje) de metal robusto clásico de llavero.",
+          tipo: "Accesorio / Llavero",
+          color: "Beige (Terminales Amarillos)",
+          capacidad: "100 unidades / mes",
+          grosor: "Lana media (3mm)",
+          talla: "Única, con herraje",
+          peso: "25 gr.",
+          precio_unitario: "$35.000 COP",
+          hecho_a_mano: "SI",
+          fecha: "03/06/2026",
+          prod_no: "S-06",
+          linea: "Sué (Sol)",
+          crono: [
+            "1. Preproducción: Lavado y preparación de lana virgen cruda color beige.",
+            "2. Producción: Tejido manual de la estructura base del llavero.",
+            "3. Acabados: Ensamble del herraje metálico de llavero de alta seguridad.",
+            "4. Exhibición: Montaje en tarjeta plantable con semillas.",
+          ],
+          components: [
+            {
+              no: "1.",
+              pieza: "Cuerpo tejido",
+              mat: "Lana virgen de oveja",
+              pct: "85%",
+            },
+            {
+              no: "2.",
+              pieza: "Agarradero",
+              mat: "Herraje metálico",
+              pct: "15%",
+            },
+          ],
+          images: [
+            "souvenirs/placeholder_beige.png",
+            "souvenirs/placeholder_beige.png",
+            "souvenirs/placeholder_beige.png",
+            "souvenirs/placeholder_beige.png",
+          ],
+        },
 
-      // PACKAGING
-      "s_empaque": {
-        nombre: "Caja Kraft Circular &ldquo;Volante de Huso&rdquo;",
-        ref: "Packaging Oficial - Empaque de Lujo - PVOL01",
-        oficio: "Cartonería y Ecodiseño",
-        tecnica: "Corte, rolado y grabado base agua",
-        materia_prima: "Cartón Kraft reciclado de alto gramaje, Fique crudo, Tarjeta de papel semilla",
-        especificaciones: "Caja cilíndrica de lujo inspirada en la morfología circular del volante de huso Muisca. Fabricada en cartón Kraft biodegradable sin blanquear, con grabado al agua del isotipo en la tapa.",
-        tipo: "Empaque Ecológico de Lujo",
-        color: "Marrón Kraft Natural",
-        capacidad: "150 cajas / mes",
-        grosor: "Cartón Kraft rígido (1.8mm)",
-        talla: "Medidas: 25 cm Ø × 12 cm alto",
-        peso: "250 gr.",
-        precio_unitario: "$25.000 COP",
-        precio_mayor: "$18.000 COP (Min. 20 unid)",
-        artesano: "Taller de Ecodiseño LANNA",
-        telefono: "+57 300 305 3941",
-        municipio: "Pasto",
-        taller: "Taller Central LANNA",
-        departamento: "Nariño",
-        hecho_a_mano: "SI",
-        centro_poblado: "Pasto, Nariño",
-        fecha: "13/05/2026",
-        prod_no: "P-01",
-        linea: "Colección Inaugural Bochica",
-        crono: [
-          "1. Preproducción: Corte de láminas de cartón rígido kraft reciclado.",
-          "2. Producción: Rolado y ensamble de la estructura cilíndrica del cuerpo y la tapa.",
-          "3. Acabados: Grabado del isotipo mediante sello manual con tinta base agua y adición de fique.",
-          "4. Exhibición: Ensamble del Kit de Unboxing con tarjeta de papel semilla nativa."
-        ],
-        components: [
-          { no: "1.", pieza: "Cuerpo cilíndrico", mat: "Cartón Kraft reciclado", pct: "85%" },
-          { no: "2.", pieza: "Tapa circular", mat: "Cartón Kraft rígido", pct: "10%" },
-          { no: "3.", pieza: "Lazo de cierre", mat: "Cordón de fique crudo", pct: "5%" },
-          { no: "4.", pieza: "Etiqueta", mat: "Papel semilla nativa", pct: "--" }
-        ],
-        images: ["final/p1.png", "final/p1.png", "final/p2.png", "final/p2.png"]
-      }
-    };
+        // PACKAGING
+        s_empaque: {
+          nombre: "Caja Kraft Circular &ldquo;Volante de Huso&rdquo;",
+          ref: "Packaging Oficial - Empaque de Lujo - PVOL01",
+          oficio: "Cartonería y Ecodiseño",
+          tecnica: "Corte, rolado y grabado base agua",
+          materia_prima:
+            "Cartón Kraft reciclado de alto gramaje, Fique crudo, Tarjeta de papel semilla",
+          especificaciones:
+            "Caja cilíndrica de lujo inspirada en la morfología circular del volante de huso Muisca. Fabricada en cartón Kraft biodegradable sin blanquear, con grabado al agua del isotipo en la tapa.",
+          tipo: "Empaque Ecológico de Lujo",
+          color: "Marrón Kraft Natural",
+          capacidad: "150 cajas / mes",
+          grosor: "Cartón Kraft rígido (1.8mm)",
+          talla: "Medidas: 25 cm Ø × 12 cm alto",
+          peso: "250 gr.",
+          precio_unitario: "$25.000 COP",
+          precio_mayor: "$18.000 COP (Min. 20 unid)",
+          artesano: "Taller de Ecodiseño LANNA",
+          telefono: "+57 300 305 3941",
+          municipio: "Pasto",
+          taller: "Taller Central LANNA",
+          departamento: "Nariño",
+          hecho_a_mano: "SI",
+          centro_poblado: "Pasto, Nariño",
+          fecha: "03/06/2026",
+          prod_no: "P-01",
+          linea: "Colección Inaugural Bochica",
+          crono: [
+            "1. Preproducción: Corte de láminas de cartón rígido kraft reciclado.",
+            "2. Producción: Rolado y ensamble de la estructura cilíndrica del cuerpo y la tapa.",
+            "3. Acabados: Grabado del isotipo mediante sello manual con tinta base agua y adición de fique.",
+            "4. Exhibición: Ensamble del Kit de Unboxing con tarjeta de papel semilla nativa.",
+          ],
+          components: [
+            {
+              no: "1.",
+              pieza: "Cuerpo cilíndrico",
+              mat: "Cartón Kraft reciclado",
+              pct: "85%",
+            },
+            {
+              no: "2.",
+              pieza: "Tapa circular",
+              mat: "Cartón Kraft rígido",
+              pct: "10%",
+            },
+            {
+              no: "3.",
+              pieza: "Lazo de cierre",
+              mat: "Cordón de fique crudo",
+              pct: "5%",
+            },
+            {
+              no: "4.",
+              pieza: "Etiqueta",
+              mat: "Papel semilla nativa",
+              pct: "--",
+            },
+          ],
+          images: [
+            "final/p1.png",
+            "final/p1.png",
+            "final/p2.png",
+            "final/p2.png",
+          ],
+        },
+      };
 
-    // ELEMENTOS DEL DOM
-    const switchPrendas = document.getElementById("switch-prendas");
-    const switchSouvenirs = document.getElementById("switch-souvenirs");
-    const groupPrendas = document.getElementById("group-prendas");
-    const groupSouvenirs = document.getElementById("group-souvenirs");
-    const itemButtons = document.querySelectorAll(".card-btn");
-    const viewerContent = document.getElementById("viewer-content");
-    const mainDisplayBox = document.getElementById("main-display-box");
-    const galleryThumbs = document.getElementById("gallery-thumbs");
-    const specsPanel = document.getElementById("viewer-specs-panel");
-    const printArea = document.getElementById("print-area");
+      // ELEMENTOS DEL DOM
+      const switchPrendas = document.getElementById("switch-prendas");
+      const switchSouvenirs = document.getElementById("switch-souvenirs");
+      const groupPrendas = document.getElementById("group-prendas");
+      const groupSouvenirs = document.getElementById("group-souvenirs");
+      const itemButtons = document.querySelectorAll(".card-btn");
+      const viewerContent = document.getElementById("viewer-content");
+      const mainDisplayBox = document.getElementById("main-display-box");
+      const galleryThumbs = document.getElementById("gallery-thumbs");
+      const specsPanel = document.getElementById("viewer-specs-panel");
+      const printArea = document.getElementById("print-area");
 
-    let activeId = "g_ruana_chia";
+      let activeId = "g_ruana_chia";
 
-    // SWITCH DE CATEGORÍA
-    switchPrendas.addEventListener("click", () => {
-      switchPrendas.classList.add("active");
-      switchSouvenirs.classList.remove("active");
-      groupPrendas.classList.add("active");
-      groupSouvenirs.classList.remove("active");
+      // SWITCH DE CATEGORÍA
+      switchPrendas.addEventListener("click", () => {
+        switchPrendas.classList.add("active");
+        switchSouvenirs.classList.remove("active");
+        groupPrendas.classList.add("active");
+        groupSouvenirs.classList.remove("active");
 
-      // Activar primer ítem de prendas
-      const firstGarment = groupPrendas.querySelector(".card-btn");
-      if (firstGarment) firstGarment.click();
-    });
-
-    switchSouvenirs.addEventListener("click", () => {
-      switchSouvenirs.classList.add("active");
-      switchPrendas.classList.remove("active");
-      groupSouvenirs.classList.add("active");
-      groupPrendas.classList.remove("active");
-
-      // Activar primer ítem de souvenirs
-      const firstSouvenir = groupSouvenirs.querySelector(".card-btn");
-      if (firstSouvenir) firstSouvenir.click();
-    });
-
-    // BOTONES DE PRENDA O SOUVENIR
-    itemButtons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        // Quitar clase activa de todos los botones en los grupos
-        itemButtons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-
-        const id = btn.dataset.id;
-        loadSheet(id);
+        // Activar primer ítem de prendas
+        const firstGarment = groupPrendas.querySelector(".card-btn");
+        if (firstGarment) firstGarment.click();
       });
-    });
 
-    // FUNCIÓN DE CARGA DINÁMICA DE LA FICHA A SANGRE
-    function loadSheet(id) {
-      activeId = id;
-      const data = database[id];
-      if (!data) return;
+      switchSouvenirs.addEventListener("click", () => {
+        switchSouvenirs.classList.add("active");
+        switchPrendas.classList.remove("active");
+        groupSouvenirs.classList.add("active");
+        groupPrendas.classList.remove("active");
 
-      // Ocultar suavemente el visor antes de repoblar
-      viewerContent.classList.remove("active");
+        // Activar primer ítem de souvenirs
+        const firstSouvenir = groupSouvenirs.querySelector(".card-btn");
+        if (firstSouvenir) firstSouvenir.click();
+      });
 
-      setTimeout(() => {
-        // 1. Cargar Imagen Principal
-        mainDisplayBox.style.backgroundImage = `url('${data.images[0]}')`;
+      // BOTONES DE PRENDA O SOUVENIR
+      itemButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          // Quitar clase activa de todos los botones en los grupos
+          itemButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
 
-        // 2. Poblar Galería de Miniaturas
-        galleryThumbs.innerHTML = data.images.map((img, index) => `
-          <button class="thumb-btn ${index === 0 ? 'active' : ''}" style="background-image: url('${img}');" onclick="switchMainImage(this, '${img}')"></button>
-        `).join('');
+          const id = btn.dataset.id;
+          loadSheet(id);
+        });
+      });
 
-        // 3. Poblar Ficha de Especificaciones en HTML Limpio a Sangre
-        specsPanel.innerHTML = `
+      // FUNCIÓN DE CARGA DINÁMICA DE LA FICHA A SANGRE
+      function loadSheet(id) {
+        activeId = id;
+        const data = database[id];
+        if (!data) return;
+
+        // Ocultar suavemente el visor antes de repoblar
+        viewerContent.classList.remove("active");
+
+        setTimeout(() => {
+          // 1. Cargar Imagen Principal
+          mainDisplayBox.style.backgroundImage = `url('${data.images[0]}')`;
+
+          // 2. Poblar Galería de Miniaturas
+          galleryThumbs.innerHTML = data.images
+            .map(
+              (img, index) => `
+          <button class="thumb-btn ${index === 0 ? "active" : ""}" style="background-image: url('${img}');" onclick="switchMainImage(this, '${img}')"></button>
+        `,
+            )
+            .join("");
+
+          // 3. Poblar Ficha de Especificaciones en HTML Limpio a Sangre
+          specsPanel.innerHTML = `
           <!-- Header Block -->
           <div class="spec-header">
             <div style="display: flex; justify-content: space-between; align-items: baseline;">
@@ -1388,22 +1696,30 @@
               <div class="ensemble-section" style="margin-top: 0;">
                 <h3 class="spec-section-title">Cronograma de Producción</h3>
                 <div class="timeline-container">
-                  ${data.crono.map(step => `
+                  ${data.crono
+                    .map(
+                      (step) => `
                     <div class="timeline-step">
                       <div class="timeline-dot"></div>
                       <div class="timeline-text">${step}</div>
                     </div>
-                  `).join('')}
+                  `,
+                    )
+                    .join("")}
                 </div>
               </div>
 
               <!-- Observaciones Cursivas -->
-              ${data.obs ? `
+              ${
+                data.obs
+                  ? `
               <div class="obs-block">
                 <span class="obs-label">Notas &amp; Cuidados</span>
                 <p class="obs-text">${data.obs}</p>
               </div>
-              ` : ''}
+              `
+                  : ""
+              }
             </div>
 
             <!-- RIGHT COLUMN -->
@@ -1421,14 +1737,18 @@
                     </tr>
                   </thead>
                   <tbody>
-                    ${data.components.map(c => `
+                    ${data.components
+                      .map(
+                        (c) => `
                       <tr>
                         <td>${c.no}</td>
                         <td>${c.pieza}</td>
                         <td>${c.mat}</td>
                         <td style="font-weight:600; color: var(--gold);">${c.pct}</td>
                       </tr>
-                    `).join('')}
+                    `,
+                      )
+                      .join("")}
                   </tbody>
                 </table>
               </div>
@@ -1436,28 +1756,28 @@
           </div>
         `;
 
-        // Preparar contenido para impresión clásica (en tamaño Carta vertical)
-        preparePrintArea(data);
+          // Preparar contenido para impresión clásica (en tamaño Carta vertical)
+          preparePrintArea(data);
 
-        // Reactivar el visor con fade-in
-        viewerContent.classList.add("active");
-      }, 200);
-    }
+          // Reactivar el visor con fade-in
+          viewerContent.classList.add("active");
+        }, 200);
+      }
 
-    // CONMUTAR MINIATURA
-    window.switchMainImage = function(btn, imgUrl) {
-      // Quitar clase activa de miniaturas
-      const thumbs = galleryThumbs.querySelectorAll(".thumb-btn");
-      thumbs.forEach(t => t.classList.remove("active"));
-      btn.classList.add("active");
+      // CONMUTAR MINIATURA
+      window.switchMainImage = function (btn, imgUrl) {
+        // Quitar clase activa de miniaturas
+        const thumbs = galleryThumbs.querySelectorAll(".thumb-btn");
+        thumbs.forEach((t) => t.classList.remove("active"));
+        btn.classList.add("active");
 
-      // Cambiar background del visualizador
-      mainDisplayBox.style.backgroundImage = `url('${imgUrl}')`;
-    };
+        // Cambiar background del visualizador
+        mainDisplayBox.style.backgroundImage = `url('${imgUrl}')`;
+      };
 
-    // FORMATEAR ÁREA DE IMPRESIÓN (Clásico, cuadrícula matemática de Carta)
-    function preparePrintArea(data) {
-      printArea.innerHTML = `
+      // FORMATEAR ÁREA DE IMPRESIÓN (Clásico, cuadrícula matemática de Carta)
+      function preparePrintArea(data) {
+        printArea.innerHTML = `
         <div class="ft-table" style="height: 100%; width: 100%; border: 1px solid rgba(18, 19, 18, 0.6); display: flex; flex-direction: column;">
           
           <!-- Header -->
@@ -1498,7 +1818,7 @@
             <div class="ft-cell w-50 crono-col" style="padding: 8px 10px; border-right: 1px solid rgba(18, 19, 18, 0.6);">
               <div class="ft-label" style="font-size: 6.5pt; font-weight:600; text-transform: uppercase;">Cronograma de Producción:</div>
               <ul class="crono-list" style="list-style: none; margin: 6px 0; font-size: 8pt; padding: 0;">
-                ${data.crono.map(step => `<li style="margin-bottom:4px;">${step}</li>`).join('')}
+                ${data.crono.map((step) => `<li style="margin-bottom:4px;">${step}</li>`).join("")}
               </ul>
               <div style="font-size: 8pt;">
                 <span class="ft-label" style="font-size: 6.5pt; font-weight:600; text-transform: uppercase;">Capacidad de prod:</span> ${data.capacidad}
@@ -1515,14 +1835,18 @@
                   <th style="border: 1px solid rgba(18, 19, 18, 0.6); padding: 4px;">Material</th>
                   <th style="border: 1px solid rgba(18, 19, 18, 0.6); padding: 4px;">Porcentaje</th>
                 </tr>
-                ${data.components.map(c => `
+                ${data.components
+                  .map(
+                    (c) => `
                   <tr style="font-size: 7.5pt;">
                     <td style="border: 1px solid rgba(18, 19, 18, 0.6); padding: 4px;">${c.no}</td>
                     <td style="border: 1px solid rgba(18, 19, 18, 0.6); padding: 4px;">${c.pieza}</td>
                     <td style="border: 1px solid rgba(18, 19, 18, 0.6); padding: 4px;">${c.mat}</td>
                     <td style="border: 1px solid rgba(18, 19, 18, 0.6); padding: 4px; font-weight: 700;">${c.pct}</td>
                   </tr>
-                `).join('')}
+                `,
+                  )
+                  .join("")}
               </table>
             </div>
           </div>
@@ -1637,7 +1961,7 @@
             </div>
             <div class="ft-cell w-50" style="padding: 6px 10px;">
               <div class="ft-label" style="font-size: 6.5pt; font-weight: 600; text-transform: uppercase;">Centro Poblado:</div>
-              ${data.centro_poblado || (data.municipio + ", " + data.departamento)}
+              ${data.centro_poblado || data.municipio + ", " + data.departamento}
             </div>
           </div>
 
@@ -1651,7 +1975,7 @@
           <!-- Footer Row -->
           <div class="ft-row footer-row" style="height: 8mm; background-color: rgba(18, 19, 18, 0.02); display: flex;">
             <div class="ft-cell w-25" style="border-right: 1px solid rgba(18, 19, 18, 0.6); text-align: center; justify-content: center; flex-direction: row; align-items: center; font-size: 8pt; padding: 2px;">
-              <span class="ft-label" style="font-size: 6.5pt; font-weight: 600; margin: 0 4px 0 0; text-transform: uppercase;">Producto:</span> ${data.tipo.split(' ')[0]}
+              <span class="ft-label" style="font-size: 6.5pt; font-weight: 600; margin: 0 4px 0 0; text-transform: uppercase;">Producto:</span> ${data.tipo.split(" ")[0]}
             </div>
             <div class="ft-cell w-25" style="border-right: 1px solid rgba(18, 19, 18, 0.6); text-align: center; justify-content: center; flex-direction: row; align-items: center; font-size: 8pt; padding: 2px;">
               <span class="ft-label" style="font-size: 6.5pt; font-weight: 600; margin: 0 4px 0 0; text-transform: uppercase;">Línea:</span> ${data.linea}
@@ -1666,55 +1990,94 @@
 
         </div>
       `;
-    }
-
-    // CARGAR PRIMER ELEMENTO AL INICIO
-    loadSheet("g_ruana_chia");
-
-    // INTERCONEXIÓN MINIATURAS
-    window.switchMainImage = function(btn, imgUrl) {
-      const thumbs = galleryThumbs.querySelectorAll(".thumb-btn");
-      thumbs.forEach(t => t.classList.remove("active"));
-      btn.classList.add("active");
-      mainDisplayBox.style.backgroundImage = `url('${imgUrl}')`;
-    };
-
-
-    // LÓGICA DE PANTALLA COMPLETA
-    document.addEventListener("DOMContentLoaded", () => {
-      const fsBtn = document.getElementById("fullscreen-btn");
-      const fsEnter = document.getElementById("fs-icon-enter");
-      const fsExit = document.getElementById("fs-icon-exit");
-
-      if (fsBtn) {
-        fsBtn.addEventListener("click", () => {
-          if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen().catch(err => {
-              console.log(`Error: ${err.message}`);
-            });
-          } else {
-            document.exitFullscreen();
-          }
-        });
-
-        document.addEventListener("fullscreenchange", () => {
-          if (document.fullscreenElement) {
-            fsEnter.style.display = "none";
-            fsExit.style.display = "block";
-          } else {
-            fsEnter.style.display = "block";
-            fsExit.style.display = "none";
-          }
-        });
       }
-    });
-  </script>
 
+      // CARGAR PRIMER ELEMENTO AL INICIO
+      loadSheet("g_ruana_chia");
 
+      // INTERCONEXIÓN MINIATURAS
+      window.switchMainImage = function (btn, imgUrl) {
+        const thumbs = galleryThumbs.querySelectorAll(".thumb-btn");
+        thumbs.forEach((t) => t.classList.remove("active"));
+        btn.classList.add("active");
+        mainDisplayBox.style.backgroundImage = `url('${imgUrl}')`;
+      };
 
-  <button id="fullscreen-btn" class="fs-button" title="Pantalla Completa">
-    <svg id="fs-icon-enter" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
-    <svg id="fs-icon-exit" style="display:none;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"></path></svg>
-  </button>
-</body>
+      // LÓGICA DE PANTALLA COMPLETA
+      document.addEventListener("DOMContentLoaded", () => {
+        const fsBtn = document.getElementById("fullscreen-btn");
+        const fsEnter = document.getElementById("fs-icon-enter");
+        const fsExit = document.getElementById("fs-icon-exit");
+
+        if (fsBtn) {
+          fsBtn.addEventListener("click", () => {
+            if (!document.fullscreenElement) {
+              document.documentElement.requestFullscreen().catch((err) => {
+                console.log(`Error: ${err.message}`);
+              });
+            } else {
+              document.exitFullscreen();
+            }
+          });
+
+          document.addEventListener("fullscreenchange", () => {
+            if (document.fullscreenElement) {
+              fsEnter.style.display = "none";
+              fsExit.style.display = "block";
+            } else {
+              fsEnter.style.display = "block";
+              fsExit.style.display = "none";
+            }
+          });
+        }
+      });
+      // LÓGICA DE ESCALADO FIJO (1920x1080)
+      function adjustScale() {
+        const wrapper = document.querySelector(".app-wrapper");
+        if (wrapper) {
+          const scale = Math.min(
+            window.innerWidth / 1600,
+            window.innerHeight / 900,
+          );
+          wrapper.style.transform = `scale(${scale})`;
+        }
+      }
+      window.addEventListener("resize", adjustScale);
+      adjustScale();
+    </script>
+
+    <button id="fullscreen-btn" class="fs-button" title="Pantalla Completa">
+      <svg
+        id="fs-icon-enter"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"
+        ></path>
+      </svg>
+      <svg
+        id="fs-icon-exit"
+        style="display: none"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"
+        ></path>
+      </svg>
+    </button>
+  </body>
 </html>

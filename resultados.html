@@ -166,7 +166,7 @@
       ══════════════════════════════════════════ */
       .s5 { background: var(--dark); display: grid; grid-template-columns: auto 1fr; }
       .s5-left { padding: 7cqh 3cqw 7cqh 6.5cqw; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid rgba(255, 255, 255, 0.06); min-width: 200px; }
-      .s5-right { padding: 5cqh 5cqw; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.9rem; align-content: center; }
+      .s5-right { padding: 6.5cqh 5.5cqw; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.9rem; align-content: center; }
       .r-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 3px; padding: 1.1rem 1rem; display: flex; flex-direction: column; gap: 0.4rem; transition: background 0.25s, border-color 0.25s; }
       .r-card:hover { background: rgba(229, 194, 114, 0.07); border-color: rgba(229, 194, 114, 0.25); }
       .r-num { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
@@ -331,7 +331,7 @@
       .nav-arrow svg { width: 1rem; height: 1rem; fill: currentColor; }
       #btn-p { left: 2cqw; }
       #btn-n { right: 2cqw; }
-      #btn-fs { position: fixed; bottom: 20px; right: 20px; background: var(--dark); border: 1px solid var(--gold); color: var(--gold); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 200; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); }
+      #btn-fs { position: fixed; bottom: 2cqh; right: 2cqw; background: var(--dark); border: 1px solid var(--gold); color: var(--gold); width: clamp(2rem, 3.5cqw, 3.5rem); height: clamp(2rem, 3.5cqw, 3.5rem); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 200; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); }
       #btn-fs:hover { background: var(--gold); color: var(--dark); transform: scale(1.1); }
       #btn-fs svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
       
@@ -401,11 +401,11 @@
               src="./logo/isotipo.svg"
               class="s1-logo"
               alt="LANNA"
-              style="height: clamp(2.5rem, 4vw, 4rem); margin-top: 2vh"
+              style="height: clamp(2.5rem, 4cqw, 4rem); margin-top: 2cqh"
             />
           </h1>
         </div>
-        <div class="s1-hero sc" style="margin-top: 2vh">
+        <div class="s1-hero sc" style="margin-top: 2cqh">
           <div
             style="
               position: absolute;
@@ -420,7 +420,7 @@
           >
             <h2
               class="hero fu d1"
-              style="color: var(--light); font-size: clamp(3rem, 6vw, 5rem)"
+              style="color: var(--light); font-size: clamp(3rem, 6cqw, 5rem)"
             >
               SESIÓN<br />FOTOGRÁFICA
             </h2>
@@ -436,11 +436,11 @@
       <!-- 02 GRUPAL -->
       <div class="sl" style="background:var(--dark); color:var(--light);">
         
-        <div style="padding: 12vh 6vw; display:flex; flex-direction:column; height:100%; box-sizing:border-box;">
+        <div style="padding: 12cqh 6cqw; display:flex; flex-direction:column; height:100%; box-sizing:border-box;">
            <span class="sub" style="color:var(--gold)">Fotografía Grupal</span>
            <span class="g-line" style="background:var(--light); margin-top:1rem; margin-bottom: 2rem;"></span>
            <h2 class="hero fu d1" style="font-size: 2.5rem; color:var(--light); margin-bottom: 2rem;">LA COLECCIÓN UNIDA</h2>
-           <div class="fu d2" style="display:flex; gap: 1vw; flex: 1;">
+           <div class="fu d2" style="display:flex; gap: 1cqw; flex: 1;">
               <div style="flex:1; background: rgba(0,0,0,0.05); overflow:hidden;"><img src="./images/grupo1.jpeg" onerror="this.style.opacity=0" style="width:100%; height:100%; object-fit:cover;" /></div>
               <div style="flex:1; background: rgba(0,0,0,0.05); overflow:hidden;"><img src="./images/grupo2.jpeg" onerror="this.style.opacity=0" style="width:100%; height:100%; object-fit:cover;" /></div>
               <div style="flex:1; background: rgba(0,0,0,0.05); overflow:hidden;"><img src="./images/grupo3.jpeg" onerror="this.style.opacity=0" style="width:100%; height:100%; object-fit:cover;" /></div>
@@ -451,11 +451,11 @@
       <!-- 03 CHÍA INDIVIDUAL -->
       <div class="sl" style="background:var(--dark); color:var(--light);">
         
-        <div style="padding: 12vh 6vw; display:flex; flex-direction:column; height:100%; box-sizing:border-box;">
+        <div style="padding: 12cqh 6cqw; display:flex; flex-direction:column; height:100%; box-sizing:border-box;">
            <span class="sub" style="color:var(--gold)">Fotografía Individual</span>
            <span class="g-line" style="background:var(--light); margin-top:1rem; margin-bottom: 2rem;"></span>
            <h2 class="hero fu d1" style="font-size: 2.5rem; color:var(--light); margin-bottom: 2rem;">LÍNEA CHÍA (LA LUNA)</h2>
-           <div class="fu d2" style="display:flex; gap: 1vw; flex: 1;">
+           <div class="fu d2" style="display:flex; gap: 1cqw; flex: 1;">
               <div style="flex:1; background: rgba(255,255,255,0.05); overflow:hidden;"><img src="./images/chia1.jpeg" onerror="this.style.opacity=0" style="width:100%; height:100%; object-fit:cover;" /></div>
               <div style="flex:1; background: rgba(255,255,255,0.05); overflow:hidden;"><img src="./images/chia2.jpeg" onerror="this.style.opacity=0" style="width:100%; height:100%; object-fit:cover;" /></div>
               <div style="flex:1; background: rgba(255,255,255,0.05); overflow:hidden;"><img src="./images/chia3.jpeg" onerror="this.style.opacity=0" style="width:100%; height:100%; object-fit:cover;" /></div>
@@ -466,11 +466,11 @@
       <!-- 04 SUÉ INDIVIDUAL -->
       <div class="sl" style="background:var(--light); color:var(--dark);">
         
-        <div style="padding: 12vh 6vw; display:flex; flex-direction:column; height:100%; box-sizing:border-box;">
+        <div style="padding: 12cqh 6cqw; display:flex; flex-direction:column; height:100%; box-sizing:border-box;">
            <span class="sub" style="color:var(--gold)">Fotografía Individual</span>
            <span class="g-line" style="background:var(--light); margin-top:1rem; margin-bottom: 2rem;"></span>
            <h2 class="hero fu d1" style="font-size: 2.5rem; color:var(--dark); margin-bottom: 2rem;">LÍNEA SUÉ (EL SOL)</h2>
-           <div class="fu d2" style="display:flex; gap: 1vw; flex: 1;">
+           <div class="fu d2" style="display:flex; gap: 1cqw; flex: 1;">
               <div style="flex:1; background: rgba(0,0,0,0.05); overflow:hidden;"><img src="./images/sue1.jpeg" onerror="this.style.opacity=0" style="width:100%; height:100%; object-fit:cover;" /></div>
               <div style="flex:1; background: rgba(0,0,0,0.05); overflow:hidden;"><img src="./images/sue2.jpeg" onerror="this.style.opacity=0" style="width:100%; height:100%; object-fit:cover;" /></div>
               <div style="flex:1; background: rgba(0,0,0,0.05); overflow:hidden;"><img src="./images/sue3.jpeg" onerror="this.style.opacity=0" style="width:100%; height:100%; object-fit:cover;" /></div>
@@ -481,7 +481,7 @@
       <!-- 05 SOUVENIRS CHÍA -->
       <div class="sl" style="background:var(--dark); color:var(--light);">
         
-        <div style="padding: 12vh 6vw; display:flex; flex-direction:column; height:100%; box-sizing:border-box;">
+        <div style="padding: 12cqh 6cqw; display:flex; flex-direction:column; height:100%; box-sizing:border-box;">
            <span class="sub" style="color:var(--gold)">Souvenirs</span>
            <span class="g-line" style="background:var(--light); margin-top:1rem; margin-bottom: 2rem;"></span>
            <h2 class="hero fu d1" style="font-size: 2.5rem; color:var(--light); margin-bottom: 2rem;">SOUVENIRS CHÍA</h2>
@@ -496,7 +496,7 @@
       <!-- 06 SOUVENIRS SUÉ -->
       <div class="sl" style="background:var(--light); color:var(--dark);">
         
-        <div style="padding: 12vh 6vw; display:flex; flex-direction:column; height:100%; box-sizing:border-box;">
+        <div style="padding: 12cqh 6cqw; display:flex; flex-direction:column; height:100%; box-sizing:border-box;">
            <span class="sub" style="color:var(--gold)">Souvenirs</span>
            <span class="g-line" style="background:var(--light); margin-top:1rem; margin-bottom: 2rem;"></span>
            <h2 class="hero fu d1" style="font-size: 2.5rem; color:var(--dark); margin-bottom: 2rem;">SOUVENIRS SUÉ</h2>
@@ -511,17 +511,17 @@
       <!-- 07 SOUVENIR -->
       <div class="sl" style="background:var(--dark); color:var(--light);">
         
-        <div style="display:flex; height:100%; width:100%; padding: 12vh 6vw; box-sizing: border-box; align-items: center; gap: 5vw;">
+        <div style="display:flex; height:100%; width:100%; padding: 12cqh 6cqw; box-sizing: border-box; align-items: center; gap: 5cqw;">
            <div class="fu d1" style="flex:1;">
              <span class="sub" style="color:var(--gold)">Souvenir LANNA</span>
              <span class="g-line" style="background:var(--gold); margin-top:1rem; margin-bottom:2rem;"></span>
-             <h2 class="hero" style="color:var(--light); font-size:clamp(2.5rem,5.5vw,5rem); margin-bottom:2rem; line-height: 1;">EL HUSO<br>MUISCA</h2>
+             <h2 class="hero" style="color:var(--light); font-size:clamp(2.5rem,5.5cqw,5rem); margin-bottom:2rem; line-height: 1;">EL HUSO<br>MUISCA</h2>
              <p class="body" style="color:rgba(255,255,255,0.8); max-width: 40ch; font-size: 1.1rem; line-height: 1.6;">
                Este obsequio es nuestra forma de entregar un fragmento de la memoria. Está <strong>inspirado en la forma del huso muisca</strong>, acompañado de un <strong>botón tallado a mano en hueso de aguacate</strong> y amarrado meticulosamente con <strong>lana virgen de oveja</strong>.
              </p>
            </div>
            <div class="fu d2" style="flex:1; display:flex; justify-content:center; align-items:center; height:100%;">
-              <div style="width:100%; aspect-ratio: 1/1; max-height:65vh; background: rgba(255,255,255,0.05); border-radius: 4px; overflow:hidden;">
+              <div style="width:100%; aspect-ratio: 1/1; max-height:65cqh; background: rgba(255,255,255,0.05); border-radius: 4px; overflow:hidden;">
                   <img src="./images/souvenir.jpeg" onerror="this.style.opacity=0" style="width:100%; height:100%; object-fit:cover;" alt="Souvenir LANNA" />
               </div>
            </div>

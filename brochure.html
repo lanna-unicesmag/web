@@ -1,0 +1,1838 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./logo/isotipo.svg" />
+    <meta name="viewport" content="width=2560" />
+    <title>LANNA — Brand & Collection Brochure</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;700;900&family=Playfair+Display:ital,wght@1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ═══════════════════════════════════════════
+         TOKENS
+      ═══════════════════════════════════════════ */
+      :root {
+        --dark: #121312;
+        --stone: #1e1f1e;
+        --light: #f5f0e8;
+        --mist: rgba(255, 255, 255, 0.4);
+        --dim: rgba(0, 0, 0, 0.5);
+        --gold: #e5c272;
+        --gold2: #e5c272;
+        --gold-bg: rgba(229, 194, 114, 0.12);
+        --fw: "Outfit", sans-serif;
+        --fh: "Playfair Display", serif;
+        --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+        font-family: var(--fw);
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* ── STAGE ── */
+      #stage { 
+        width: 1920px; 
+        height: 1080px; 
+        container-type: size; 
+        position: relative; 
+        overflow: hidden; 
+        flex-shrink: 0; 
+        transform-origin: center center; 
+      }
+
+      /* ── SLIDE BASE ── */
+      .sl {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        visibility: hidden;
+        overflow: hidden;
+        transition:
+          opacity 0.7s var(--ease),
+          visibility 0.7s;
+      }
+      .sl.on {
+        opacity: 1;
+        visibility: visible;
+        z-index: 10;
+      }
+
+      /* ── ANIMATIONS ── */
+      @keyframes fu {
+        from {
+          opacity: 0;
+          transform: translateY(22px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @keyframes fi {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes sc {
+        from {
+          opacity: 0;
+          transform: scale(1.05);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @keyframes sl {
+        from {
+          opacity: 0;
+          transform: translateX(-24px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @keyframes sr {
+        from {
+          opacity: 0;
+          transform: translateX(24px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .sl.on .fu {
+        animation: fu 0.75s var(--ease) both;
+      }
+      .sl.on .fi {
+        animation: fi 0.9s var(--ease) both;
+      }
+      .sl.on .sc {
+        animation: sc 1.1s var(--ease) both;
+      }
+      .sl.on .sl-anim {
+        animation: sl 0.7s var(--ease) both;
+      }
+      .sl.on .sr {
+        animation: sr 0.7s var(--ease) both;
+      }
+      .d1 {
+        animation-delay: 0.1s !important;
+      }
+      .d2 {
+        animation-delay: 0.22s !important;
+      }
+      .d3 {
+        animation-delay: 0.36s !important;
+      }
+      .d4 {
+        animation-delay: 0.52s !important;
+      }
+
+      /* ── TYPE SCALE ── */
+      .hero {
+        font-weight: 900;
+        font-size: clamp(3.2rem, 7cqw, 6.5rem);
+        line-height: 0.88;
+        text-transform: uppercase;
+        letter-spacing: -0.03em;
+      }
+      .big {
+        font-weight: 900;
+        font-size: clamp(2rem, 4cqw, 3.8rem);
+        line-height: 0.92;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+      }
+      .sub {
+        font-weight: 500;
+        font-size: clamp(0.68rem, 0.85cqw, 0.82rem);
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--mist);
+      }
+      .sub-dark {
+        color: rgba(0, 0, 0, 0.4);
+      }
+      .body {
+        font-weight: 300;
+        font-size: clamp(0.75rem, 1cqw, 0.9rem);
+        line-height: 1.8;
+        color: rgba(0, 0, 0, 0.52);
+      }
+      .body-w {
+        font-weight: 300;
+        font-size: clamp(0.75rem, 1cqw, 0.9rem);
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .label {
+        font-weight: 700;
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+      }
+      .quote-txt {
+        font-family: var(--fh);
+        font-style: italic;
+        font-size: clamp(1rem, 1.6cqw, 1.45rem);
+        line-height: 1.55;
+      }
+      .gold {
+        color: var(--gold);
+      }
+      .g-line {
+        display: block;
+        width: 2rem;
+        height: 2px;
+        background: var(--gold);
+        margin: 0.8rem 0 1.2rem;
+      }
+      .tag {
+        display: inline-block;
+        border: 1px solid rgba(229, 194, 114, 0.4);
+        color: var(--gold);
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 0.18rem 0.65rem;
+        border-radius: 100px;
+        align-self: flex-start;
+        width: fit-content;
+      }
+
+      /* ══════════════════════════════════════════
+         SLIDE 01 — PORTADA
+      ══════════════════════════════════════════ */
+      .s1 {
+        background: var(--dark);
+        display: flex;
+        flex-direction: column;
+        padding: 4cqh 0 3cqh;
+        box-sizing: border-box;
+        color: var(--light);
+      }
+      .s1-header {
+        text-align: center;
+        margin-bottom: 2cqh;
+        padding: 0 5cqw;
+      }
+      .s1-logo {
+        height: clamp(1.6rem, 3cqw, 3rem);
+        filter: brightness(0) saturate(100%) invert(79%) sepia(35%)
+          saturate(600%) hue-rotate(5deg) brightness(105%);
+        width: auto;
+        display: inline-block;
+      }
+      .s1-hero {
+        flex: 1;
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 3cqh;
+        position: relative;
+      }
+      .s1-hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(10%);
+      }
+      .s1-foot {
+        display: flex;
+        padding: 0 5.5cqw;
+        justify-content: space-between;
+        align-items: flex-end;
+        font-size: clamp(0.52rem, 0.75cqw, 0.72rem);
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        color: rgba(255, 255, 255, 0.3);
+        text-transform: uppercase;
+        line-height: 1.6;
+      }
+      .s1-foot > div {
+        flex: 1;
+      }
+      .s1-foot-c {
+        text-align: center;
+      }
+      .s1-foot-r {
+        text-align: right;
+      }
+
+      /* ══════════════════════════════════════════
+         SLIDE 02 — TERRITORIO (SPLIT)
+      ══════════════════════════════════════════ */
+      .s2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .s2-left {
+        position: relative;
+        overflow: hidden;
+      }
+      .s2-left img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.65) saturate(0.9);
+      }
+      .s2-left-over {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(18, 19, 18, 0.8) 0%,
+          transparent 60%
+        );
+        padding: 7cqh 5cqw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .s2-right {
+        background: var(--light);
+        padding: 7cqh 5.5cqw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .s2-muisca {
+        margin-top: 3.5cqh;
+        padding: 1.5rem 1.8rem;
+        background: var(--dark);
+        border-radius: 2px;
+        max-width: 44ch;
+      }
+      .s2-muisca .quote-txt {
+        font-size: clamp(0.85rem, 1.1cqw, 1rem);
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* ══════════════════════════════════════════
+         SLIDE 03 — IDENTIDAD VISUAL
+      ══════════════════════════════════════════ */
+      .s3 {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        background: #fff;
+      }
+      .s3-left {
+        padding: 7cqh 4cqw 7cqh 7.5cqw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .s3-trio {
+        display: flex;
+        gap: 1.2rem;
+        margin-top: 2.5cqh;
+      }
+      .s3-trio-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+      }
+      .s3-trio-k {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .s3-trio-v {
+        font-size: 0.78rem;
+        font-weight: 300;
+        color: rgba(0, 0, 0, 0.5);
+        line-height: 1.55;
+      }
+      .s3-right {
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ══════════════════════════════════════════
+         SLIDE PRODUCTO — prenda individual (split)
+      ══════════════════════════════════════════ */
+      .sp {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .sp-img {
+        position: relative;
+        overflow: hidden;
+      }
+      .sp-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .sp-info {
+        background: var(--light);
+        padding: 8cqh 5cqw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .sp-info-dark {
+        background: var(--dark);
+        color: var(--light);
+      }
+      .sp-info-dark .sp-desc,
+      .sp-info-dark .sp-rv {
+        color: rgba(255, 255, 255, 0.7) !important;
+      }
+      .sp-info-dark .sp-rl,
+      .sp-info-dark .sp-ref {
+        color: rgba(255, 255, 255, 0.4) !important;
+      }
+      .sp-info-dark .sp-row:last-child .sp-rl,
+      .sp-info-dark .sp-row:last-child .sp-rv {
+        color: var(--gold) !important;
+      }
+      .sp-ref {
+        font-size: 0.58rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1rem;
+      }
+      .sp-name {
+        font-weight: 900;
+        font-size: clamp(2.5rem, 5cqw, 4.5rem);
+        line-height: 0.88;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+        color: var(--dark);
+      }
+      .sp-name-w {
+        color: var(--light);
+      }
+      .sp-line {
+        display: block;
+        width: 2rem;
+        height: 2px;
+        background: var(--gold);
+        margin: 1.5cqh 0;
+      }
+      .sp-desc {
+        font-weight: 300;
+        font-size: clamp(0.75rem, 1cqw, 0.9rem);
+        line-height: 1.75;
+        color: rgba(0, 0, 0, 0.5);
+        max-width: 38ch;
+      }
+      .sp-desc-w {
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .sp-specs {
+        margin-top: 3cqh;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .sp-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
+      .sp-row-w {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .sp-row:last-child {
+        border-bottom: none;
+        border-top: 1px solid rgba(229, 194, 114, 0.2);
+        padding-top: 0.9rem;
+        margin-top: 0.3rem;
+      }
+      .sp-rl {
+        font-size: 0.72rem;
+        font-weight: 300;
+        color: rgba(0, 0, 0, 0.4);
+      }
+      .sp-rl-w {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .sp-rv {
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: rgba(0, 0, 0, 0.65);
+      }
+      .sp-rv-w {
+        color: rgba(255, 255, 255, 0.65);
+      }
+      .sp-row:last-child .sp-rl,
+      .sp-row:last-child .sp-rv {
+        color: var(--gold);
+        font-weight: 700;
+      }
+
+      /* ══════════════════════════════════════════
+         SLIDE ACCESORIOS — 2 items en grid
+      ══════════════════════════════════════════ */
+      .sacc-item {
+        position: relative;
+        overflow: hidden;
+        background: #fff;
+      }
+      .sacc-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 4cqh 3cqw;
+        transition: transform 0.8s var(--ease);
+      }
+      .sacc-item:hover img {
+        transform: scale(1.04);
+      }
+      .sacc-cap {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 2.5cqh 2.5cqw;
+        background: linear-gradient(
+          to top,
+          rgba(255, 255, 255, 1) 15%,
+          transparent
+        );
+      }
+      .sacc-cap-num {
+        font-size: 0.55rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.3rem;
+      }
+      .sacc-cap-name {
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--dark);
+      }
+      .sacc-cap-mat {
+        font-size: 0.65rem;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.6);
+        margin-top: 0.2rem;
+      }
+      .sacc-cap-price {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--gold);
+        margin-top: 0.5rem;
+      }
+
+      /* ══════════════════════════════════════════
+         SOUVENIRS GRID SLIDE
+      ══════════════════════════════════════════ */
+      .ssou {
+        background: var(--dark);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 7cqh 6.5cqw;
+      }
+      .ssou-divisions {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        margin-top: 3cqh;
+        flex: 1;
+        max-height: 68cqh;
+      }
+      .ssou-division {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+      .ssou-div-title {
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: var(--gold);
+        writing-mode: vertical-lr;
+        transform: rotate(180deg);
+        letter-spacing: 0.15em;
+        text-align: center;
+      }
+      .ssou-div-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        flex: 1;
+      }
+      .ssou-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.8rem;
+      }
+      .ssou-item img {
+        height: 21cqh;
+        width: auto;
+        object-fit: contain;
+      }
+      .ssou-item-info {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .ssou-item-name {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--light);
+      }
+      .ssou-item-mat {
+        font-size: 0.7rem;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 0.2rem;
+      }
+      .ssou-item-price {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--gold);
+        margin-top: 0.4rem;
+      }
+
+      /* ══════════════════════════════════════════
+         SLIDE 11 — CIERRE
+      ══════════════════════════════════════════ */
+      .s11 {
+        background: var(--dark);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .s11-bg {
+        position: absolute;
+        inset: 0;
+      }
+      .s11-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.2) saturate(0.5);
+      }
+      .s11-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(229, 194, 114, 0.06) 0%,
+          transparent 70%
+        );
+      }
+      .s11-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.8cqh;
+        padding: 0 14cqw;
+      }
+      .s11-logo {
+        height: 2.2rem;
+      }
+      .s11-rule {
+        width: 2.5rem;
+        height: 2px;
+        background: var(--gold);
+        opacity: 0.6;
+      }
+      .s11-q {
+        font-family: var(--fh);
+        font-style: italic;
+        font-size: clamp(1rem, 1.8cqw, 1.6rem);
+        line-height: 1.65;
+        color: rgba(255, 255, 255, 0.75);
+        max-width: 620px;
+      }
+
+      /* ══════════════════════════════════════════
+         CHAPTER LABELS
+      ══════════════════════════════════════════ */
+      .ch-label {
+        display: none !important;
+      }
+      .ch-num {
+        font-size: 0.55rem;
+        font-weight: 800;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        opacity: 0.7;
+      }
+      .ch-sep {
+        width: 1.5rem;
+        height: 1px;
+        background: rgba(229, 194, 114, 0.4);
+      }
+      .ch-txt {
+        font-size: 0.55rem;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.3);
+      }
+      .ch-dark .ch-txt {
+        color: rgba(0, 0, 0, 0.3);
+      }
+
+      /* ══════════════════════════════════════════
+         SHARED: PROGRESS + NAV
+      ══════════════════════════════════════════ */
+      #bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        background: var(--gold);
+        z-index: 100;
+        transition: width 0.45s var(--ease);
+        pointer-events: none;
+      }
+
+      /* Botón de fullscreen ajustado */
+      #btn-fs {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: var(--dark);
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 200;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      }
+      #btn-fs:hover {
+        background: var(--gold);
+        color: var(--dark);
+        transform: scale(1.1);
+      }
+      #btn-fs svg {
+        width: 24px;
+        height: 24px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    
+      /* =========================================
+         REGLAS DE IMPRESIÓN (EXPORTAR A PDF)
+         ========================================= */
+      @media print {
+        @page { size: 16in 9in; margin: 0; }
+        html, body, #stage { 
+        width: 1920px; 
+        height: 1080px; 
+        container-type: size; 
+        position: relative; 
+        overflow: hidden; 
+        flex-shrink: 0; 
+        transform-origin: center center; 
+      }
+        .sl {
+          position: relative !important;
+          opacity: 1 !important;
+          display: block !important;
+          height: 100cqh !important;
+          width: 100% !important;
+          page-break-after: always !important;
+          visibility: visible !important;
+          transform: none !important;
+          animation: none !important;
+          overflow: hidden !important;
+        }
+        #bar, .nav-arrow, #btn-fs { display: none !important; }
+      }
+    
+    
+      @media print {
+        #stage { 
+          transform: none !important; 
+          width: 100% !important; 
+          height: auto !important; 
+          container-type: normal !important; 
+        }
+      }
+
+</style>
+  </head>
+  <body>
+    <div id="stage">
+      <div id="bar"></div>
+
+      <!-- Fullscreen button -->
+      <button id="btn-fs" title="Pantalla Completa">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"
+          />
+        </svg>
+      </button>
+
+      <!-- 01 PORTADA MARCA (s1 structure) -->
+      <div class="sl s1 on" style="background: var(--dark)">
+        <div class="s1-header fu">
+          <h1>
+            <img
+              src="./logo/isotipo.svg"
+              class="s1-logo"
+              alt="LANNA"
+              style="height: clamp(2.5rem, 4vw, 4rem); margin-top: 2vh"
+            />
+          </h1>
+        </div>
+        <div class="s1-hero sc" style="margin-top: 2vh">
+          <div
+            style="
+              position: absolute;
+              inset: 0;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              pointer-events: none;
+            "
+          >
+            <h2
+              class="hero fu d1"
+              style="color: var(--light); font-size: clamp(3rem, 6vw, 5rem)"
+            >
+              BRAND & COLLECTION<br />BROCHURE
+            </h2>
+          </div>
+        </div>
+        <div class="s1-foot fu d1">
+          <div>BRAND BROCHURE</div>
+          <div class="s1-foot-c">
+            QUIET LUXURY &nbsp;·&nbsp; ECODISEÑO ANDINO
+          </div>
+          <div class="s1-foot-r">COLLECTION 2026</div>
+        </div>
+      </div>
+
+      <!-- 02 MARCA: HISTORIA (s2 structure) -->
+      <div class="sl s2">
+        
+        <div class="s2-left sc">
+          <img src="./images/imagen59.png" alt="Altiplano" />
+          <div class="s2-left-over">
+            <div class="fu">
+              <span class="sub" style="color: var(--gold)"
+                >Nuestra Historia</span
+              >
+              <span class="g-line" style="margin-top: 0.8rem"></span>
+              <h2
+                class="hero"
+                style="color: #fff; font-size: clamp(2.5rem, 5.5vw, 4.5rem)"
+              >
+                EL LUJO<br />SILENCIOSO
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div class="s2-right">
+          <div class="fu">
+            <span class="sub sub-dark">Territorio y Origen</span>
+            <span class="g-line" style="background: var(--dark)"></span>
+            <h2 class="big" style="color: var(--dark)">A 2.600<br />METROS</h2>
+          </div>
+          <p class="body fu d1" style="max-width: 36ch; margin-top: 1.5vh">
+            Colombia posee el 60% de los páramos del mundo. A 2.600 metros sobre
+            el nivel del mar, en Boyacá, los telares todavía suenan.<br /><br />
+            <strong>LANNA</strong> rinde homenaje a Bochica, el dios que enseñó
+            a los muiscas a hilar y tejer. La lana era casi una religión:
+            vestimenta, moneda y ofrenda. El tejido nunca fue un accesorio, fue
+            identidad.
+          </p>
+          <div class="s2-muisca fu d2">
+            <p class="quote-txt">
+              "Resignificamos la herencia textil, tejiendo la memoria ancestral
+              con la sofisticación del diseño contemporáneo."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 MARCA: VALORES (s3 structure) -->
+      <div class="sl s3">
+        
+        <div class="s3-left">
+          <div class="fu">
+            <span class="sub sub-dark">Misión & Valores</span>
+            <span class="g-line" style="background: var(--dark)"></span>
+            <h2 class="big" style="color: var(--dark)">NUESTRO<br />ADN</h2>
+          </div>
+          <div
+            class="s3-trio fu d3"
+            style="flex-direction: column; gap: 2rem; margin-top: 4vh"
+          >
+            <div class="s3-trio-item">
+              <span class="s3-trio-k" style="font-size: 0.9rem"
+                >Autenticidad</span
+              >
+              <span
+                class="s3-trio-v"
+                style="font-size: 0.9rem; margin-top: 0.5rem"
+                >Origen trazable, procesos transparentes. Lo que el cliente
+                tiene en sus manos es exactamente lo que dice ser.</span
+              >
+            </div>
+            <div class="s3-trio-item">
+              <span class="s3-trio-k" style="font-size: 0.9rem"
+                >Permanencia</span
+              >
+              <span
+                class="s3-trio-v"
+                style="font-size: 0.9rem; margin-top: 0.5rem"
+                >Diseñamos prendas para décadas, no para temporadas. Fomentamos
+                la heredabilidad de nuestras piezas.</span
+              >
+            </div>
+            <div class="s3-trio-item">
+              <span class="s3-trio-k" style="font-size: 0.9rem">Silencio</span>
+              <span
+                class="s3-trio-v"
+                style="font-size: 0.9rem; margin-top: 0.5rem"
+                >El verdadero lujo habla bajo. Sin logos ostentosos, solo la
+                pureza de los materiales naturales y la maestría
+                artesanal.</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="s3-right sc" style="overflow: hidden">
+          <img
+            src="./images/imagen10.png"
+            alt="Detalle"
+            style="
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              filter: grayscale(10%);
+            "
+          />
+        </div>
+      </div>
+
+      <!-- 04 PORTADA COLECCION -->
+      <div
+        class="sl"
+        style="
+          background: var(--dark);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 0 5vw;
+        "
+      >
+        
+        <div class="fu" style="margin-bottom: 3vh">
+          <span class="sub" style="color: var(--gold)">Temporada 2026</span>
+          <span
+            class="g-line"
+            style="background: var(--gold); margin: 1rem auto"
+          ></span>
+        </div>
+        <h2
+          class="hero fu d1"
+          style="color: var(--light); font-size: clamp(3rem, 6vw, 6rem)"
+        >
+          COLECCIÓN<br />MITOLÓGICA
+        </h2>
+        <p
+          class="body-w fu d2"
+          style="
+            max-width: 65ch;
+            margin-top: 4vh;
+            font-size: clamp(1rem, 1.2vw, 1.2rem);
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+          "
+        >
+          Una colección fundamentada en la altísima importancia de la
+          religiosidad muisca. Rinde homenaje a <strong>Bochica</strong>, dios
+          civilizador que trajo consigo la sabiduría de la siembra y,
+          fundamentalmente, el conocimiento para hilar, tejer y coser. A partir
+          de esta herencia sagrada, nacen dos líneas basadas en las deidades más
+          trascendentales: <strong>Sué</strong> (el Sol) y
+          <strong>Chía</strong> (la Luna).
+        </p>
+      </div>
+
+      <!-- 05 NUESTRAS RAÍCES (s3 structure adapted) -->
+      <div class="sl s3" style="background: #000; color: var(--light)">
+        
+        <div class="s3-left">
+          <div class="fu">
+            <span class="sub" style="color: var(--mist)">Nuestra Historia</span>
+            <span class="g-line" style="background: var(--gold)"></span>
+            <h2 class="big" style="color: var(--light)">
+              NUESTRAS<br />RAÍCES
+            </h2>
+          </div>
+          <div class="fu d3" style="margin-top: 4vh">
+            <p
+              style="
+                color: rgba(255, 255, 255, 0.85);
+                font-size: 1.1rem;
+                line-height: 1.8;
+              "
+            >
+              Nacemos en el corazón del Altiplano Cundiboyacense, profundamente
+              inspirados en la religiosidad y tradición de nuestros ancestros
+              muiscas.
+              <br /><br />
+              Tomamos como pilar fundamental la historia del dios
+              <strong>Bochica</strong>, quien trajo a la humanidad no solo el
+              conocimiento de la siembra, sino también las herramientas, la
+              sabiduría y la espiritualidad para la costura y el tejido. Cada
+              pieza en Lanna es un homenaje a esa herencia milenaria, tejiendo
+              nuestra historia en indumentaria contemporánea.
+            </p>
+          </div>
+        </div>
+        <div class="s3-right" style="padding: 0; background: #000">
+          <img
+            src="./moodboard.png"
+            alt="Moodboard"
+            style="
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+              object-position: right center;
+              opacity: 0.85;
+            "
+          />
+        </div>
+      </div>
+
+      <!-- 06 CONTEXTO CHÍA -->
+      <div class="sl s1">
+        
+        <div class="s1-hero sc" style="margin-bottom: 0">
+          <img
+            src="./final/f02.jpeg"
+            alt="Chía"
+            style="object-fit: cover; filter: brightness(0.6)"
+          />
+          <div
+            style="
+              position: absolute;
+              inset: 0;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              pointer-events: none;
+            "
+          >
+            <span class="sub" style="color: var(--gold); margin-bottom: 1rem"
+              >Inspiración · La Noche y la Luna</span
+            >
+            <h2
+              class="hero fu d1"
+              style="color: var(--light); font-size: clamp(3rem, 6vw, 5rem)"
+            >
+              LÍNEA CHÍA
+            </h2>
+            <p
+              class="body-w fu d2"
+              style="
+                margin-top: 2vh;
+                max-width: 45ch;
+                font-size: 1.1rem;
+                line-height: 1.8;
+              "
+            >
+              En la tradición muisca, Chía es el símbolo de la feminidad, la
+              oscuridad y la luna. Esta línea refleja la profundidad de la noche
+              a través del lino negro, contrastado con bordados en tonos
+              solares.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 07 RUANA CHÍA -->
+      <div class="sl sp">
+        
+        <div class="sp-img sc">
+          <img
+            src="./ficha_tecnica/01/B.jpeg"
+            alt="Ruana Chía"
+            style="object-fit: cover"
+          />
+        </div>
+        <div class="sp-info sp-info-dark">
+          <span class="sp-ref">REF. CHIA-01 · Indumentaria Exterior</span>
+          <h2 class="sp-name sp-name-w fu d1">RUANA<br />CHÍA</h2>
+          <span class="sp-line"></span>
+          <p class="sp-desc fu d2">
+            Pieza central de la línea femenina. Corte contemporáneo inspirado en
+            la tradición andina, con cierre frontal para versatilidad.
+          </p>
+          <div class="sp-specs fu d3">
+            <div class="sp-row">
+              <span class="sp-rl">Material</span
+              ><span class="sp-rv">Lino americano (negro)</span>
+            </div>
+            <div class="sp-row">
+              <span class="sp-rl">Bordados</span
+              ><span class="sp-rv">Lana virgen (amarillo caléndula)</span>
+            </div>
+            <div class="sp-row">
+              <span class="sp-rl">Avíos</span
+              ><span class="sp-rv"
+                >Cierre frontal, 2 botones de hueso de aguacate</span
+              >
+            </div>
+            <div class="sp-row">
+              <span class="sp-rl">Tallas</span
+              ><span class="sp-rv">Talla Única (Oversize)</span>
+            </div>
+            <div class="sp-row" style="margin-top: 1rem">
+              <span class="sp-rl" style="color: var(--gold); font-weight: 700"
+                >Retail / Wholesale</span
+              ><span class="sp-rv" style="color: var(--gold); font-weight: 700"
+                >$1.2M COP / $840K COP</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 08 PANTALÓN CHÍA -->
+      <div class="sl sp" style="direction: rtl">
+        <div class="ch-label" style="direction: ltr">
+          <span class="ch-num">03</span><span class="ch-sep"></span>
+          <span class="ch-txt" style="color: var(--light)">Línea Chía</span>
+        </div>
+        <div class="sp-img sc" style="direction: ltr">
+          <img
+            src="./ficha_tecnica/02/B.jpeg"
+            alt="Pantalón Chía"
+            style="object-fit: cover"
+          />
+        </div>
+        <div class="sp-info sp-info-dark" style="direction: ltr">
+          <span class="sp-ref">REF. CHIA-02 · Pantalón</span>
+          <h2 class="sp-name sp-name-w fu d1">PANTALÓN<br />CHÍA</h2>
+          <span class="sp-line"></span>
+          <p class="sp-desc fu d2">
+            Corte sastre relajado en lino americano negro. Bordados manuales en
+            lana amarilla siguiendo las costuras exteriores.
+          </p>
+          <div class="sp-specs fu d3">
+            <div class="sp-row">
+              <span class="sp-rl">Material</span
+              ><span class="sp-rv">Lino americano (negro)</span>
+            </div>
+            <div class="sp-row">
+              <span class="sp-rl">Bordados</span
+              ><span class="sp-rv">Lana virgen (amarillo caléndula)</span>
+            </div>
+            <div class="sp-row">
+              <span class="sp-rl">Tallas</span
+              ><span class="sp-rv">S · M · L</span>
+            </div>
+            <div class="sp-row" style="margin-top: 1rem">
+              <span class="sp-rl" style="color: var(--gold); font-weight: 700"
+                >Retail / Wholesale</span
+              ><span class="sp-rv" style="color: var(--gold); font-weight: 700"
+                >$800K COP / $560K COP</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 09 SOMBRERO CHÍA -->
+      <div class="sl sp">
+        
+        <div class="sp-img sc">
+          <img
+            src="./ficha_tecnica/04/B.jpeg"
+            alt="Sombrero Chía"
+            style="object-fit: cover"
+          />
+        </div>
+        <div class="sp-info sp-info-dark">
+          <span class="sp-ref">REF. CHIA-03 · Sombrero</span>
+          <h2 class="sp-name sp-name-w fu d1">SOMBRERO<br />FIELTRO</h2>
+          <span class="sp-line"></span>
+          <p class="sp-desc fu d2">
+            Diseñado para completar el sistema visual de la línea Chía,
+            manteniendo la trazabilidad material.
+          </p>
+          <div class="sp-specs fu d3">
+            <div class="sp-row">
+              <span class="sp-rl">Material</span
+              ><span class="sp-rv">Lana 100% fieltrada</span>
+            </div>
+            <div class="sp-row">
+              <span class="sp-rl">Color</span
+              ><span class="sp-rv">Negro natural</span>
+            </div>
+            <div class="sp-row">
+              <span class="sp-rl">Tallas</span
+              ><span class="sp-rv">S · M · L</span>
+            </div>
+            <div class="sp-row" style="margin-top: 1rem">
+              <span class="sp-rl" style="color: var(--gold); font-weight: 700"
+                >Retail / Wholesale</span
+              ><span class="sp-rv" style="color: var(--gold); font-weight: 700"
+                >$600K COP / $420K COP</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10 COTIZAS CHÍA -->
+      <div class="sl sp" style="direction: rtl">
+        <div class="ch-label" style="direction: ltr">
+          <span class="ch-num">03</span><span class="ch-sep"></span>
+          <span class="ch-txt" style="color: var(--light)">Línea Chía</span>
+        </div>
+        <div class="sp-img sc" style="direction: ltr">
+          <img
+            src="./ficha_tecnica/03/B.jpeg"
+            alt="Cotizas Chía"
+            style="object-fit: cover"
+          />
+        </div>
+        <div class="sp-info sp-info-dark" style="direction: ltr">
+          <span class="sp-ref">REF. CHIA-04 · Calzado</span>
+          <h2 class="sp-name sp-name-w fu d1">COTIZAS<br />NEGRAS</h2>
+          <span class="sp-line"></span>
+          <p class="sp-desc fu d2">
+            Calzado artesanal que evoca la tradición campesina con un acabado
+            sobrio para la ciudad.
+          </p>
+          <div class="sp-specs fu d3">
+            <div class="sp-row">
+              <span class="sp-rl">Material</span
+              ><span class="sp-rv">Lona negra</span>
+            </div>
+            <div class="sp-row">
+              <span class="sp-rl">Suela</span
+              ><span class="sp-rv">Caucho reciclado</span>
+            </div>
+            <div class="sp-row">
+              <span class="sp-rl">Tallas</span
+              ><span class="sp-rv">36 a 42</span>
+            </div>
+            <div class="sp-row" style="margin-top: 1rem">
+              <span class="sp-rl" style="color: var(--gold); font-weight: 700"
+                >Retail / Wholesale</span
+              ><span class="sp-rv" style="color: var(--gold); font-weight: 700"
+                >$400K COP / $280K COP</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11 CONTEXTO SUÉ -->
+      <div class="sl s1">
+        
+        <div class="s1-hero sc" style="margin-bottom: 0">
+          <img
+            src="./final/m02.jpeg"
+            alt="Sué"
+            style="object-fit: cover; filter: brightness(0.6)"
+          />
+          <div
+            style="
+              position: absolute;
+              inset: 0;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              pointer-events: none;
+            "
+          >
+            <span class="sub" style="color: var(--gold); margin-bottom: 1rem"
+              >Inspiración · El Día y el Sol</span
+            >
+            <h2
+              class="hero fu d1"
+              style="color: var(--light); font-size: clamp(3rem, 6vw, 5rem)"
+            >
+              LÍNEA SUÉ
+            </h2>
+            <p
+              class="body-w fu d2"
+              style="
+                margin-top: 2vh;
+                max-width: 45ch;
+                font-size: 1.1rem;
+                line-height: 1.8;
+              "
+            >
+              Para los muiscas, Sué es el dios del sol. Esta línea materializa
+              la luz, la energía y la calidez del día a través del lino beige
+              crudo y texturas naturales, sin tinturas oscuras.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12 SUÉTER SUÉ -->
+      <div class="sl sp">
+        
+        <div class="sp-img sc">
+          <img
+            src="./ficha_tecnica/05/B.jpeg"
+            alt="Suéter Sué"
+            style="object-fit: cover"
+          />
+        </div>
+        <div class="sp-info">
+          <span class="sp-ref">REF. SUE-01 · Suéter</span>
+          <h2 class="sp-name fu d1">SUÉTER<br />SUÉ</h2>
+          <span class="sp-line"></span>
+          <p class="sp-desc fu d2">
+            Pieza principal de la línea masculina. Lino beige con mangas
+            completas. Profusamente bordado a mano con lana amarilla en pecho y
+            puños.
+          </p>
+          <div class="sp-specs fu d3">
+            <div class="sp-row">
+              <span class="sp-rl">Material</span
+              ><span class="sp-rv">Lino americano (beige)</span>
+            </div>
+            <div class="sp-row">
+              <span class="sp-rl">Avíos</span
+              ><span class="sp-rv">2 botones de hueso de aguacate en nuca</span>
+            </div>
+            <div class="sp-row">
+              <span class="sp-rl">Tallas</span
+              ><span class="sp-rv">M · L · XL</span>
+            </div>
+            <div class="sp-row" style="margin-top: 1rem">
+              <span class="sp-rl" style="color: var(--gold); font-weight: 700"
+                >Retail / Wholesale</span
+              ><span class="sp-rv" style="color: var(--gold); font-weight: 700"
+                >$1.6M COP / $1.12M COP</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13 PANTALÓN SUÉ -->
+      <div class="sl sp" style="direction: rtl">
+        <div class="ch-label" style="direction: ltr">
+          <span class="ch-num">04</span><span class="ch-sep"></span>
+          <span class="ch-txt" style="color: var(--dark)">Línea Sué</span>
+        </div>
+        <div class="sp-img sc" style="direction: ltr">
+          <img
+            src="./ficha_tecnica/06/B.jpeg"
+            alt="Pantalón Sué"
+            style="object-fit: cover"
+          />
+        </div>
+        <div class="sp-info" style="direction: ltr">
+          <span class="sp-ref">REF. SUE-02 · Pantalón</span>
+          <h2 class="sp-name fu d1">PANTALÓN<br />SUÉ</h2>
+          <span class="sp-line"></span>
+          <p class="sp-desc fu d2">
+            Corte relajado y elegante, diseñado para maximizar la frescura del
+            lino manteniendo una silueta definida con bordados en bajos.
+          </p>
+          <div class="sp-specs fu d3">
+            <div class="sp-row">
+              <span class="sp-rl">Material</span
+              ><span class="sp-rv">Lino americano (beige)</span>
+            </div>
+            <div class="sp-row">
+              <span class="sp-rl">Tallas</span
+              ><span class="sp-rv">30 · 32 · 34</span>
+            </div>
+            <div class="sp-row" style="margin-top: 1rem">
+              <span class="sp-rl" style="color: var(--gold); font-weight: 700"
+                >Retail / Wholesale</span
+              ><span class="sp-rv" style="color: var(--gold); font-weight: 700"
+                >$1.0M COP / $700K COP</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14 SOMBRERO SUÉ -->
+      <div class="sl sp">
+        
+        <div class="sp-img sc">
+          <img
+            src="./ficha_tecnica/08/B.jpeg"
+            alt="Sombrero Sué"
+            style="object-fit: cover"
+          />
+        </div>
+        <div class="sp-info">
+          <span class="sp-ref">REF. SUE-03 · Sombrero</span>
+          <h2 class="sp-name fu d1">SOMBRERO<br />PAJA</h2>
+          <span class="sp-line"></span>
+          <p class="sp-desc fu d2">
+            Ligero y fresco, el complemento perfecto para el clima cálido o
+            templado, manteniendo el estilo monocromático beige.
+          </p>
+          <div class="sp-specs fu d3">
+            <div class="sp-row">
+              <span class="sp-rl">Material</span
+              ><span class="sp-rv">Paja Toquilla tejida a mano</span>
+            </div>
+            <div class="sp-row">
+              <span class="sp-rl">Color</span
+              ><span class="sp-rv">Beige natural</span>
+            </div>
+            <div class="sp-row">
+              <span class="sp-rl">Tallas</span
+              ><span class="sp-rv">S · M · L</span>
+            </div>
+            <div class="sp-row" style="margin-top: 1rem">
+              <span class="sp-rl" style="color: var(--gold); font-weight: 700"
+                >Retail / Wholesale</span
+              ><span class="sp-rv" style="color: var(--gold); font-weight: 700"
+                >$700K COP / $490K COP</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15 ALPARGATAS SUÉ -->
+      <div class="sl sp" style="direction: rtl">
+        <div class="ch-label" style="direction: ltr">
+          <span class="ch-num">04</span><span class="ch-sep"></span>
+          <span class="ch-txt" style="color: var(--dark)">Línea Sué</span>
+        </div>
+        <div class="sp-img sc" style="direction: ltr">
+          <img
+            src="./ficha_tecnica/07/B.jpeg"
+            alt="Alpargatas Sué"
+            style="object-fit: cover"
+          />
+        </div>
+        <div class="sp-info" style="direction: ltr">
+          <span class="sp-ref">REF. SUE-04 · Calzado</span>
+          <h2 class="sp-name fu d1">ALPARGATAS<br />FIQUE</h2>
+          <span class="sp-line"></span>
+          <p class="sp-desc fu d2">
+            Calzado fresco y orgánico que conecta directamente con la tierra. Su
+            diseño crudo acompaña la silueta relajada.
+          </p>
+          <div class="sp-specs fu d3">
+            <div class="sp-row">
+              <span class="sp-rl">Material</span
+              ><span class="sp-rv">Fique (pique) trenzado natural</span>
+            </div>
+            <div class="sp-row">
+              <span class="sp-rl">Suela</span
+              ><span class="sp-rv">Caucho natural</span>
+            </div>
+            <div class="sp-row">
+              <span class="sp-rl">Tallas</span
+              ><span class="sp-rv">38 a 44</span>
+            </div>
+            <div class="sp-row" style="margin-top: 1rem">
+              <span class="sp-rl" style="color: var(--gold); font-weight: 700"
+                >Retail / Wholesale</span
+              ><span class="sp-rv" style="color: var(--gold); font-weight: 700"
+                >$400K COP / $280K COP</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 16 SOUVENIRS (ssou structure) -->
+      <div class="sl ssou">
+        
+        <div class="fu" style="margin-bottom: 3.5vh">
+          <span class="sub" style="color: var(--gold)"
+            >El universo LANNA · Pequeños Lujos</span
+          >
+          <span class="g-line" style="background: var(--gold)"></span>
+          <h2
+            style="
+              font-weight: 900;
+              font-size: clamp(1.8rem, 3.2vw, 3rem);
+              line-height: 0.95;
+              text-transform: uppercase;
+              letter-spacing: -0.02em;
+              color: var(--light);
+              margin-top: 0.6rem;
+            "
+          >
+            OBJETOS<br />DE MARCA
+          </h2>
+        </div>
+        <div class="ssou-divisions fu d1">
+          <!-- Chía -->
+          <div class="ssou-division">
+            <h3 class="ssou-div-title">CHÍA</h3>
+            <div class="ssou-div-grid">
+              <div class="ssou-item">
+                <img src="./ficha_tecnica/09/B.jpeg" alt="Monedero Chía" />
+                <div class="ssou-item-info">
+                  <div class="ssou-item-name">Monedero</div>
+                  <div class="ssou-item-price">$75.000 COP</div>
+                </div>
+              </div>
+              <div class="ssou-item">
+                <img src="./ficha_tecnica/11/B.jpeg" alt="Bolsita Chía" />
+                <div class="ssou-item-info">
+                  <div class="ssou-item-name">Bolsita</div>
+                  <div class="ssou-item-price">$55.000 COP</div>
+                </div>
+              </div>
+              <div class="ssou-item">
+                <img src="./ficha_tecnica/13/B.jpeg" alt="Llavero Chía" />
+                <div class="ssou-item-info">
+                  <div class="ssou-item-name">Llavero</div>
+                  <div class="ssou-item-price">$35.000 COP</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              height: 1px;
+              background: rgba(255, 255, 255, 0.06);
+              width: 100%;
+              margin: -1rem 0;
+            "
+          ></div>
+
+          <!-- Sué -->
+          <div class="ssou-division">
+            <h3 class="ssou-div-title">SUÉ</h3>
+            <div class="ssou-div-grid">
+              <div class="ssou-item">
+                <img src="./ficha_tecnica/10/B.jpeg" alt="Monedero Sué" />
+                <div class="ssou-item-info">
+                  <div class="ssou-item-name">Monedero</div>
+                  <div class="ssou-item-price">$75.000 COP</div>
+                </div>
+              </div>
+              <div class="ssou-item">
+                <img src="./ficha_tecnica/12/B.jpeg" alt="Bolsita Sué" />
+                <div class="ssou-item-info">
+                  <div class="ssou-item-name">Bolsita</div>
+                  <div class="ssou-item-price">$55.000 COP</div>
+                </div>
+              </div>
+              <div class="ssou-item">
+                <img src="./ficha_tecnica/14/B.jpeg" alt="Llavero Sué" />
+                <div class="ssou-item-info">
+                  <div class="ssou-item-name">Llavero</div>
+                  <div class="ssou-item-price">$35.000 COP</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12 TALLAJE (s2 structure) -->
+      <div class="sl s2">
+        
+        <div class="s2-left sc">
+          <img
+            src="./images/imagen14.png"
+            alt="Tallaje"
+            style="filter: grayscale(100%)"
+          />
+          <div class="s2-left-over">
+            <div class="fu">
+              <span class="sub" style="color: var(--gold)"
+                >Tabla de Tallaje</span
+              >
+              <span class="g-line" style="margin-top: 0.8rem"></span>
+              <h2
+                class="hero"
+                style="color: #fff; font-size: clamp(2.5rem, 5.5vw, 4.5rem)"
+              >
+                MEDIDAS<br />Y TALLAS
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div class="s2-right">
+          <div class="fu">
+            <table
+              style="width: 100%; border-collapse: collapse; margin-top: 2rem"
+            >
+              <thead style="background: var(--dark); color: var(--light)">
+                <tr>
+                  <th
+                    style="
+                      padding: 1rem;
+                      text-align: left;
+                      font-size: 0.8rem;
+                      letter-spacing: 0.1em;
+                      font-weight: 700;
+                    "
+                  >
+                    TALLA
+                  </th>
+                  <th
+                    style="
+                      padding: 1rem;
+                      text-align: left;
+                      font-size: 0.8rem;
+                      letter-spacing: 0.1em;
+                      font-weight: 700;
+                    "
+                  >
+                    PECHO
+                  </th>
+                  <th
+                    style="
+                      padding: 1rem;
+                      text-align: left;
+                      font-size: 0.8rem;
+                      letter-spacing: 0.1em;
+                      font-weight: 700;
+                    "
+                  >
+                    CINTURA
+                  </th>
+                  <th
+                    style="
+                      padding: 1rem;
+                      text-align: left;
+                      font-size: 0.8rem;
+                      letter-spacing: 0.1em;
+                      font-weight: 700;
+                    "
+                  >
+                    CADERA
+                  </th>
+                </tr>
+              </thead>
+              <tbody style="font-size: 0.9rem; color: var(--dark)">
+                <tr style="border-bottom: 1px solid rgba(0, 0, 0, 0.1)">
+                  <td style="padding: 1rem; font-weight: 700">S (30)</td>
+                  <td style="padding: 1rem">92 - 96 cm</td>
+                  <td style="padding: 1rem">76 - 80 cm</td>
+                  <td style="padding: 1rem">94 - 98 cm</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(0, 0, 0, 0.1)">
+                  <td style="padding: 1rem; font-weight: 700">M (32)</td>
+                  <td style="padding: 1rem">96 - 100 cm</td>
+                  <td style="padding: 1rem">80 - 84 cm</td>
+                  <td style="padding: 1rem">98 - 102 cm</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(0, 0, 0, 0.1)">
+                  <td style="padding: 1rem; font-weight: 700">L (34)</td>
+                  <td style="padding: 1rem">100 - 104 cm</td>
+                  <td style="padding: 1rem">84 - 88 cm</td>
+                  <td style="padding: 1rem">102 - 106 cm</td>
+                </tr>
+                <tr>
+                  <td style="padding: 1rem; font-weight: 700">XL (36)</td>
+                  <td style="padding: 1rem">104 - 110 cm</td>
+                  <td style="padding: 1rem">88 - 94 cm</td>
+                  <td style="padding: 1rem">106 - 112 cm</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="body fu d2" style="margin-top: 2rem; font-size: 0.8rem">
+              * La Ruana Chía es Talla Única y abarca todas las medidas. Todos
+              nuestros pantalones permiten ajustes menores en cintura.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13 CIERRE (s11 structure) -->
+      <div class="sl s11">
+        <div class="s11-bg">
+          <img src="./images/imagen12.png" alt="Cierre" />
+        </div>
+        <div class="s11-content">
+          <img
+            src="./logo/logotipo.svg"
+            class="s11-logo fi"
+            style="
+              filter: brightness(0) saturate(100%) invert(79%) sepia(35%)
+                saturate(600%) hue-rotate(5deg) brightness(105%);
+              margin-bottom: 2vh;
+            "
+            alt="LANNA"
+          />
+          <div class="s11-rule fu d1"></div>
+          <h2
+            class="hero fu d2"
+            style="
+              color: var(--gold);
+              font-size: clamp(2rem, 4vw, 3rem);
+              margin-top: 1.5rem;
+              line-height: 1.2;
+            "
+          >
+            HAZ TU PEDIDO
+          </h2>
+          <p class="s11-q fu d3" style="margin-top: 1rem">
+            Para pre-órdenes wholesale o consultas de distribución de la
+            colección 2026, contáctanos.
+          </p>
+
+          <div
+            class="fu d4"
+            style="
+              margin-top: 3rem;
+              display: flex;
+              flex-direction: column;
+              gap: 0.5rem;
+              color: var(--gold);
+              font-size: 1.1rem;
+              font-weight: 700;
+              letter-spacing: 0.1em;
+              text-align: center;
+            "
+          >
+            <span>300 305 3941</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (() => {
+        const slides = Array.from(document.querySelectorAll(".sl"));
+        const bar = document.getElementById("bar");
+        let cur = 0;
+
+        function go(n) {
+          slides[cur].querySelectorAll("video").forEach((v) => {
+            v.pause();
+          });
+          slides[cur].classList.remove("on");
+          cur = ((n % slides.length) + slides.length) % slides.length;
+          slides[cur].classList.add("on");
+          bar.style.width = `${(((cur + 1) / slides.length) * 100).toFixed(1)}%`;
+          setTimeout(() => {
+            slides[cur].querySelectorAll("video").forEach((v) => {
+              if (v.src) {
+                v.currentTime = 0.1;
+                v.play().catch((e) => console.warn(e));
+              }
+            });
+          }, 150);
+        }
+
+        document.addEventListener("keydown", (e) => {
+          if (["ArrowRight", "ArrowDown", " "].includes(e.key)) {
+            e.preventDefault();
+            go(cur + 1);
+          }
+          if (["ArrowLeft", "ArrowUp"].includes(e.key)) {
+            e.preventDefault();
+            go(cur - 1);
+          }
+        });
+
+        let tx = 0;
+        document.addEventListener(
+          "touchstart",
+          (e) => {
+            tx = e.touches[0].clientX;
+          },
+          { passive: true },
+        );
+        document.addEventListener(
+          "touchend",
+          (e) => {
+            const d = e.changedTouches[0].clientX - tx;
+            if (Math.abs(d) > 50) go(d < 0 ? cur + 1 : cur - 1);
+          },
+          { passive: true },
+        );
+
+        // Fullscreen
+        document.getElementById("btn-fs").addEventListener("click", () => {
+          if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(() => {});
+          } else {
+            document.exitFullscreen();
+          }
+        });
+
+        go(0);
+      })();
+    </script>
+  
+    <script>
+      function adjustScale() {
+        const wrapper = document.getElementById("stage");
+        if (wrapper) {
+          const scale = Math.min(
+            window.innerWidth / 1920,
+            window.innerHeight / 1080
+          );
+          wrapper.style.transform = `scale(${scale})`;
+        }
+      }
+      window.addEventListener("resize", adjustScale);
+      adjustScale();
+    </script>
+</body>
+</html>

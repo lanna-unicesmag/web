@@ -19,11 +19,39 @@
       background-color: var(--dark);
       color: var(--cream);
       font-family: 'Outfit', sans-serif;
-      min-height: 100vh;
+      height: 100vh;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .left-col {
+      flex: 1;
+      height: 100vh;
+      background-color: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem;
+      box-sizing: border-box;
+    }
+
+    .left-col video {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .right-col {
+      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      position: relative;
+      background-color: var(--dark);
+      border-left: 1px solid rgba(255,255,255,0.05);
     }
 
     .container {
@@ -82,40 +110,6 @@
       color: var(--dark);
     }
 
-    .dropdown {
-      display: none; /* Hidden by default */
-      flex-direction: row;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-top: 1rem;
-      width: 100%;
-    }
-
-    .dropdown.show {
-      display: flex;
-    }
-
-    .btn-sub {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      border: 1px solid var(--cream);
-      color: var(--cream);
-      text-decoration: none;
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      transition: all 0.3s ease;
-      text-align: center;
-      box-sizing: border-box;
-    }
-
-    .btn-sub:hover {
-      background-color: var(--cream);
-      color: var(--dark);
-    }
-
     footer {
       position: absolute;
       bottom: 2rem;
@@ -125,61 +119,57 @@
       text-align: center;
       width: 100%;
     }
+
+    @media (max-width: 900px) {
+      body {
+        flex-direction: column;
+      }
+      .left-col {
+        height: 50vh;
+        padding: 2rem;
+      }
+      .right-col {
+        height: 50vh;
+        border-left: none;
+        border-top: 1px solid rgba(255,255,255,0.05);
+      }
+    }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <img src="logo/logotipo.svg" alt="LANNA" class="logo">
-    
-    <div class="menu">
-      <div class="btn-container">
-        <a href="pitch.html" class="btn">PITCH</a>
-      </div>
+  <div class="left-col">
+    <!-- El video ahora tiene controles, sonido, y su relación de aspecto original -->
+    <video src="SPOT - LANNA.mp4" controls playsinline></video>
+  </div>
 
-      <div class="btn-container">
-        <a href="moodboard.png" target="_blank" class="btn">MOODBOARD</a>
-      </div>
-
-      <div class="btn-container">
-        <button class="btn" id="btn-brief">BRIEF</button>
-        <div class="dropdown" id="dropdown-brief">
-          <a href="brief.pdf" target="_blank" class="btn-sub">PDF</a>
-          <a href="brief.html" class="btn-sub">WEB</a>
+  <div class="right-col">
+    <div class="container">
+      <img src="logo/logotipo.svg" alt="LANNA" class="logo">
+      
+      <div class="menu">
+        <div class="btn-container">
+          <a href="presentacion_proyecto.html" class="btn">PRESENTACIÓN</a>
         </div>
-      </div>
 
-      <div class="btn-container">
-        <button class="btn" id="btn-productos">PRODUCTOS</button>
-        <div class="dropdown" id="dropdown-productos">
-          <a href="final/v.mp4" target="_blank" class="btn-sub">PRENDAS</a>
-          <a href="fichas_interactivas.html" class="btn-sub">FICHAS TÉCNICAS</a>
-          <a href="final/p.mp4" target="_blank" class="btn-sub">PACKAGING</a>
+        <div class="btn-container">
+          <a href="brochure.html" class="btn">BROCHURE</a>
+        </div>
+
+        <div class="btn-container">
+          <a href="fichas_interactivas.html" class="btn">FICHAS TÉCNICAS</a>
+        </div>
+
+        <div class="btn-container">
+          <a href="resultados.html" class="btn">RESULTADOS</a>
         </div>
       </div>
     </div>
+
+    <footer>
+      LANNA &copy; 2026
+    </footer>
   </div>
-
-  <footer>
-    LANNA &copy; 2026
-  </footer>
-
-  <script>
-    function toggleDropdown(btnId, dropId) {
-      const btn = document.getElementById(btnId);
-      const dropdown = document.getElementById(dropId);
-      
-      btn.addEventListener('click', function() {
-        // Toggle active visual state on button
-        btn.classList.toggle('active');
-        // Toggle visibility of dropdown
-        dropdown.classList.toggle('show');
-      });
-    }
-
-    toggleDropdown('btn-brief', 'dropdown-brief');
-    toggleDropdown('btn-productos', 'dropdown-productos');
-  </script>
 
 </body>
 </html>

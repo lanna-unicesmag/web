@@ -48,8 +48,8 @@
 
       /* 16:9 Screen Layout Container */
       .app-wrapper {
-        width: 1600px;
-        height: 900px;
+        width: 1366px;
+        height: 768px;
         display: flex;
         flex-direction: column;
         position: relative;
@@ -107,7 +107,7 @@
 
       .btn-action-group {
         display: flex;
-        gap: 0.8rem;
+        gap: 0.4rem;
       }
 
       .btn-action {
@@ -350,12 +350,28 @@
 
       /* Viewer Left: High-end interactive gallery (width to fill height perfectly) */
       .viewer-gallery {
-        width: 660px;
+        width: 370px;
         display: flex;
         flex-direction: column;
         gap: 1rem;
         flex-shrink: 0;
         height: 100%;
+      }
+
+      .gallery-top-fixed {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        flex-shrink: 0;
+      }
+      .gallery-top-fixed .fixed-img {
+        aspect-ratio: 1;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       }
 
       .main-image-display {
@@ -382,8 +398,8 @@
 
       .gallery-thumbnails {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0.6rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
         flex-shrink: 0;
       }
 
@@ -415,7 +431,7 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 0.8rem;
         overflow-y: auto;
         padding-right: 1rem;
         height: 100%;
@@ -452,7 +468,7 @@
       .spec-title-text {
         font-family: var(--fw);
         font-weight: 900;
-        font-size: 2.2rem;
+        font-size: 2.0rem;
         text-transform: uppercase;
         letter-spacing: -0.01em;
         line-height: 1.1;
@@ -478,7 +494,7 @@
       }
 
       .spec-chip-label {
-        font-size: 0.55rem;
+        font-size: 0.5rem;
         text-transform: uppercase;
         color: var(--gold);
         font-weight: 700;
@@ -488,7 +504,7 @@
       }
 
       .spec-chip-value {
-        font-size: 0.76rem;
+        font-size: 0.75rem;
         font-weight: 300;
         color: var(--light);
         line-height: 1.3;
@@ -498,7 +514,7 @@
       .spec-section-title {
         font-family: var(--fw);
         font-weight: 700;
-        font-size: 0.72rem;
+        font-size: 0.68rem;
         letter-spacing: 0.15em;
         text-transform: uppercase;
         color: var(--gold);
@@ -521,15 +537,18 @@
         margin: 0.4rem 0 0.4rem 0.5rem;
       }
 
-      .timeline-container::before {
+      .timeline-step::before {
         content: "";
         position: absolute;
-        left: 6px;
-        top: 6px;
-        bottom: 6px;
+        left: calc(-1.5rem + 6px);
+        top: 16px;
+        bottom: calc(-0.8rem + 3px);
         width: 1px;
         border-left: 1px dashed rgba(229, 194, 114, 0.3);
         z-index: 0;
+      }
+      .timeline-step:last-child::before {
+        display: none;
       }
 
       .timeline-step {
@@ -555,7 +574,7 @@
       }
 
       .timeline-text {
-        font-size: 0.8rem;
+        font-size: 0.82rem;
         font-weight: 300;
         line-height: 1.4;
         color: rgba(245, 240, 232, 0.8);
@@ -574,7 +593,7 @@
       .comp-table th,
       .comp-table td {
         padding: 0.65rem 0.9rem;
-        font-size: 0.78rem;
+        font-size: 0.75rem;
         text-align: left;
       }
 
@@ -730,7 +749,7 @@
                     background-image: url(&quot;ficha_tecnica/04/B.jpeg?v=2&quot;);
                   "
                 >
-                  <span class="card-label">Sombrero</span>
+                  <span class="card-label">Fieltro de Lana</span>
                 </button>
               </div>
             </div>
@@ -772,7 +791,7 @@
                     background-image: url(&quot;ficha_tecnica/08/B.jpeg?v=2&quot;);
                   "
                 >
-                  <span class="card-label">Sombrero</span>
+                  <span class="card-label">Paja Toquilla</span>
                 </button>
               </div>
             </div>
@@ -785,21 +804,45 @@
               <div class="grid-container">
                 <button
                   class="card-btn"
-                  data-id="s_monedero_sue"
+                  data-id="s_monedero_chia"
                   style="
-                    background-image: url(&quot;souvenirs/placeholder_beige.png&quot;);
+                    background-image: url(&quot;ficha_tecnica/09/B.jpeg?v=2&quot;);
                   "
                 >
-                  <span class="card-label">Sol (Beige)</span>
+                  <span class="card-label">Chía</span>
                 </button>
                 <button
                   class="card-btn"
-                  data-id="s_monedero_chia"
+                  data-id="s_monedero_sue"
                   style="
-                    background-image: url(&quot;souvenirs/placeholder_negro.png&quot;);
+                    background-image: url(&quot;ficha_tecnica/10/B.jpeg?v=2&quot;);
                   "
                 >
-                  <span class="card-label">Luna (Negro)</span>
+                  <span class="card-label">Sué</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="ensemble-section">
+              <span class="section-title">Bolsitas</span>
+              <div class="grid-container">
+                <button
+                  class="card-btn"
+                  data-id="s_bolsita_chia"
+                  style="
+                    background-image: url(&quot;ficha_tecnica/11/B.jpeg?v=2&quot;);
+                  "
+                >
+                  <span class="card-label">Chía</span>
+                </button>
+                <button
+                  class="card-btn"
+                  data-id="s_bolsita_sue"
+                  style="
+                    background-image: url(&quot;ficha_tecnica/12/B.jpeg?v=2&quot;);
+                  "
+                >
+                  <span class="card-label">Sué</span>
                 </button>
               </div>
             </div>
@@ -809,42 +852,26 @@
               <div class="grid-container">
                 <button
                   class="card-btn"
-                  data-id="s_collar_sue"
+                  data-id="s_collar_chia"
                   style="
-                    background-image: url(&quot;souvenirs/placeholder_beige.png&quot;);
+                    background-image: url(&quot;ficha_tecnica/13/B.jpeg?v=2&quot;);
                   "
                 >
-                  <span class="card-label">Sol (Beige)</span>
+                  <span class="card-label">Chía</span>
                 </button>
                 <button
                   class="card-btn"
-                  data-id="s_collar_chia"
+                  data-id="s_collar_sue"
                   style="
-                    background-image: url(&quot;souvenirs/placeholder_negro.png&quot;);
+                    background-image: url(&quot;ficha_tecnica/14/B.jpeg?v=2&quot;);
                   "
                 >
-                  <span class="card-label">Luna (Negro)</span>
+                  <span class="card-label">Sué</span>
                 </button>
               </div>
             </div>
 
-            <div class="ensemble-section">
-              <span class="section-title">Experiencia de Marca</span>
-              <div class="grid-container">
-                <button
-                  class="card-btn"
-                  data-id="s_empaque"
-                  style="
-                    background-image: url(&quot;final/p1.png&quot;);
-                    aspect-ratio: auto;
-                    height: 80px;
-                    grid-column: span 2;
-                  "
-                >
-                  <span class="card-label">Caja Kraft Circular</span>
-                </button>
-              </div>
-            </div>
+
           </div>
 
           <!-- FOOTER SIDEBAR (Navegación Inferior) -->
@@ -905,11 +932,12 @@
           <div class="viewer-content active" id="viewer-content">
             <!-- Gallery Block (Left 40%) -->
             <div class="viewer-gallery">
+              <div class="gallery-top-fixed" id="gallery-top-fixed"></div>
               <div
                 class="main-image-display"
                 id="main-display-box"
                 style="
-                  background-image: url(&quot;ficha_tecnica/01/B.jpeg?v=2&quot;);
+                  background-image: url(&quot;ficha_tecnica/01/A1.jpeg?v=2&quot;);
                 "
               ></div>
               <div class="gallery-thumbnails" id="gallery-thumbs">
@@ -942,7 +970,7 @@
           tecnica: "Confección y bordado a mano",
           materia_prima: "Lino americano, Lana virgen, Hueso de aguacate",
           especificaciones:
-            "Ruana construida a medida en lino americano color negro absoluto. Incorpora grabados artesanales bordados en lana virgen teñida de color amarillo de forma natural, inspirados en los diseños del volante de huso Muisca.",
+            "Ruana construida a medida en lino americano color negro absoluto. Incorpora grabados artesanales bordados en lana virgen teñida de amarillo con flor de caléndula, inspirados en los diseños del volante de huso Muisca. Cuenta con cierre metálico frontal y 2 botones artesanales de hueso de aguacate.",
           tipo: "Indumentaria Exterior",
           color: "Negro Absoluto",
           capacidad: "5 piezas / mes",
@@ -964,25 +992,31 @@
           crono: [
             "1. Preproducción: Toma de medidas y patronaje a medida.",
             "2. Producción: Corte y confección del cuerpo en lino americano.",
-            "3. Acabados: Grabado (bordado) a mano en lana con inspiración en el volante de huso Muisca y avíos (2 botones a base de pepa de aguacate).",
+            "3. Acabados: Bordado a mano en lana con inspiración en el volante de huso Muisca, ensamble de cierre metálico y avíos (2 botones de hueso de aguacate).",
             "4. Exhibición: Empaque ecológico y distribución para la venta.",
           ],
           components: [
-            { no: "1.", pieza: "Cuerpo", mat: "Lino americano", pct: "85%" },
-            { no: "2.", pieza: "Grabados", mat: "Lana virgen", pct: "10%" },
+            { no: "1.", pieza: "Cuerpo", mat: "Lino americano", pct: "82%" },
+            { no: "2.", pieza: "Bordados", mat: "Lana virgen", pct: "10%" },
             {
               no: "3.",
               pieza: "Avíos",
               mat: "Botones hueso aguacate",
-              pct: "5%",
+              pct: "3%",
             },
-            { no: "4.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" },
+            { no: "4.", pieza: "Cierre", mat: "Cierre metálico", pct: "5%" },
+            { no: "5.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" },
           ],
           images: [
+            "ficha_tecnica/01/A1.jpeg?v=2",
+
+            "ficha_tecnica/01/A2.jpeg?v=2",
+
+            "ficha_tecnica/01/A3.jpeg?v=2",
+
             "ficha_tecnica/01/B.jpeg?v=2",
+
             "ficha_tecnica/01/C.jpeg?v=2",
-            "ficha_tecnica/01/A.jpeg?v=2",
-            "ficha_tecnica/01/D.jpeg?v=2",
           ],
         },
         g_pantalon_chia: {
@@ -999,7 +1033,7 @@
           grosor: "Lino pesado: 3mm",
           talla: "A medida",
           peso: "400 - 600 gr.",
-          precio_unitario: "$900.000 COP",
+          precio_unitario: "$800.000 COP",
           precio_mayor: "$750.000 COP",
           artesano: "Equipo de Diseño LANNA",
           telefono: "+57 300 305 3941",
@@ -1014,7 +1048,7 @@
           crono: [
             "1. Preproducción: Toma de medidas y patronaje a medida.",
             "2. Producción: Corte y confección del pantalón en lino americano.",
-            "3. Acabados: Grabado (bordado) a mano en lana con inspiración en el volante de huso Muisca.",
+            "3. Acabados: Bordado a mano en lana con inspiración en el volante de huso Muisca.",
             "4. Exhibición: Empaque ecológico y distribución para la venta.",
           ],
           components: [
@@ -1023,14 +1057,19 @@
             { no: "3.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" },
           ],
           images: [
+            "ficha_tecnica/02/A1.jpeg?v=2",
+
+            "ficha_tecnica/02/A2.jpeg?v=2",
+
+            "ficha_tecnica/02/A3.jpeg?v=2",
+
             "ficha_tecnica/02/B.jpeg?v=2",
+
             "ficha_tecnica/02/C.jpeg?v=2",
-            "ficha_tecnica/02/A.jpeg?v=2",
-            "ficha_tecnica/02/D.jpeg?v=2",
           ],
         },
         g_sombrero_chia: {
-          nombre: "Sombrero &ldquo;Chía&rdquo;",
+          nombre: "Sombrero de Fieltro de Lana &ldquo;Chía&rdquo;",
           ref: "Colección Mitológica - Chía (La Luna) - 04",
           oficio: "Tejeduría manual / Sombrerería",
           tecnica: "Fieltrado a mano",
@@ -1043,7 +1082,7 @@
           grosor: "4mm",
           talla: "M - L",
           peso: "350 gr.",
-          precio_unitario: "$800.000 COP",
+          precio_unitario: "$600.000 COP",
           precio_mayor: "$640.000 COP",
           artesano: "Equipo de Diseño LANNA",
           telefono: "+57 300 305 3941",
@@ -1071,10 +1110,15 @@
             { no: "2.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" },
           ],
           images: [
+            "ficha_tecnica/04/A1.jpeg?v=2",
+
+            "ficha_tecnica/04/A2.jpeg?v=2",
+
+            "ficha_tecnica/04/A3.jpeg?v=2",
+
             "ficha_tecnica/04/B.jpeg?v=2",
+
             "ficha_tecnica/04/C.jpeg?v=2",
-            "ficha_tecnica/04/A.jpeg?v=2",
-            "ficha_tecnica/04/D.jpeg?v=2",
           ],
         },
         g_cotizas_chia: {
@@ -1121,10 +1165,15 @@
             { no: "4.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" },
           ],
           images: [
+            "ficha_tecnica/03/A1.jpeg?v=2",
+
+            "ficha_tecnica/03/A2.jpeg?v=2",
+
+            "ficha_tecnica/03/A3.jpeg?v=2",
+
             "ficha_tecnica/03/B.jpeg?v=2",
+
             "ficha_tecnica/03/C.jpeg?v=2",
-            "ficha_tecnica/03/A.jpeg?v=2",
-            "ficha_tecnica/03/D.jpeg?v=2",
           ],
         },
         g_sueter_sue: {
@@ -1132,16 +1181,16 @@
           ref: "Colección Mitológica - Sué (El Sol) - 05",
           oficio: "Sastrería y Bordado",
           tecnica: "Confección y bordado a mano",
-          materia_prima: "Lino americano, Lana virgen",
+          materia_prima: "Lino americano, Lana virgen, Hueso de aguacate",
           especificaciones:
-            "Suéter construido a medida en lino americano color beige. Incorpora gran cantidad de grabados artesanales bordados en lana virgen teñida de color natural, inspirados en motivos de la deidad Sué (el sol).",
+            "Suéter construido a medida en lino americano color beige. Incorpora gran cantidad de grabados artesanales bordados en lana virgen teñida de color natural, inspirados en motivos de la deidad Sué (el sol). Incorpora 2 pequeños botones artesanales de hueso de aguacate en el cuello.",
           tipo: "Indumentaria Exterior",
           color: "Beige",
           capacidad: "5 piezas / mes",
           grosor: "Lino pesado: 3mm",
           talla: "L (A medida)",
           peso: "800 - 1100 gr.",
-          precio_unitario: "$1.800.000 COP",
+          precio_unitario: "$1.600.000 COP",
           precio_mayor: "$1.400.000 COP",
           artesano: "Equipo de Diseño LANNA",
           telefono: "+57 300 305 3941",
@@ -1156,19 +1205,30 @@
           crono: [
             "1. Preproducción: Toma de medidas y patronaje a medida.",
             "2. Producción: Corte y confección del cuerpo en lino americano.",
-            "3. Acabados: Grabado (bordado) a mano en lana con inspiración en el sol (deidad Sué).",
+            "3. Acabados: Bordado a mano en lana con inspiración en el sol (deidad Sué) y ensamble de avíos (2 botones pequeños de hueso de aguacate en el cuello).",
             "4. Exhibición: Empaque ecológico y distribución para la venta.",
           ],
           components: [
-            { no: "1.", pieza: "Cuerpo", mat: "Lino americano", pct: "85%" },
+            { no: "1.", pieza: "Cuerpo", mat: "Lino americano", pct: "80%" },
             { no: "2.", pieza: "Grabados", mat: "Lana virgen", pct: "15%" },
-            { no: "3.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" },
+            {
+              no: "3.",
+              pieza: "Avíos",
+              mat: "Botones hueso aguacate",
+              pct: "5%",
+            },
+            { no: "4.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" },
           ],
           images: [
+            "ficha_tecnica/05/A1.jpeg?v=2",
+
+            "ficha_tecnica/05/A2.jpeg?v=2",
+
+            "ficha_tecnica/05/A3.jpeg?v=2",
+
             "ficha_tecnica/05/B.jpeg?v=2",
+
             "ficha_tecnica/05/C.jpeg?v=2",
-            "ficha_tecnica/05/A.jpeg?v=2",
-            "ficha_tecnica/05/D.jpeg?v=2",
           ],
         },
         g_pantalon_sue: {
@@ -1178,14 +1238,14 @@
           tecnica: "Confección y bordado a mano",
           materia_prima: "Lino americano",
           especificaciones:
-            "Pantalón construido a medida en lino americano color beige, de diseño minimalista sin bordados, resaltando la textura natural del tejido.",
+            "Pantalón construido a medida en lino americano color beige, con bordados a mano en lana virgen amarilla natural.",
           tipo: "Indumentaria Inferior",
           color: "Beige",
           capacidad: "5 piezas / mes",
           grosor: "Lino pesado: 3mm",
           talla: "A medida",
           peso: "400 - 600 gr.",
-          precio_unitario: "$800.000 COP",
+          precio_unitario: "$1.000.000 COP",
           precio_mayor: "$650.000 COP",
           artesano: "Equipo de Diseño LANNA",
           telefono: "+57 300 305 3941",
@@ -1200,7 +1260,7 @@
           crono: [
             "1. Preproducción: Toma de medidas y patronaje a medida.",
             "2. Producción: Corte y confección del pantalón en lino americano.",
-            "3. Acabados: Planchado, revisión de costuras y etiquetado.",
+            "3. Acabados: Bordado a mano en lana con inspiración en el sol (deidad Sué).",
             "4. Exhibición: Empaque ecológico y distribución para la venta.",
           ],
           components: [
@@ -1208,10 +1268,15 @@
             { no: "2.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" },
           ],
           images: [
+            "ficha_tecnica/06/A1.jpeg?v=2",
+
+            "ficha_tecnica/06/A2.jpeg?v=2",
+
+            "ficha_tecnica/06/A3.jpeg?v=2",
+
             "ficha_tecnica/06/B.jpeg?v=2",
+
             "ficha_tecnica/06/C.jpeg?v=2",
-            "ficha_tecnica/06/A.jpeg?v=2",
-            "ficha_tecnica/06/D.jpeg?v=2",
           ],
         },
         g_alpargatas_sue: {
@@ -1258,27 +1323,31 @@
             { no: "4.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" },
           ],
           images: [
+            "ficha_tecnica/07/A1.jpeg?v=2",
+
+            "ficha_tecnica/07/A2.jpeg?v=2",
+
+            "ficha_tecnica/07/A3.jpeg?v=2",
+
             "ficha_tecnica/07/B.jpeg?v=2",
+
             "ficha_tecnica/07/C.jpeg?v=2",
-            "ficha_tecnica/07/A.jpeg?v=2",
-            "ficha_tecnica/07/D.jpeg?v=2",
           ],
         },
         g_sombrero_sue: {
-          nombre: "Sombrero &ldquo;Sué&rdquo;",
+          nombre: "Sombrero de Paja Toquilla &ldquo;Sué&rdquo;",
           ref: "Colección Mitológica - Sué (El Sol) - 08",
-          oficio: "Cestería / Sombrerería",
-          tecnica: "Trenzado en trencilla",
-          materia_prima: "Fibras vegetales (Palmiche y Fique)",
-          especificaciones:
-            "Sombrero de tapia pisada elaborado artesanalmente con trenzado de palmiche y fique. Inspirado en la funcionalidad y resistencia del campesino boyacense.",
+          oficio: "Cestería / Tejeduría Fina",
+          tecnica: "Tejido manual en paja toquilla",
+          materia_prima: "Paja Toquilla (Carludovica palmata)",
+          especificaciones: "Sombrero de paja toquilla elaborado artesanalmente. Si bien el sombrero originario de labor en el altiplano es el de tapia pisada, el sombrero de paja toquilla ha sido históricamente adoptado por el campesino cundiboyacense como símbolo de elegancia para sus días de gala y jornadas dominicales. Esta pieza mantiene la silueta tradicional andina, ofreciendo un acabado premium, mayor viabilidad productiva y rindiendo tributo a la indumentaria clásica que acompaña a la ruana.",
           tipo: "Accesorio / Sombrerería",
           color: "Beige",
           capacidad: "10 unidades / mes",
-          grosor: "Trenza de palmiche: 3mm",
+          grosor: "Fibra fina de toquilla",
           talla: "Única (Ajustable)",
           peso: "300 - 450 gr.",
-          precio_unitario: "$800.000 COP",
+          precio_unitario: "$700.000 COP",
           precio_mayor: "$640.000 COP",
           artesano: "Equipo de Diseño LANNA",
           telefono: "+57 300 305 3941",
@@ -1291,26 +1360,31 @@
           prod_no: "008",
           linea: "Sué (Sol)",
           crono: [
-            "1. Preproducción: Recolección y tratamiento de fibras de palmiche y fique.",
-            "2. Producción: Tejido manual en forma de trencilla y ensamblado de horma.",
-            "3. Acabados: Ajuste de tafilete interior, planchado de horma y etiqueta.",
+            "1. Preproducción: Selección y preparación de fibras finas de paja toquilla.",
+            "2. Producción: Tejido manual continuo desde la plantilla hasta la copa y el ala.",
+            "3. Acabados: Ajuste de tafilete interior, planchado de horma y etiquetado.",
             "4. Exhibición: Empaque ecológico y distribución para la venta.",
           ],
           components: [
             {
               no: "1.",
               pieza: "Estructura",
-              mat: "Palmiche y Fique",
+              mat: "Paja Toquilla",
               pct: "95%",
             },
             { no: "2.", pieza: "Tafilete", mat: "Algodón", pct: "5%" },
             { no: "3.", pieza: "Etiqueta", mat: "Papel semilla", pct: "--" },
           ],
           images: [
+            "ficha_tecnica/08/A1.jpeg?v=2",
+
+            "ficha_tecnica/08/A2.jpeg?v=2",
+
+            "ficha_tecnica/08/A3.jpeg?v=2",
+
             "ficha_tecnica/08/B.jpeg?v=2",
+
             "ficha_tecnica/08/C.jpeg?v=2",
-            "ficha_tecnica/08/A.jpeg?v=2",
-            "ficha_tecnica/08/D.jpeg?v=2",
           ],
         },
 
@@ -1327,11 +1401,11 @@
           capacidad: "45 unidades / mes",
           grosor: "Lana pesada (4mm)",
           talla: "Única (12cm Ø)",
-          peso: "90 gr.",
-          precio_unitario: "$65.000 COP",
+          peso: "30 gr.",
+          precio_unitario: "$75.000 COP",
           hecho_a_mano: "SI",
           fecha: "03/06/2026",
-          prod_no: "S-01",
+          prod_no: "09",
           linea: "Chía (Luna)",
           crono: [
             "1. Preproducción: Hilado y tinturado natural de la lana virgen de oveja a color negro.",
@@ -1349,10 +1423,11 @@
             { no: "2.", pieza: "Cierre", mat: "Broche a presión", pct: "10%" },
           ],
           images: [
-            "souvenirs/placeholder_negro.png",
-            "souvenirs/placeholder_negro.png",
-            "souvenirs/placeholder_negro.png",
-            "souvenirs/placeholder_negro.png",
+            "ficha_tecnica/09/A1.jpeg?v=2",
+            "ficha_tecnica/09/A2.jpeg?v=2",
+            "ficha_tecnica/09/A3.jpeg?v=2",
+            "ficha_tecnica/09/B.jpeg?v=2",
+            "ficha_tecnica/09/C.jpeg?v=2",
           ],
         },
         s_monedero_sue: {
@@ -1367,11 +1442,11 @@
           capacidad: "45 unidades / mes",
           grosor: "Lana pesada (4mm)",
           talla: "Única (12cm Ø)",
-          peso: "90 gr.",
-          precio_unitario: "$65.000 COP",
+          peso: "41 gr.",
+          precio_unitario: "$75.000 COP",
           hecho_a_mano: "SI",
           fecha: "03/06/2026",
-          prod_no: "S-02",
+          prod_no: "10",
           linea: "Sué (Sol)",
           crono: [
             "1. Preproducción: Clasificación, lavado y cardado ecológico de la lana virgen cruda beige.",
@@ -1389,13 +1464,106 @@
             { no: "2.", pieza: "Cierre", mat: "Broche a presión", pct: "10%" },
           ],
           images: [
-            "souvenirs/placeholder_beige.png",
-            "souvenirs/placeholder_beige.png",
-            "souvenirs/placeholder_beige.png",
-            "souvenirs/placeholder_beige.png",
+            "ficha_tecnica/10/A1.jpeg?v=2",
+            "ficha_tecnica/10/A2.jpeg?v=2",
+            "ficha_tecnica/10/A3.jpeg?v=2",
+            "ficha_tecnica/10/B.jpeg?v=2",
+            "ficha_tecnica/10/C.jpeg?v=2",
           ],
         },
 
+        s_bolsita_chia: {
+          nombre: "Bolsita Tejida &ldquo;Chía&rdquo;",
+          ref: "Souvenirs &amp; Experiencias - Kit Primeros Pasos - BC01",
+          oficio: "Tejeduría Artesanal",
+          tecnica: "Tejido manual en lana virgen",
+          especificaciones:
+            "Bolsita tejida completamente en lana virgen de oveja color negro absoluto con terminaciones en amarillo. Ideal para almacenar pequeños objetos, incluye cordón de cierre de la misma lana.",
+          tipo: "Accesorio / Souvenir de Mano",
+          color: "Negro (Terminales Amarillos)",
+          capacidad: "45 unidades / mes",
+          grosor: "Lana pesada (4mm)",
+          talla: "Única",
+          peso: "12 gr.",
+          precio_unitario: "$55.000 COP",
+          hecho_a_mano: "SI",
+          fecha: "03/06/2026",
+          prod_no: "11",
+          linea: "Chía (Luna)",
+          crono: [
+            "1. Preproducción: Hilado y tinturado natural de la lana virgen de oveja a color negro.",
+            "2. Producción: Tejido del cuerpo de la bolsita en telar o manual, integrando terminaciones amarillas.",
+            "3. Acabados: Inserción del cordón de cierre en la parte superior.",
+            "4. Exhibición: Empacado en el Kit Primeros Pasos.",
+          ],
+          components: [
+            {
+              no: "1.",
+              pieza: "Cuerpo principal",
+              mat: "Lana virgen de oveja",
+              pct: "95%",
+            },
+            {
+              no: "2.",
+              pieza: "Cordón de cierre",
+              mat: "Lana virgen",
+              pct: "5%",
+            },
+          ],
+          images: [
+            "ficha_tecnica/11/A1.jpeg?v=2",
+            "ficha_tecnica/11/A2.jpeg?v=2",
+            "ficha_tecnica/11/A3.jpeg?v=2",
+            "ficha_tecnica/11/B.jpeg?v=2",
+            "ficha_tecnica/11/C.jpeg?v=2",
+          ],
+        },
+        s_bolsita_sue: {
+          nombre: "Bolsita Tejida &ldquo;Sué&rdquo;",
+          ref: "Souvenirs &amp; Experiencias - Kit Primeros Pasos - BS02",
+          oficio: "Tejeduría Artesanal",
+          tecnica: "Tejido manual en lana virgen",
+          especificaciones:
+            "Bolsita tejida completamente en lana virgen de oveja color beige con terminaciones en amarillo. Ideal para almacenar pequeños objetos, incluye cordón de cierre de la misma lana.",
+          tipo: "Accesorio / Souvenir de Mano",
+          color: "Beige (Terminales Amarillos)",
+          capacidad: "45 unidades / mes",
+          grosor: "Lana pesada (4mm)",
+          talla: "Única",
+          peso: "20 gr.",
+          precio_unitario: "$55.000 COP",
+          hecho_a_mano: "SI",
+          fecha: "03/06/2026",
+          prod_no: "12",
+          linea: "Sué (Sol)",
+          crono: [
+            "1. Preproducción: Clasificación, lavado y cardado ecológico de la lana virgen cruda beige.",
+            "2. Producción: Tejido del cuerpo de la bolsita en telar o manual, integrando terminaciones amarillas.",
+            "3. Acabados: Inserción del cordón de cierre en la parte superior.",
+            "4. Exhibición: Empacado en el Kit Primeros Pasos.",
+          ],
+          components: [
+            {
+              no: "1.",
+              pieza: "Cuerpo principal",
+              mat: "Lana virgen de oveja",
+              pct: "95%",
+            },
+            {
+              no: "2.",
+              pieza: "Cordón de cierre",
+              mat: "Lana virgen",
+              pct: "5%",
+            },
+          ],
+          images: [
+            "ficha_tecnica/12/A1.jpeg?v=2",
+            "ficha_tecnica/12/A2.jpeg?v=2",
+            "ficha_tecnica/12/A3.jpeg?v=2",
+            "ficha_tecnica/12/B.jpeg?v=2",
+            "ficha_tecnica/12/C.jpeg?v=2",
+          ],
+        },
         s_collar_chia: {
           nombre: "Llavero Tejido &ldquo;Chía&rdquo;",
           ref: "Souvenirs &amp; Joyería Botánica - Llavero Luna - CC05",
@@ -1408,11 +1576,11 @@
           capacidad: "100 unidades / mes",
           grosor: "Lana media (3mm)",
           talla: "Única, con herraje",
-          peso: "25 gr.",
+          peso: "8 gr.",
           precio_unitario: "$35.000 COP",
           hecho_a_mano: "SI",
           fecha: "03/06/2026",
-          prod_no: "S-05",
+          prod_no: "13",
           linea: "Chía (Luna)",
           crono: [
             "1. Preproducción: Hilado y teñido orgánico de la lana virgen a negro.",
@@ -1435,10 +1603,11 @@
             },
           ],
           images: [
-            "souvenirs/placeholder_negro.png",
-            "souvenirs/placeholder_negro.png",
-            "souvenirs/placeholder_negro.png",
-            "souvenirs/placeholder_negro.png",
+            "ficha_tecnica/13/A1.jpeg?v=2",
+            "ficha_tecnica/13/A2.jpeg?v=2",
+            "ficha_tecnica/13/A3.jpeg?v=2",
+            "ficha_tecnica/13/B.jpeg?v=2",
+            "ficha_tecnica/13/C.jpeg?v=2",
           ],
         },
         s_collar_sue: {
@@ -1453,11 +1622,11 @@
           capacidad: "100 unidades / mes",
           grosor: "Lana media (3mm)",
           talla: "Única, con herraje",
-          peso: "25 gr.",
+          peso: "17 gr.",
           precio_unitario: "$35.000 COP",
           hecho_a_mano: "SI",
           fecha: "03/06/2026",
-          prod_no: "S-06",
+          prod_no: "14",
           linea: "Sué (Sol)",
           crono: [
             "1. Preproducción: Lavado y preparación de lana virgen cruda color beige.",
@@ -1480,81 +1649,14 @@
             },
           ],
           images: [
-            "souvenirs/placeholder_beige.png",
-            "souvenirs/placeholder_beige.png",
-            "souvenirs/placeholder_beige.png",
-            "souvenirs/placeholder_beige.png",
+            "ficha_tecnica/14/A1.jpeg?v=2",
+            "ficha_tecnica/14/A2.jpeg?v=2",
+            "ficha_tecnica/14/A3.jpeg?v=2",
+            "ficha_tecnica/14/B.jpeg?v=2",
+            "ficha_tecnica/14/C.jpeg?v=2",
           ],
         },
-
-        // PACKAGING
-        s_empaque: {
-          nombre: "Caja Kraft Circular &ldquo;Volante de Huso&rdquo;",
-          ref: "Packaging Oficial - Empaque de Lujo - PVOL01",
-          oficio: "Cartonería y Ecodiseño",
-          tecnica: "Corte, rolado y grabado base agua",
-          materia_prima:
-            "Cartón Kraft reciclado de alto gramaje, Fique crudo, Tarjeta de papel semilla",
-          especificaciones:
-            "Caja cilíndrica de lujo inspirada en la morfología circular del volante de huso Muisca. Fabricada en cartón Kraft biodegradable sin blanquear, con grabado al agua del isotipo en la tapa.",
-          tipo: "Empaque Ecológico de Lujo",
-          color: "Marrón Kraft Natural",
-          capacidad: "150 cajas / mes",
-          grosor: "Cartón Kraft rígido (1.8mm)",
-          talla: "Medidas: 25 cm Ø × 12 cm alto",
-          peso: "250 gr.",
-          precio_unitario: "$25.000 COP",
-          precio_mayor: "$18.000 COP (Min. 20 unid)",
-          artesano: "Taller de Ecodiseño LANNA",
-          telefono: "+57 300 305 3941",
-          municipio: "Pasto",
-          taller: "Taller Central LANNA",
-          departamento: "Nariño",
-          hecho_a_mano: "SI",
-          centro_poblado: "Pasto, Nariño",
-          fecha: "03/06/2026",
-          prod_no: "P-01",
-          linea: "Colección Inaugural Bochica",
-          crono: [
-            "1. Preproducción: Corte de láminas de cartón rígido kraft reciclado.",
-            "2. Producción: Rolado y ensamble de la estructura cilíndrica del cuerpo y la tapa.",
-            "3. Acabados: Grabado del isotipo mediante sello manual con tinta base agua y adición de fique.",
-            "4. Exhibición: Ensamble del Kit de Unboxing con tarjeta de papel semilla nativa.",
-          ],
-          components: [
-            {
-              no: "1.",
-              pieza: "Cuerpo cilíndrico",
-              mat: "Cartón Kraft reciclado",
-              pct: "85%",
-            },
-            {
-              no: "2.",
-              pieza: "Tapa circular",
-              mat: "Cartón Kraft rígido",
-              pct: "10%",
-            },
-            {
-              no: "3.",
-              pieza: "Lazo de cierre",
-              mat: "Cordón de fique crudo",
-              pct: "5%",
-            },
-            {
-              no: "4.",
-              pieza: "Etiqueta",
-              mat: "Papel semilla nativa",
-              pct: "--",
-            },
-          ],
-          images: [
-            "final/p1.png",
-            "final/p1.png",
-            "final/p2.png",
-            "final/p2.png",
-          ],
-        },
-      };
+        };
 
       // ELEMENTOS DEL DOM
       const switchPrendas = document.getElementById("switch-prendas");
@@ -1565,6 +1667,7 @@
       const viewerContent = document.getElementById("viewer-content");
       const mainDisplayBox = document.getElementById("main-display-box");
       const galleryThumbs = document.getElementById("gallery-thumbs");
+      const galleryTopFixed = document.getElementById("gallery-top-fixed");
       const specsPanel = document.getElementById("viewer-specs-panel");
       const printArea = document.getElementById("print-area");
 
@@ -1615,11 +1718,20 @@
         viewerContent.classList.remove("active");
 
         setTimeout(() => {
-          // 1. Cargar Imagen Principal
+          // 1. Poblar top-fixed (B y C)
+          if (galleryTopFixed) {
+            galleryTopFixed.innerHTML = `
+              <div class="fixed-img" style="background-image: url('${data.images[3]}');"></div>
+              <div class="fixed-img" style="background-image: url('${data.images[4]}');"></div>
+            `;
+          }
+
+          // 2. Cargar Imagen Principal
           mainDisplayBox.style.backgroundImage = `url('${data.images[0]}')`;
 
-          // 2. Poblar Galería de Miniaturas
+          // 3. Poblar Galería de Miniaturas (sólo A1, A2, A3)
           galleryThumbs.innerHTML = data.images
+            .slice(0, 3)
             .map(
               (img, index) => `
           <button class="thumb-btn ${index === 0 ? "active" : ""}" style="background-image: url('${img}');" onclick="switchMainImage(this, '${img}')"></button>
@@ -1681,16 +1793,17 @@
             </div>
           </div>
 
+          <!-- Especificaciones Técnicas (Full width) -->
+          <div class="ensemble-section" style="margin-top: 0;">
+            <h3 class="spec-section-title">Especificaciones Técnicas</h3>
+            <p class="spec-description">${data.especificaciones}</p>
+          </div>
+
           <!-- BOTTOM 2-COLUMN LAYOUT -->
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.3rem;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0;">
             
             <!-- LEFT COLUMN -->
             <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-              <!-- Descripción Técnica -->
-              <div class="ensemble-section" style="margin-top: 0;">
-                <h3 class="spec-section-title">Especificaciones Técnicas</h3>
-                <p class="spec-description">${data.especificaciones}</p>
-              </div>
 
               <!-- Cronograma -->
               <div class="ensemble-section" style="margin-top: 0;">
@@ -2036,8 +2149,8 @@
         const wrapper = document.querySelector(".app-wrapper");
         if (wrapper) {
           const scale = Math.min(
-            window.innerWidth / 1600,
-            window.innerHeight / 900,
+            window.innerWidth / 1366,
+            window.innerHeight / 768,
           );
           wrapper.style.transform = `scale(${scale})`;
         }

@@ -148,12 +148,12 @@ Proceso artesanal manual: corte del hueso con cuchillo → lijado hasta la forma
 
 | #   | Pieza               | Material                                                                  | Precio  |
 | --- | ------------------- | ------------------------------------------------------------------------- | ------- |
-| 09  | **Monedero "Chía"** | Lana virgen de oveja (negro + terminaciones amarillas). Broche metálico.  | $140.000 |
-| 10  | **Monedero "Sué"**  | Lana virgen de oveja (beige + terminaciones amarillas). Broche metálico.  | $140.000 |
-| 11  | **Bolsita "Chía"**  | Lana virgen de oveja (negro + terminaciones amarillas). Cordón de cierre. | $110.000 |
-| 12  | **Bolsita "Sué"**   | Lana virgen de oveja (beige + terminaciones amarillas). Cordón de cierre. | $110.000 |
-| 13  | **Llavero "Chía"**  | Lana virgen de oveja (negro + detalles amarillos). Herraje metálico.      | $80.000 |
-| 14  | **Llavero "Sué"**   | Lana virgen de oveja (beige + detalles amarillos). Herraje metálico.      | $80.000 |
+| 09  | **Monedero "Chía"** | Lana virgen de oveja (negro + terminaciones amarillas). Broche metálico.  | $100.000 |
+| 10  | **Monedero "Sué"**  | Lana virgen de oveja (beige + terminaciones amarillas). Broche metálico.  | $100.000 |
+| 11  | **Bolsita "Chía"**  | Lana virgen de oveja (negro + terminaciones amarillas). Cordón de cierre. | $50.000 |
+| 12  | **Bolsita "Sué"**   | Lana virgen de oveja (beige + terminaciones amarillas). Cordón de cierre. | $50.000 |
+| 13  | **Llavero "Chía"**  | Lana virgen de oveja (negro + detalles amarillos). Herraje metálico.      | $50.000 |
+| 14  | **Llavero "Sué"**   | Lana virgen de oveja (beige + detalles amarillos). Herraje metálico.      | $50.000 |
 
 > Todos los souvenirs están hechos **100% de lana virgen criolla de oveja**.
 

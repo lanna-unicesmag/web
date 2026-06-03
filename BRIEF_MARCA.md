@@ -11,7 +11,7 @@
 
 ### El problema
 
-La industria de la moda es la segunda más contaminante del mundo. En Colombia, el sector textil genera más de **400.000 toneladas de residuos al año**. Al mismo tiempo, las tradiciones textiles artesanales del Altiplano Cundiboyacense se erosionan: los artesanos no encuentran mercados que paguen precio justo y las técnicas ancestrales se pierden por falta de relevo generacional.
+La industria de la moda es la segunda más contaminante del mundo. En Colombia, el sector textil genera más de **650.000 toneladas de residuos al año**. Al mismo tiempo, las tradiciones textiles artesanales del Altiplano Cundiboyacense se erosionan: los artesanos no encuentran mercados que paguen precio justo y las técnicas ancestrales se pierden por falta de relevo generacional.
 
 En paralelo, existe un segmento creciente de consumidores con alto poder adquisitivo que buscan moda consciente con origen verificable y narrativa cultural auténtica. Ese segmento **no tiene oferta local de lujo sostenible**. Las marcas de artesanía colombiana no operan en el espacio premium. Las marcas de lujo internacionales no tienen raíz local. El espacio está vacío.
 
@@ -367,7 +367,7 @@ Talla única por diseño y sostenibilidad. La ruana es drapeada, no sastre: se a
 | ------------------ | -------------------------- | ------------------------ | --------------------- |
 | **Estética**       | Contemporánea, minimalista | Folklórica, costumbrista | Trendy, genérica      |
 | **Sostenibilidad** | Marco 9R + LCA verificable | Sin marco formal         | Marketing verde       |
-| **Precio**         | Premium ($1.200.000+)      | Bajo-medio               | Medio                 |
+| **Precio**         | Premium ($2.200.000+)      | Bajo-medio               | Medio                 |
 | **Origen**         | Trazable y documentado     | Variable                 | Opaco                 |
 | **Narrativa**      | Mitología muisca activa    | Artesanía pasiva         | Global, sin identidad |
 
@@ -410,16 +410,16 @@ _Ejemplos:_ Colección CHIBCHACUM · Colección BACHUÉ · Colección NEMCATACOA
 | Rubro                    | Monto COP    | Qué incluye                                                        |
 | ------------------------ | ------------ | ------------------------------------------------------------------ |
 | **Materia prima**        | $90.000      | ~500g de hilo de lana criolla hilado artesanalmente                |
-| **Mano de obra**         | $120.000     | 1,5-2 días de artesano en telar. Precio justo.                     |
+| **Mano de obra**         | $1.050.000     | 1,5-2 días de artesano en telar. Precio justo.                     |
 | **Materiales + empaque** | $60.000      | Tintes, alumbre, fique, botón, caja kraft, cordón, tarjeta semilla |
 | **Costos indirectos**    | $30.000      | Transporte, diseño, plataforma, herramientas                       |
-| **COSTO TOTAL**          | **$300.000** | Por prenda terminada, empacada y lista para vender                 |
+| **COSTO TOTAL**          | **$550.000** | Por prenda terminada, empacada y lista para vender                 |
 
 ### Precio y margen
 
 | Indicador        | Valor                  |
 | ---------------- | ---------------------- |
-| **PVP**          | $1.200.000 COP         |
+| **PVP**          | $2.200.000 COP         |
 | **Markup**       | 4× el costo            |
 | **Margen bruto** | 75% ($900.000 / pieza) |
 
@@ -475,7 +475,7 @@ _Ejemplos:_ Colección CHIBCHACUM · Colección BACHUÉ · Colección NEMCATACOA
 | Prendas vendidas | 80-120 unidades      |
 | Ingreso bruto    | $96-144 millones COP |
 | Margen bruto     | ≥ 70%                |
-| Ticket promedio  | $1.200.000 COP       |
+| Ticket promedio  | $2.200.000 COP       |
 
 ### Marca
 

@@ -130,30 +130,30 @@ Proceso artesanal manual: corte del hueso con cuchillo → lijado hasta la forma
 
 | #   | Pieza                          | Descripción                                                                                                                                                       | Precio     |
 | --- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| 01  | **Ruana "Chía"**               | Lino americano negro. Bordados en lana virgen amarilla (caléndula) inspirados en el volante de huso.**Cierre metálico frontal** + 2 botones de hueso de aguacate. | $1.200.000 |
-| 02  | **Pantalón "Chía"**            | Lino americano negro. Bordados en lana virgen amarilla.                                                                                                           | $800.000   |
-| 03  | **Cotizas "Chía"**             | Suela de caucho de llanta reciclada. Capellada en lona negra. Costura manual.                                                                                     | $400.000   |
-| 04  | **Sombrero de Fieltro "Chía"** | Lana fieltrada color negro.                                                                                                                                       | $600.000   |
+| 01  | **Ruana "Chía"**               | Lino americano negro. Bordados en lana virgen amarilla (caléndula) inspirados en el volante de huso.**Cierre metálico frontal** + 2 botones de hueso de aguacate. | $2.200.000 |
+| 02  | **Pantalón "Chía"**            | Lino americano negro. Bordados en lana virgen amarilla.                                                                                                           | $950.000   |
+| 03  | **Cotizas "Chía"**             | Suela de caucho de llanta reciclada. Capellada en lona negra. Costura manual.                                                                                     | $650.000   |
+| 04  | **Sombrero de Fieltro "Chía"** | Lana fieltrada color negro.                                                                                                                                       | $950.000   |
 
 ### 5.2 Conjunto SUÉ · El Sol (Masculino / Beige)
 
 | #   | Pieza                               | Descripción                                                                                                                                                                           | Precio     |
 | --- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| 05  | **Suéter "Sué"**                    | Lino americano beige. Gran cantidad de bordados en lana virgen amarilla. Con manga, se mete por la cabeza. 2 botones funcionales de hueso de aguacate en la parte trasera del cuello. | $1.600.000 |
-| 06  | **Pantalón "Sué"**                  | Lino americano beige. Bordados en lana virgen amarilla.                                                                                                                               | $1.000.000 |
-| 07  | **Alpargatas "Sué"**                | Suela de fique trenzado. Capellada en lona de algodón.                                                                                                                                | $400.000   |
-| 08  | **Sombrero de Paja Toquilla "Sué"** | Paja toquilla tejida manualmente.                                                                                                                                                     | $700.000   |
+| 05  | **Suéter "Sué"**                    | Lino americano beige. Gran cantidad de bordados en lana virgen amarilla. Con manga, se mete por la cabeza. 2 botones funcionales de hueso de aguacate en la parte trasera del cuello. | $950.000 |
+| 06  | **Pantalón "Sué"**                  | Lino americano beige. Bordados en lana virgen amarilla.                                                                                                                               | $950.000 |
+| 07  | **Alpargatas "Sué"**                | Suela de fique trenzado. Capellada en lona de algodón.                                                                                                                                | $650.000   |
+| 08  | **Sombrero de Paja Toquilla "Sué"** | Paja toquilla tejida manualmente.                                                                                                                                                     | $950.000   |
 
 ### 5.3 Souvenirs (1 unidad de cada uno fabricada)
 
 | #   | Pieza               | Material                                                                  | Precio  |
 | --- | ------------------- | ------------------------------------------------------------------------- | ------- |
-| 09  | **Monedero "Chía"** | Lana virgen de oveja (negro + terminaciones amarillas). Broche metálico.  | $75.000 |
-| 10  | **Monedero "Sué"**  | Lana virgen de oveja (beige + terminaciones amarillas). Broche metálico.  | $75.000 |
-| 11  | **Bolsita "Chía"**  | Lana virgen de oveja (negro + terminaciones amarillas). Cordón de cierre. | $55.000 |
-| 12  | **Bolsita "Sué"**   | Lana virgen de oveja (beige + terminaciones amarillas). Cordón de cierre. | $55.000 |
-| 13  | **Llavero "Chía"**  | Lana virgen de oveja (negro + detalles amarillos). Herraje metálico.      | $35.000 |
-| 14  | **Llavero "Sué"**   | Lana virgen de oveja (beige + detalles amarillos). Herraje metálico.      | $35.000 |
+| 09  | **Monedero "Chía"** | Lana virgen de oveja (negro + terminaciones amarillas). Broche metálico.  | $140.000 |
+| 10  | **Monedero "Sué"**  | Lana virgen de oveja (beige + terminaciones amarillas). Broche metálico.  | $140.000 |
+| 11  | **Bolsita "Chía"**  | Lana virgen de oveja (negro + terminaciones amarillas). Cordón de cierre. | $110.000 |
+| 12  | **Bolsita "Sué"**   | Lana virgen de oveja (beige + terminaciones amarillas). Cordón de cierre. | $110.000 |
+| 13  | **Llavero "Chía"**  | Lana virgen de oveja (negro + detalles amarillos). Herraje metálico.      | $80.000 |
+| 14  | **Llavero "Sué"**   | Lana virgen de oveja (beige + detalles amarillos). Herraje metálico.      | $80.000 |
 
 > Todos los souvenirs están hechos **100% de lana virgen criolla de oveja**.
 
@@ -217,20 +217,20 @@ Proceso artesanal manual: corte del hueso con cuchillo → lijado hasta la forma
 
 | Rubro                      | Monto COP     | Incluye                                                                       |
 | -------------------------- | ------------- | ----------------------------------------------------------------------------- |
-| **Materia prima**          | ~$110.000     | Lino americano, lana virgen para bordados, hueso de aguacate, cierre metálico |
-| **Mano de obra artesanal** | ~$150.000     | Confección a mano, bordado manual, tallado de botones, ensamble               |
+| **Materia prima**          | ~$200.000     | Lino americano, lana virgen para bordados, hueso de aguacate, cierre metálico |
+| **Mano de obra artesanal** | ~$750.000     | Confección a mano, bordado manual, tallado de botones, ensamble               |
 | **Empaque**                | ~$40.000      | Caja de cartón piedra, etiqueta, cordón de lana                               |
 | **Costos indirectos**      | ~$40.000      | Transporte, diseño, herramientas                                              |
-| **COSTO TOTAL estimado**   | **~$340.000** | Por prenda terminada, empacada y lista                                        |
+| **COSTO TOTAL estimado**   | **~$2.400.000** | Por prenda terminada, empacada y lista                                        |
 
 ### Precio y margen
 
 | Indicador          | Valor          |
 | ------------------ | -------------- |
-| **PVP**            | $1.200.000 COP |
-| **Costo total**    | ~$340.000 COP  |
+| **PVP**            | $2.200.000 COP |
+| **Costo total**    | ~$2.400.000 COP  |
 | **Ganancia bruta** | ~$860.000 COP  |
-| **Margen bruto**   | ~71.7%         |
+| **Margen bruto**   | ~50.0%         |
 | **Markup**         | ~3.5× el costo |
 
 ### Audiencia objetivo
